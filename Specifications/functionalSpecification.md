@@ -1,15 +1,17 @@
 # Functional Specification - Team 5's Virtual Processor
 
-| | |
-| ----- | :-----: |
-| Author | Rémy CHARLES|
-| Reviewers | |
-| Created on | 2024-01-12 |
-| Last updated | 2024-01-12 |
+|              |              |
+| ------------ | :----------: |
+| Author       | Rémy CHARLES |
+| Reviewers    |              |
+| Created on   |  2024-01-12  |
+| Last updated |  2024-01-12  |
 
 ## Table of contents
 
-<details><summary>Click to expand</summary>
+<details>
+
+<summary>Click to expand</summary>
 
 - [Functional Specification - Team 5's Virtual Processor](#functional-specification---team-5s-virtual-processor)
   - [Table of contents](#table-of-contents)
@@ -45,11 +47,26 @@ This specification serves as a guideline for developers and contributors to unde
 
 ## 2. Development Environment
 
-`TODO: Write development environment`
+The development of the Virtual Processor will be conducted in a specific programming and toolset environment to ensure consistency, compatibility, and performance. The key components of this environment are:
+
+- **Programming Language**: The entire project is to be developed in standard C language. This choice is made to leverage the portability and efficiency of C, making the virtual processor adaptable to various platforms.
+
+- **Compiler**: The GNU Compiler Collection (GCC) is designated as the primary compiler. Its widespread availability and compatibility with various operating systems make it an ideal choice.
+
+- **Integrated Development Environment (IDE)**: Visual Studio Code (VS Code) is recommended for its versatility and robust support for C/C++ development. It offers valuable features like debugging tools and source code management integration.
+
+- **Libraries**: Only standard C libraries are to be used in this project. The use of external or third-party libraries is restricted to ensure the simplicity and portability of the code.
+
+- **Version Control**: Git, in conjunction with GitHub, will be used for source code management. This allows for effective collaboration, version tracking, and code review processes.
+
+- **Code Style and Conventions**: Adherence to common C programming conventions is expected to maintain code readability and maintainability. A specific style guide will be provided to ensure consistency across the project.
+
+This environment is chosen to balance functionality, ease of use, and accessibility for developers. It will support the project's goals of creating a portable and efficient virtual processor.
+
 
 ## 3. Assembly Language Specification
 
-`TODO: Write assembly language specification`
+The virtual processor will be equipped to handle a custom assembly language. This language will be designed to be simple and intuitive, allowing for easy comprehension and execution. The language will be fully detailed in this section, including instructions, operations, and syntax.
 
 ### 3.1. Instructions
 
