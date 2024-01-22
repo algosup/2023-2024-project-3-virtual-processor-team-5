@@ -5,7 +5,7 @@
 | Author       | Rémy CHARLES |
 | Reviewers    |              |
 | Created on   |  2024-01-12  |
-| Last updated |  2024-01-12  |
+| Last updated |  2024-01-22  |
 
 ## Table of contents
 
