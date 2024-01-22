@@ -26,14 +26,11 @@
     - [4.3 Executing Instructions](#43-executing-instructions)
     - [4.4 Error Handling and Reporting](#44-error-handling-and-reporting)
     - [4.5 Debugging and Logging](#45-debugging-and-logging)
-  - [5. Virtual System Call Implementation](#5-virtual-system-call-implementation)
-    - [5.1 Text Display](#51-text-display)
-    - [5.2 Debugging Features](#52-debugging-features)
-    - [5.3 I/O Operations](#53-io-operations)
-    - [5.4 Extension Mechanisms](#54-extension-mechanisms)
-  - [6. Testing and Validation](#6-testing-and-validation)
-    - [6.1. Unit Tests](#61-unit-tests)
-    - [6.2. Testing Methodology](#62-testing-methodology)
+- [5. Virtual System Call Implementation](#5-virtual-system-call-implementation)
+  - [5.1 Text Display](#51-text-display)
+  - [5.2 Debugging Features](#52-debugging-features)
+  - [5.3 I/O Operations](#53-io-operations)
+  - [5.4 Extension Mechanisms](#54-extension-mechanisms)
   - [7. Conclusion](#7-conclusion)
   - [8. Glossary](#8-glossary)
 
@@ -111,13 +108,14 @@ The assembly language designed for the Virtual Processor will include a set of f
     - and ```ret``` *uses direct addressing to return from a subroutine.*
 
 - **Special Instructions**: A set of special instructions for system calls, input/output operations, and other processor-specific tasks. 
+  
     - ```syscall``` *uses direct addressing to call a system call.*
     - ```in``` *uses direct addressing to read data from a memory location into a register.*
     - ```out``` *uses direct addressing to write data from a register into a memory location.* 
     - ```nop``` *uses direct addressing to perform no operation.*
     - and ```hlt``` *uses direct addressing to halt the processor.*
 
-Each instruction will be described in detail, including its syntax, operation, and usage examples. This will ensure a clear understanding of how to program using the Virtual Processor's assembly language.``
+*Each instruction will be described in detail, including its syntax, operation, and usage examples. This will ensure a clear understanding of how to program using the Virtual Processor's assembly language.*
 
 ### 3.2. Operations
 
@@ -130,6 +128,7 @@ The operations of the assembly language define how each instruction manipulates 
   - ``cx`` *is the counter register.*
   - ``dx`` *is the data register.*
   - ``ix`` *is the index register.*
+  - ``si`` *is the source index register.*
 
 - **Memory Operations**: Descriptions of instructions for memory access, including direct and indirect addressing, and memory management techniques. 
   
@@ -139,77 +138,81 @@ The operations of the assembly language define how each instruction manipulates 
 
 - **System-Level Operations**: Overview of operations related to system calls and I/O handling, essential for interacting with the system and external environment. System call instructions include ```syscall```, ```in```, ```out```, ```nop```, and ```hlt```.
 
-Each operation will be described in the context of its effect on the processor state, including any changes to registers, memory, or the program counter. Examples will be provided to illustrate typical use cases and expected outcomes.
+*Each operation will be described in the context of its effect on the processor state, including any changes to registers, memory, or the program counter. Examples will be provided to illustrate typical use cases and expected outcomes.*
 
 ## 4. C Program Development
 
-This section delves into the design and implementation of the C program, crucial for interpreting and executing the assembly language of the Virtual Processor.
+The C program is essential for the Virtual Processor, acting as the interface for interpreting and executing the assembly language. This section details its intricate design and comprehensive implementation.
 
 ### 4.1 Program Structure
-- **Overview:** Description of the C program's architecture, including its main components and their interrelationships.
-- **Modules:** Detailed breakdown of key modules such as the interpreter loop, instruction set handler, and memory management system.
+- **Overview:** This part describes the overarching structure of the C program, emphasizing modularity and efficient processing.
+- **Modules:**
+    - `Interpreter Loop`: The main loop that repeatedly reads and executes assembly instructions, acting as the heart of the program.
+    - `Instruction Set Handler`: Decodes and processes each instruction, translating assembly language into executable actions.
+    - `Memory Management`: Manages the virtual memory system, including allocation, access, and deallocation, ensuring efficient memory usage.
 
 ### 4.2 Reading Assembly Code
-- **Parsing Method:** Exploration of the methodology for reading and parsing assembly language instructions.
-- **Error Detection:** Strategies for detecting and handling syntax errors within the assembly code.
+- **Parsing Method:** Explains the sophisticated parsing mechanism used to interpret the assembly language, including lexical analysis and syntax parsing.
+- **Error Detection:**
+    - `Syntax Analysis`: Details the method for identifying syntax errors, ensuring adherence to assembly language specifications.
+    - `Semantic Checks`: Describes the process for logical validation, ensuring that the instructions make sense within the context of the language.
 
 ### 4.3 Executing Instructions
-- **Instruction Interpretation:** Detailed explanation of how the program interprets and executes each assembly instruction.
-- **Operational Handling:** Discussion on managing registers, memory, and control flow during instruction execution.
+- **Instruction Interpretation:** This subsection breaks down how the C program interprets and executes each type of instruction in the assembly language.
+- **Operational Handling:**
+    - `Register Operations`: Discusses how the program manages data in registers, ensuring accurate and efficient data manipulation.
+    - `Control Flow Management`: Elaborates on handling jumps, loops, and conditional executions within the program.
 
 ### 4.4 Error Handling and Reporting
-- **Runtime Errors:** Approach to detecting and managing errors during the runtime.
-- **Reporting Mechanism:** System for reporting errors to the user, ensuring clarity and comprehensiveness.
+- **Runtime Errors:** Outlines the strategies for catching and addressing errors during the program's execution. That includes syntax errors, semantic errors, and runtime errors. 
+- **Reporting Mechanism:** Details the comprehensive error reporting system, designed to provide clear and actionable information to the user.
 
 ### 4.5 Debugging and Logging
-- **Debugging Tools:** Overview of debugging tools integrated into the C program.
-- **Logging System:** Description of the logging system and its role in development and troubleshooting.
+- **Debugging Tools:** Describes the built-in debugging tools, including breakpoints, step execution, and state inspection, to facilitate troubleshooting. 
+- **Logging System:** Explores the logging mechanism, which records execution details, aiding in post-execution analysis and debugging.
 
-*This section aims to provide a comprehensive understanding of the C program's functionality, essential for the effective operation of the Virtual Processor's assembly language.*
+*In-depth understanding of the C program's development is crucial for ensuring the effective operation and reliability of the Virtual Processor.*
 
-## 5. Virtual System Call Implementation
+# 5. Virtual System Call Implementation
 
-This section outlines the implementation of virtual system calls in the Virtual Processor. These system calls enable interaction between the assembly program and the virtual environment, enhancing the processor's functionality.
+This section elaborates on the implementation of virtual system calls within the Virtual Processor, key to bridging the assembly program and the virtual environment.
 
-### 5.1 Text Display
-- **Functionality:** Description of the system call for displaying text within the virtual environment.
-- **Implementation Details:** Technical specifics on how text display is handled by the processor and any limitations or special features.
+## 5.1 Text Display
+- **Functionality:** Explores in-depth the capabilities of the text display system call, crucial for outputting text to the virtual screen.
+- **Advanced Features:** Details advanced text handling features such as formatting, color control, and cursor management.
 
-### 5.2 Debugging Features
-- **Debugging Support:** Overview of the debugging capabilities provided by the virtual system calls, including register inspection and breakpoint setting.
-- **Usage Guidelines:** Instructions on how to use these debugging features effectively during assembly code development and testing.
+`TODO: Include a flowchart illustrating the process of text rendering, from system call invocation to display output.`
 
-### 5.3 I/O Operations
-- **Input Handling:** Details on how the system call manages input operations, if applicable.
-- **Output Management:** Explanation of output operations, including standard output and error handling.
+## 5.2 Debugging Features
+- **Comprehensive Tools:** Delves into the range of debugging tools provided, like real-time variable tracking, stack trace analysis, and conditional breakpoints.
+- **User Guide:** Offers a step-by-step guide for using these debugging tools, complemented by example scenarios demonstrating their application.
+  
+`TODO: A diagram depicting the debugging workflow, showing how system calls interact with the debugger.`
 
-### 5.4 Extension Mechanisms
-- **Adding New System Calls:** Guidance on how new system calls can be implemented to extend the processor's capabilities.
-- **Customization:** Discussion on customizing existing system calls for specific use cases or enhancements.
+## 5.3 I/O Operations
+- **Input Handling:** Details the mechanisms for processing user inputs, including keyboard and file-based inputs.
+- **Output Procedures:** Describes output management, focusing on how data is displayed or stored by the system.
 
-*The implementation of virtual system calls is a critical aspect of the Virtual Processor, providing essential functionalities and enriching the user experience.*
+`TODO: Schematic diagrams illustrating input processing and output generation paths.`
 
-## 6. Testing and Validation
+## 5.4 Extension Mechanisms
+- **Extensibility Framework:** Discusses the architecture supporting new system call addition, ensuring future adaptability.
+- **Customization Strategies:** Explores methods for tailoring system calls to meet specific operational requirements.
 
-`TODO: Write testing and validation`
+`TODO: A conceptual diagram showing how new system calls can be integrated into the existing system.`
 
-### 6.1. Unit Tests
+*Enhancing the Virtual Processor's capabilities through these system calls ensures a versatile and user-friendly programming environment.*
 
-`TODO: Write unit tests`
-
-### 6.2. Testing Methodology
-
-`TODO: Write testing methodology`
 
 ## 7. Conclusion
 
-`TODO: Write conclusion`
+In this functional specification, we have laid out a detailed roadmap for the creation of Team 5's Virtual Processor. This document comprehensively covers the development environment, assembly language specifications, C program development, and the implementation of virtual system calls. Our approach ensures that the Virtual Processor will be a powerful tool for understanding and executing assembly language, providing both educational value and practical application. As we move into the development phase, this specification will serve as a foundational guide, ensuring that all project elements align with our outlined objectives and meet the requirements of the call for tender. With a clear focus on efficiency, portability, and user-friendliness, Team 5 is set to deliver a Virtual Processor that is both robust and versatile, catering to a wide array of learning and development needs.
 
 ## 8. Glossary
 
 | Term | Definition |
 | ---- | ---------- |
-| **C** | A general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. |
+| **C Language** | A general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. |
 | **GCC** | The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project supporting various programming languages. |
 | **IDE** | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development. |
 | **VS Code** | Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux and macOS. |
