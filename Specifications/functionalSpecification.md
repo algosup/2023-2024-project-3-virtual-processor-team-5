@@ -344,16 +344,16 @@ In this functional specification, we have laid out a detailed roadmap for the cr
 
 ## 8. Glossary
 
-| Term | Definition |
-| ---- | ---------- |
-| **C Language** | A general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. |
-| **GCC** | The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project supporting various programming languages. |
-| **IDE** | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development. |
-| **VS Code** | Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux and macOS. |
-| **Git** | Git is a distributed version-control system for tracking changes in source code during software development. |
-| **GitHub** | GitHub is a provider of Internet hosting for software development and version control using Git. |
-| **Assembly Language** | A low-level programming language for a computer, or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions. |
-| **System Call** | A system call is the programmatic way in which a computer program requests a service from the kernel of the operating system it is executed on. |
-| **Virtual System Call** | A virtual system call is a system call that is implemented in software rather than by the operating system. |
-| **Virtual Processor** | A virtual processor is a software-based processor that executes assembly code. |
+| Term                    | Definition                                                                                                                                                                                           |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **C Language**          | A general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system.                                     |
+| **GCC**                 | The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project supporting various programming languages.                                                                         |
+| **IDE**                 | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.                                       |
+| **VS Code**             | Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux and macOS.                                                                                                      |
+| **Git**                 | Git is a distributed version-control system for tracking changes in source code during software development.                                                                                         |
+| **GitHub**              | GitHub is a provider of Internet hosting for software development and version control using Git.                                                                                                     |
+| **Assembly Language**   | A low-level programming language for a computer, or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions. |
+| **System Call**         | A system call is the programmatic way in which a computer program requests a service from the kernel of the operating system it is executed on.                                                      |
+| **Virtual System Call** | A virtual system call is a system call that is implemented in software rather than by the operating system.                                                                                          |
+| **Virtual Processor**   | A virtual processor is a software-based processor that executes assembly code.                                                                                                                       |
 
