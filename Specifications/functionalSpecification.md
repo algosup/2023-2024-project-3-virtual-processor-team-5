@@ -64,6 +64,9 @@ The development of the Virtual Processor will be conducted in a specific program
 
 This environment is chosen to balance functionality, ease of use, and accessibility for developers. It will support the project's goals of creating a portable and efficient virtual processor.
 
+<img src="img/functionalImg/workflowDiagram.png">
+
+*In the development workflow, developers use Visual Studio Code (VS Code) to write and manage code. Git handles version control, facilitating collaboration and code tracking. Changes are committed, branched, and merged. The GNU Compiler Collection (GCC) compiles code into an executable binary. This streamlined process ensures efficient project development.*
 
 ## 3. Assembly Language Specification
 
@@ -74,28 +77,71 @@ The virtual processor will be equipped to handle a custom assembly language. Thi
 The assembly language designed for the Virtual Processor will include a set of fundamental instructions. These instructions form the core functionality of the language, enabling basic programming operations. The instruction set is designed to be minimal yet sufficient for a wide range of tasks. Key aspects include:
 
 - **Data Movement Instructions**: These will include instructions for loading and storing data, moving data between registers, and handling immediate values. 
-  
-    - ```mov``` *uses direct addressing to move data between registers and memory locations.*
-    - ```ldr``` *uses indirect addressing to load data from memory into registers.* 
-    - ```str``` *uses indirect addressing to store data from registers into memory.* 
-    - ```push``` *uses indirect addressing to push data from registers onto the stack.* 
-    - ```pop``` *uses indirect addressing to pop data from the stack into registers.* 
-    - ```lea``` *uses direct addressing to load the address of a memory location into a register.*
-    - and ```ldi``` *uses direct addressing to load an immediate value into a register.*
+
+    1. **``mov`` (Move Data)**
+    - Source Operand --> Destination Operand
+    - Operation: Copy data from source to destination.
+
+    2. **``ldr`` (Load from Memory)**
+    - Memory Location (Address) --> Register
+    - Operation: Load data from memory into the register.
+
+    3. **``str`` (Store to Memory)**
+    - Register --> Memory Location (Address)
+    - Operation: Store data from register into memory.
+
+    4. **``push`` (Push onto Stack)**
+    - Register --> Stack
+    - Operation: Push data from register onto the stack.
+
+    5. **``pop`` (Pop from Stack)**
+    - Stack --> Register
+    - Operation: Pop data from stack into the register.
+
+    6. **``lea`` (Load Effective Address)**
+    - Memory Location (Address) --> Register
+    - Operation: Load the address into the register.
+
+    7. **``ldi`` (Load Immediate)**
+    - Immediate Value --> Register
+    - Operation: Load immediate value into the register.
+
 
 - **Arithmetic Operations**: Basic arithmetic instructions such as addition, subtraction, multiplication, and division will be implemented.
   
-    - ```add``` uses direct addressing to add data from a memory location to a register.
-    - ```sub``` uses direct addressing to subtract data from a memory location to a register.
-    - ```mul``` uses direct addressing to multiply data from a memory location to a register.
-    - and ```div``` uses direct addressing to divide data from a memory location to a register.
+   1. **``add`` (Addition)**
+   - Source Operand 1 + Source Operand 2 --> Destination Operand
+   - Operation: Add values and store the result.
+
+  1. **``sub`` (Subtraction)**
+   - Source Operand 1 - Source Operand 2 --> Destination Operand
+   - Operation: Subtract values and store the result.
+
+  2. **``mul`` (Multiplication)**
+   - Source Operand 1 * Source Operand 2 --> Destination Operand
+   - Operation: Multiply values and store the result.
+
+  3. **``div`` (Division)**
+   - Source Operand 1 / Source Operand 2 --> Destination Operand
+   - Operation: Divide values and store the result.
 
 - **Logical Operations**: Instructions for logical operations like AND, OR, XOR, and NOT are included.
   
-    - ```and``` *uses direct addressing to perform a logical AND operation between data from a memory location and a register.*
-    - ```or``` *uses direct addressing to perform a logical OR operation between data from a memory location and a register.*
-    - ```xor``` *uses direct addressing to perform a logical XOR operation between data from a memory location and a register.*
-    - and ```not``` *uses direct addressing to perform a logical NOT operation between data from a memory location and a register.*
+    1. **``and`` (Logical AND)**
+     - Source Operand 1 AND Source Operand 2 --> Destination Operand
+     - Operation: Perform logical AND.
+
+    2. **``or`` (Logical OR)**
+     - Source Operand 1 OR Source Operand 2 --> Destination Operand
+     - Operation: Perform logical OR.
+
+    3. **``xor`` (Logical XOR)**
+     - Source Operand 1 XOR Source Operand 2 --> Destination Operand
+     - Operation: Perform logical XOR.
+
+    4. **``not`` (Logical NOT)**
+     - NOT Source Operand --> Destination Operand
+     - Operation: Perform logical NOT.
 
 - **Control Flow**: Instructions for branch, jump, and call operations will facilitate the control flow within the assembly programs. 
   
