@@ -156,73 +156,73 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 - **Logical Operations**: Instructions for logical operations like AND, OR, XOR, and NOT are included.
   
-    1. **``AND`` (Logical AND)**
-     - Source Operand 1 AND Source Operand 2 --> Destination Operand
-     - Operation: Perform logical AND.
+    - **``AND`` (Logical AND)**
+      - Source Operand 1 AND Source Operand 2 --> Destination Operand
+      - Operation: Perform logical AND.
 
-    2. **``OR`` (Logical OR)**
-     - Source Operand 1 OR Source Operand 2 --> Destination Operand
-     - Operation: Perform logical OR.
+    - **``OR`` (Logical OR)**
+      - Source Operand 1 OR Source Operand 2 --> Destination Operand
+      - Operation: Perform logical OR.
 
-    3. **``XOR`` (Logical XOR)**
-     - Source Operand 1 XOR Source Operand 2 --> Destination Operand
-     - Operation: Perform logical XOR.
+    - **``XOR`` (Logical XOR)**
+      - Source Operand 1 XOR Source Operand 2 --> Destination Operand
+      - Operation: Perform logical XOR.
 
-    4. **``NOT`` (Logical NOT)**
-     - NOT Source Operand --> Destination Operand
-     - Operation: Perform logical NOT.
+    - **``NOT`` (Logical NOT)**
+      - NOT Source Operand --> Destination Operand
+      - Operation: Perform logical NOT.
 
 - **Control Flow**: Instructions for branch, jump, and call operations will facilitate the control flow within the assembly programs. 
   
-    1. **``JMP`` (Jump)**
-     - Destination Operand --> Program Counter
-     - Operation: Jump to the specified address.
+    - **``JMP`` (Jump)**
+      - Destination Operand --> Program Counter
+      - Operation: Jump to the specified address.
 
-    2. **``JZ`` (Jump if Zero)**
-     - Destination Operand --> Program Counter
-     - Operation: Jump to the specified address if the zero flag is set.
+    - **``JZ`` (Jump if Zero)**
+      - Destination Operand --> Program Counter
+      - Operation: Jump to the specified address if the zero flag is set.
 
-    3. **``JNZ`` (Jump if Not Zero)**
-     - Destination Operand --> Program Counter
-     - Operation: Jump to the specified address if the zero flag is not set.
+    - **``JNZ`` (Jump if Not Zero)**
+      - Destination Operand --> Program Counter
+      - Operation: Jump to the specified address if the zero flag is not set.
 
-    4. **``JE`` (Jump if Equal)**
-     - Destination Operand --> Program Counter
-     - Operation: Jump to the specified address if the equal flag is set.
+    - **``JE`` (Jump if Equal)**
+      - Destination Operand --> Program Counter
+      - Operation: Jump to the specified address if the equal flag is set.
 
-    5. **``JNE`` (Jump if Not Equal)**
-     - Destination Operand --> Program Counter
-     - Operation: Jump to the specified address if the equal flag is not set.
+    - **``JNE`` (Jump if Not Equal)**
+      - Destination Operand --> Program Counter
+      - Operation: Jump to the specified address if the equal flag is not set.
 
-    6. **``CALL`` (Call Subroutine)**
-     - Destination Operand --> Program Counter
-     - Operation: Call the subroutine at the specified address.
+    - **``CALL`` (Call Subroutine)**
+      - Destination Operand --> Program Counter
+      - Operation: Call the subroutine at the specified address.
 
-    7. **``RET`` (Return from Subroutine)**
-     - Stack --> Program Counter
-     - Operation: Return from the subroutine.
+    - **``RET`` (Return from Subroutine)**
+      - Stack --> Program Counter
+      - Operation: Return from the subroutine.
 
 - **Special Instructions**: A set of special instructions for system calls, input/output operations, and other processor-specific tasks. 
   
-    1. **``SYSCALL`` (System Call)**
-     - System Call Number --> System Call Handler
-     - Operation: Invoke the specified system call.
+    - **``SYSCALL`` (System Call)**
+      - System Call Number --> System Call Handler
+      - Operation: Invoke the specified system call.
 
-    2. **``IN`` (Input)**
-     - Input Device --> Register
-     - Operation: Read input from the specified device.
+    - **``IN`` (Input)**
+      - Input Device --> Register
+      - Operation: Read input from the specified device.
 
-    3. **``OUT`` (Output)**
-     - Register --> Output Device
-     - Operation: Write output to the specified device.
+    - **``OUT`` (Output)**
+      - Register --> Output Device
+      - Operation: Write output to the specified device.
 
-    4. **``NOP`` (No Operation)**
-     - No Operation
-     - Operation: Do nothing.
+    - **``NOP`` (No Operation)**
+      - No Operation
+      - Operation: Do nothing.
 
-    5. **``HALT`` (Halt)**
-     - Halt
-     - Operation: Halt the processor. 
+    - **``HALT`` (Halt)**
+      - Halt
+      - Operation: Halt the processor. 
 
 *Each instruction will be described in detail, including its syntax, operation, and usage examples. This will ensure a clear understanding of how to program using the Virtual Processor's assembly language.*
 
