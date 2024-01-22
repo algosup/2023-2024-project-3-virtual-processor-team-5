@@ -2,7 +2,7 @@
 *.o
 *.out
 *.exe
-
+*.json
 # Ignore compiled binaries
 /bin/
 /build/
