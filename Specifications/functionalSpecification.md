@@ -48,7 +48,7 @@
 
 ## 1. Introduction
 
-The purpose of this document is to provide a comprehensive functional specification for Team 5's Virtual Processor Project. This project involves the creation of a virtual processor designed to execute assembly code. The processor is to be developed in the C programming language, adhering to principles of portability and efficiency. This document outlines the essential elements and specifications of the project, including the development environment, assembly language design, and implementation details.
+The purpose of this document is to provide a comprehensive functional specification for Team 5's Virtual Processor Project. This project involves the creation of a virtual processor designed to execute assembly code. The processor must to be developed in the C programming language, adhering to principles of portability and efficiency. This document outlines the essential elements and specifications of the project, including the development environment, assembly language design, and implementation details.
 
 The virtual processor aims to offer a simplified yet functional platform for understanding and executing basic assembly instructions. It serves as an educational tool, facilitating the learning of low-level programming concepts. The processor will be equipped to handle a custom assembly language, which will be fully detailed in this specification. The project will emphasize the importance of efficient programming practices and the intricacies of processor design and operation.
 
@@ -210,13 +210,12 @@ The assembly language designed for the Virtual Processor will include a set of f
 The operations of the assembly language define how each instruction manipulates data and controls the flow of the program. This section will detail the operational characteristics of the assembly language, which are critical for the Virtual Processor’s functionality:
 
 - **Register Operations**: Detailed explanations of how instructions interact with registers, including register loading, storing, and manipulation. Registers' name: 
-  
-  - ``ax`` *is the accumulator register.*
-  - ``bx`` *is the base register.*
-  - ``cx`` *is the counter register.*
-  - ``dx`` *is the data register.*
-  - ``ix`` *is the index register.*
-  - ``si`` *is the source index register.*
+    - ``R0`` - ``R7``: General-purpose registers
+    - ``PC``: Program counter
+    - ``LR``: Link register
+    - ``PSR``: Processor status register
+    - ``USP``: User stack pointer
+    - ``SSP``: Supervisor stack pointer
 
 - **Memory Operations**: Descriptions of instructions for memory access, including direct and indirect addressing, and memory management techniques. 
   
@@ -349,11 +348,12 @@ In this functional specification, we have laid out a detailed roadmap for the cr
 | **C Language**          | A general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system.                                     |
 | **GCC**                 | The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project supporting various programming languages.                                                                         |
 | **IDE**                 | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.                                       |
-| **VS Code**             | Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux and macOS.                                                                                                      |
+| **VS Code**             | Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux, and macOS.                                                                                                      |
 | **Git**                 | Git is a distributed version-control system for tracking changes in source code during software development.                                                                                         |
 | **GitHub**              | GitHub is a provider of Internet hosting for software development and version control using Git.                                                                                                     |
-| **Assembly Language**   | A low-level programming language for a computer, or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions. |
+| **Assembly Language**   | A low-level programming language for a computer or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions. |
 | **System Call**         | A system call is the programmatic way in which a computer program requests a service from the kernel of the operating system it is executed on.                                                      |
 | **Virtual System Call** | A virtual system call is a system call that is implemented in software rather than by the operating system.                                                                                          |
 | **Virtual Processor**   | A virtual processor is a software-based processor that executes assembly code.                                                                                                                       |
+| **Assembler**           | An assembler is a software tool that translates assembly language code into machine code, allowing it to be executed by a computer's processor. It plays a key role in the assembly language programming process. |
 
