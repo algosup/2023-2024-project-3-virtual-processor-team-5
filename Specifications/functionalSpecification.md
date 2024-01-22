@@ -86,120 +86,120 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 - **Data Movement Instructions**: These will include instructions for loading and storing data, moving data between registers, and handling immediate values. 
 
-    1. **``mov`` (Move Data)**
+    1. **``ST`` (Move Data)**
     - Source Operand --> Destination Operand
     - Operation: Copy data from source to destination.
 
-    2. **``ldr`` (Load from Memory)**
+    2. **``LDR`` (Load from Memory)**
     - Memory Location (Address) --> Register
     - Operation: Load data from memory into the register.
 
-    3. **``str`` (Store to Memory)**
+    3. **``STR`` (Store to Memory)**
     - Register --> Memory Location (Address)
     - Operation: Store data from register into memory.
 
-    4. **``push`` (Push onto Stack)**
+    4. **``PUSH`` (Push onto Stack)**
     - Register --> Stack
     - Operation: Push data from register onto the stack.
 
-    5. **``pop`` (Pop from Stack)**
+    5. **``POP`` (Pop from Stack)**
     - Stack --> Register
     - Operation: Pop data from stack into the register.
 
-    6. **``lea`` (Load Effective Address)**
+    6. **``LEA`` (Load Effective Address)**
     - Memory Location (Address) --> Register
     - Operation: Load the address into the register.
 
-    7. **``ldi`` (Load Immediate)**
+    7. **``LDI`` (Load Immediate)**
     - Immediate Value --> Register
     - Operation: Load immediate value into the register.
 
 
 - **Arithmetic Operations**: Basic arithmetic instructions such as addition, subtraction, multiplication, and division will be implemented.
   
-   1. **``add`` (Addition)**
+   1. **``ADD`` (Addition)**
    - Source Operand 1 + Source Operand 2 --> Destination Operand
    - Operation: Add values and store the result.
 
-  1. **``sub`` (Subtraction)**
+  1. **``SUB`` (Subtraction)**
    - Source Operand 1 - Source Operand 2 --> Destination Operand
    - Operation: Subtract values and store the result.
 
-  2. **``mult`` (Multiplication)**
+  2. **``MULT`` (Multiplication)**
    - Source Operand 1 * Source Operand 2 --> Destination Operand
    - Operation: Multiply values and store the result.
 
-  3. **``div`` (Division)**
+  3. **``DIV`` (Division)**
    - Source Operand 1 / Source Operand 2 --> Destination Operand
    - Operation: Divide values and store the result.
 
 - **Logical Operations**: Instructions for logical operations like AND, OR, XOR, and NOT are included.
   
-    1. **``and`` (Logical AND)**
+    1. **``AND`` (Logical AND)**
      - Source Operand 1 AND Source Operand 2 --> Destination Operand
      - Operation: Perform logical AND.
 
-    2. **``or`` (Logical OR)**
+    2. **``OR`` (Logical OR)**
      - Source Operand 1 OR Source Operand 2 --> Destination Operand
      - Operation: Perform logical OR.
 
-    3. **``xor`` (Logical XOR)**
+    3. **``XOR`` (Logical XOR)**
      - Source Operand 1 XOR Source Operand 2 --> Destination Operand
      - Operation: Perform logical XOR.
 
-    4. **``not`` (Logical NOT)**
+    4. **``NOT`` (Logical NOT)**
      - NOT Source Operand --> Destination Operand
      - Operation: Perform logical NOT.
 
 - **Control Flow**: Instructions for branch, jump, and call operations will facilitate the control flow within the assembly programs. 
   
-    1. **``jmp`` (Jump)**
+    1. **``JMP`` (Jump)**
      - Destination Operand --> Program Counter
      - Operation: Jump to the specified address.
 
-    2. **``jz`` (Jump if Zero)**
+    2. **``JZ`` (Jump if Zero)**
      - Destination Operand --> Program Counter
      - Operation: Jump to the specified address if the zero flag is set.
 
-    3. **``jnz`` (Jump if Not Zero)**
+    3. **``JNZ`` (Jump if Not Zero)**
      - Destination Operand --> Program Counter
      - Operation: Jump to the specified address if the zero flag is not set.
 
-    4. **``je`` (Jump if Equal)**
+    4. **``JE`` (Jump if Equal)**
      - Destination Operand --> Program Counter
      - Operation: Jump to the specified address if the equal flag is set.
 
-    5. **``jne`` (Jump if Not Equal)**
+    5. **``JNE`` (Jump if Not Equal)**
      - Destination Operand --> Program Counter
      - Operation: Jump to the specified address if the equal flag is not set.
 
-    6. **``call`` (Call Subroutine)**
+    6. **``CALL`` (Call Subroutine)**
      - Destination Operand --> Program Counter
      - Operation: Call the subroutine at the specified address.
 
-    7. **``ret`` (Return from Subroutine)**
+    7. **``RET`` (Return from Subroutine)**
      - Stack --> Program Counter
      - Operation: Return from the subroutine.
 
 - **Special Instructions**: A set of special instructions for system calls, input/output operations, and other processor-specific tasks. 
   
-    1. **``syscall`` (System Call)**
+    1. **``SYSCALL`` (System Call)**
      - System Call Number --> System Call Handler
      - Operation: Invoke the specified system call.
 
-    2. **``in`` (Input)**
+    2. **``IN`` (Input)**
      - Input Device --> Register
      - Operation: Read input from the specified device.
 
-    3. **``out`` (Output)**
+    3. **``OUT`` (Output)**
      - Register --> Output Device
      - Operation: Write output to the specified device.
 
-    4. **``nop`` (No Operation)**
+    4. **``NOP`` (No Operation)**
      - No Operation
      - Operation: Do nothing.
 
-    5. **``hlt`` (Halt)**
+    5. **``HALT`` (Halt)**
      - Halt
      - Operation: Halt the processor. 
 
@@ -219,7 +219,7 @@ The operations of the assembly language define how each instruction manipulates 
 
 - **Memory Operations**: Descriptions of instructions for memory access, including direct and indirect addressing, and memory management techniques. 
   
-- **Arithmetic and Logical Operations**: Clarification on how arithmetic and logical instructions process data, including flags affected, and overflow handling. Arithmetic instructions include ```add```, ```sub```, ```mul```, and ```div```. Logical instructions include ```and```, ```or```, ```xor```, and ```not```.
+- **Arithmetic and Logical Operations**: Clarification on how arithmetic and logical instructions process data, including flags affected, and overflow handling. Arithmetic instructions include ```add```, ```sub```, ```mul```, and ```div```and logical instructions include ```and```, ```or```, ```xor```, and ```not```.
 
 - **Control Flow Operations**: Insight into how jump, branch, and call instructions manage the program flow, including condition checks and subroutine handling. ```jmp```, ```jz```, ```jnz```, ```je```, ```jne```, ```call```, and ```ret``` are included.
 
