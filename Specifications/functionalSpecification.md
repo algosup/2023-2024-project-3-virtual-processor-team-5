@@ -125,7 +125,7 @@ The assembly language designed for the Virtual Processor will include a set of f
    - Source Operand 1 - Source Operand 2 --> Destination Operand
    - Operation: Subtract values and store the result.
 
-  2. **``mul`` (Multiplication)**
+  2. **``mult`` (Multiplication)**
    - Source Operand 1 * Source Operand 2 --> Destination Operand
    - Operation: Multiply values and store the result.
 
