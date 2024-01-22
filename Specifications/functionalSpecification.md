@@ -86,33 +86,33 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 - **Data Movement Instructions**: These will include instructions for loading and storing data, moving data between registers, and handling immediate values. 
 
-    1. **``ST`` (Move Data)**
-    - Source Operand --> Destination Operand
-    - Operation: Copy data from source to destination.
+    - **``ST`` (Move Data)**
+      - Source Operand --> Destination Operand
+      - Operation: Copy data from source to destination.
 
-    2. **``LDR`` (Load from Memory)**
-    - Memory Location (Address) --> Register
-    - Operation: Load data from memory into the register.
+    - **``LDR`` (Load from Memory)**
+      - Memory Location (Address) --> Register
+      - Operation: Load data from memory into the register.
 
-    3. **``STR`` (Store to Memory)**
-    - Register --> Memory Location (Address)
-    - Operation: Store data from register into memory.
+    - **``STR`` (Store to Memory)**
+      - Register --> Memory Location (Address)
+      - Operation: Store data from register into memory.
 
-    4. **``PUSH`` (Push onto Stack)**
-    - Register --> Stack
-    - Operation: Push data from register onto the stack.
+    - **``PUSH`` (Push onto Stack)**
+      - Register --> Stack
+      - Operation: Push data from register onto the stack.
 
-    5. **``POP`` (Pop from Stack)**
-    - Stack --> Register
-    - Operation: Pop data from stack into the register.
+    - **``POP`` (Pop from Stack)**
+      - Stack --> Register
+      - Operation: Pop data from stack into the register.
 
-    6. **``LEA`` (Load Effective Address)**
-    - Memory Location (Address) --> Register
-    - Operation: Load the address into the register.
+    - **``LEA`` (Load Effective Address)**
+      - Memory Location (Address) --> Register
+      - Operation: Load the address into the register.
 
-    7. **``LDI`` (Load Immediate)**
-    - Immediate Value --> Register
-    - Operation: Load immediate value into the register.
+    - **``LDI`` (Load Immediate)**
+      - Immediate Value --> Register
+      - Operation: Load immediate value into the register.
 
 
 - **Arithmetic Operations**: Basic arithmetic instructions such as addition, subtraction, multiplication, and division will be implemented.
@@ -135,6 +135,7 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 
    - **``MULT`` (Multiplication)**
+  
         To perform multiplication, you can use a combination of the following two instructions:
       - **``AND`` (Bitwise AND)**
         - Source Operand 1 AND Source Operand 2 --> Destination Operand
@@ -144,6 +145,7 @@ The assembly language designed for the Virtual Processor will include a set of f
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes multiplication by repeatedly adding Source Operand 1 to itself (Source Operand 2 times).
 
    - **``DIV`` (Division)**
+  
         To perform division in LC3, you can use a combination of the following two instructions:
       - **``AND`` (Bitwise AND)**
         - Source Operand 1 AND Source Operand 2 --> Destination Operand
