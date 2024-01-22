@@ -26,11 +26,11 @@
     - [4.3 Executing Instructions](#43-executing-instructions)
     - [4.4 Error Handling and Reporting](#44-error-handling-and-reporting)
     - [4.5 Debugging and Logging](#45-debugging-and-logging)
-- [5. Virtual System Call Implementation](#5-virtual-system-call-implementation)
-  - [5.1 Text Display](#51-text-display)
-  - [5.2 Debugging Features](#52-debugging-features)
-  - [5.3 I/O Operations](#53-io-operations)
-  - [5.4 Extension Mechanisms](#54-extension-mechanisms)
+  - [5. Virtual System Call Implementation](#5-virtual-system-call-implementation)
+    - [5.1 Text Display](#51-text-display)
+    - [5.2 Debugging Features](#52-debugging-features)
+    - [5.3 I/O Operations](#53-io-operations)
+    - [5.4 Extension Mechanisms](#54-extension-mechanisms)
   - [7. Conclusion](#7-conclusion)
   - [8. Glossary](#8-glossary)
 
@@ -193,7 +193,7 @@ The assembly language designed for the Virtual Processor will include a set of f
 
     5. **``hlt`` (Halt)**
      - Halt
-     - Operation: Halt the processor.
+     - Operation: Halt the processor. 
 
 *Each instruction will be described in detail, including its syntax, operation, and usage examples. This will ensure a clear understanding of how to program using the Virtual Processor's assembly language.*
 
@@ -253,29 +253,29 @@ The C program is essential for the Virtual Processor, acting as the interface fo
 
 *In-depth understanding of the C program's development is crucial for ensuring the effective operation and reliability of the Virtual Processor.*
 
-# 5. Virtual System Call Implementation
+## 5. Virtual System Call Implementation
 
 This section elaborates on the implementation of virtual system calls within the Virtual Processor, key to bridging the assembly program and the virtual environment.
 
-## 5.1 Text Display
+### 5.1 Text Display
 - **Functionality:** Explores in-depth the capabilities of the text display system call, crucial for outputting text to the virtual screen.
 - **Advanced Features:** Details advanced text handling features such as formatting, color control, and cursor management.
 
 `TODO: Include a flowchart illustrating the process of text rendering, from system call invocation to display output.`
 
-## 5.2 Debugging Features
+### 5.2 Debugging Features
 - **Comprehensive Tools:** Delves into the range of debugging tools provided, like real-time variable tracking, stack trace analysis, and conditional breakpoints.
 - **User Guide:** Offers a step-by-step guide for using these debugging tools, complemented by example scenarios demonstrating their application.
   
 `TODO: A diagram depicting the debugging workflow, showing how system calls interact with the debugger.`
 
-## 5.3 I/O Operations
+### 5.3 I/O Operations
 - **Input Handling:** Details the mechanisms for processing user inputs, including keyboard and file-based inputs.
 - **Output Procedures:** Describes output management, focusing on how data is displayed or stored by the system.
 
 `TODO: Schematic diagrams illustrating input processing and output generation paths.`
 
-## 5.4 Extension Mechanisms
+### 5.4 Extension Mechanisms
 - **Extensibility Framework:** Discusses the architecture supporting new system call addition, ensuring future adaptability.
 - **Customization Strategies:** Explores methods for tailoring system calls to meet specific operational requirements.
 
