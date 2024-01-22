@@ -8,21 +8,23 @@
 #define OPCODE_MUL 0x02
 #define OPCODE_DIV 0x03
 #define OPCODE_MOV 0x04
-#define OPCODE_AND 0x05
-#define OPCODE_OR  0x06
-#define OPCODE_XOR 0x07
-#define OPCODE_NOT 0x08
-#define OPCODE_CMP 0x09
-#define OPCODE_JMP 0x0A
-#define OPCODE_INC 0x0B
-#define OPCODE_DEC 0x0C
-#define OPCODE_NEG 0x0D
-#define OPCODE_PUSH 0x0E
-#define OPCODE_POP 0x0F
-#define OPCODE_LOOP 0x10
-#define OPCODE_CALL 0x11
-#define OPCODE_RET 0x12
-#define OPCODE_INT 0x13
+#define OPCODE_CMP 0x05
+#define OPCODE_JMP 0x06
+#define OPCODE_CALL 0x07
+#define OPCODE_RET 0x08
+#define OPCODE_INT 0x09
+/*
+#define OPCODE_AND 0x0A
+#define OPCODE_OR  0x0B
+#define OPCODE_XOR 0x0C
+#define OPCODE_NOT 0x0D
+#define OPCODE_INC 0x0E
+#define OPCODE_DEC 0x0F
+#define OPCODE_NEG 0x10
+#define OPCODE_LOOP 0x11
+#define OPCODE_PUSH 0x12
+#define OPCODE_POP 0x13
+*/
 
 // define all registers that can be used by the processor
 #define REG_AH 0x00

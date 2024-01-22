@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "../header/processor.h"
-#include "../header/instructions.h"
+#include "./instructions.h"
+#include "./processor.h"
 
 int main() {
     printf(OPCODE_ADD);
