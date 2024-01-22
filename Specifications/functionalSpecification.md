@@ -145,21 +145,55 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 - **Control Flow**: Instructions for branch, jump, and call operations will facilitate the control flow within the assembly programs. 
   
-    - ```jmp``` *uses direct addressing to jump to a memory location.* 
-    - ```jz``` *uses direct addressing to jump to a memory location if the zero flag is set.*
-    - ```jnz``` *uses direct addressing to jump to a memory location if the zero flag is not set.*
-    - ```je``` *uses direct addressing to jump to a memory location if the equal flag is set.*
-    - ```jne``` *uses direct addressing to jump to a memory location if the equal flag is not set.*
-    - ```call``` *uses direct addressing to call a subroutine at a memory location.*
-    - and ```ret``` *uses direct addressing to return from a subroutine.*
+    1. **``jmp`` (Jump)**
+     - Destination Operand --> Program Counter
+     - Operation: Jump to the specified address.
+
+    2. **``jz`` (Jump if Zero)**
+     - Destination Operand --> Program Counter
+     - Operation: Jump to the specified address if the zero flag is set.
+
+    3. **``jnz`` (Jump if Not Zero)**
+     - Destination Operand --> Program Counter
+     - Operation: Jump to the specified address if the zero flag is not set.
+
+    4. **``je`` (Jump if Equal)**
+     - Destination Operand --> Program Counter
+     - Operation: Jump to the specified address if the equal flag is set.
+
+    5. **``jne`` (Jump if Not Equal)**
+     - Destination Operand --> Program Counter
+     - Operation: Jump to the specified address if the equal flag is not set.
+
+    6. **``call`` (Call Subroutine)**
+     - Destination Operand --> Program Counter
+     - Operation: Call the subroutine at the specified address.
+
+    7. **``ret`` (Return from Subroutine)**
+     - Stack --> Program Counter
+     - Operation: Return from the subroutine.
 
 - **Special Instructions**: A set of special instructions for system calls, input/output operations, and other processor-specific tasks. 
   
-    - ```syscall``` *uses direct addressing to call a system call.*
-    - ```in``` *uses direct addressing to read data from a memory location into a register.*
-    - ```out``` *uses direct addressing to write data from a register into a memory location.* 
-    - ```nop``` *uses direct addressing to perform no operation.*
-    - and ```hlt``` *uses direct addressing to halt the processor.*
+    1. **``syscall`` (System Call)**
+     - System Call Number --> System Call Handler
+     - Operation: Invoke the specified system call.
+
+    2. **``in`` (Input)**
+     - Input Device --> Register
+     - Operation: Read input from the specified device.
+
+    3. **``out`` (Output)**
+     - Register --> Output Device
+     - Operation: Write output to the specified device.
+
+    4. **``nop`` (No Operation)**
+     - No Operation
+     - Operation: Do nothing.
+
+    5. **``hlt`` (Halt)**
+     - Halt
+     - Operation: Halt the processor.
 
 *Each instruction will be described in detail, including its syntax, operation, and usage examples. This will ensure a clear understanding of how to program using the Virtual Processor's assembly language.*
 
