@@ -117,21 +117,42 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 - **Arithmetic Operations**: Basic arithmetic instructions such as addition, subtraction, multiplication, and division will be implemented.
   
-   1. **``ADD`` (Addition)**
-   - Source Operand 1 + Source Operand 2 --> Destination Operand
-   - Operation: Add values and store the result.
+   - **``ADD`` (Addition)**
+     
+       To perform subtraction, you can use a combination of the following two instructions:
+        - Source Operand 1 + Source Operand 2 --> Destination Operand
+        - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand.
 
-  1. **``SUB`` (Subtraction)**
-   - Source Operand 1 - Source Operand 2 --> Destination Operand
-   - Operation: Subtract values and store the result.
+   - **``SUB`` (Subtraction)**
+       
+        To perform subtraction, you can use a combination of the following two instructions:
+      - **``NOT`` (Bitwise NOT)**
+        - Source Operand --> Destination Operand
+        - Operation: Perform bitwise NOT on the Source Operand and store the result in the Destination Operand.
+      - **``ADD`` (Addition)**
+        - Source Operand 1 + Source Operand 2 --> Destination Operand
+        - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes subtraction by adding the bitwise NOT of the second operand.
 
-  2. **``MULT`` (Multiplication)**
-   - Source Operand 1 * Source Operand 2 --> Destination Operand
-   - Operation: Multiply values and store the result.
 
-  3. **``DIV`` (Division)**
-   - Source Operand 1 / Source Operand 2 --> Destination Operand
-   - Operation: Divide values and store the result.
+   - **``MULT`` (Multiplication)**
+        To perform multiplication, you can use a combination of the following two instructions:
+      - **``AND`` (Bitwise AND)**
+        - Source Operand 1 AND Source Operand 2 --> Destination Operand
+        - Operation: Perform bitwise AND between Source Operand 1 and Source Operand 2, and store the result in the Destination Operand.
+      - **``ADD`` (Addition)**
+        - Source Operand 1 + Source Operand 2 --> Destination Operand
+        - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes multiplication by repeatedly adding Source Operand 1 to itself (Source Operand 2 times).
+
+   - **``DIV`` (Division)**
+        To perform division in LC3, you can use a combination of the following two instructions:
+      - **``AND`` (Bitwise AND)**
+        - Source Operand 1 AND Source Operand 2 --> Destination Operand
+        - Operation: Perform bitwise AND between Source Operand 1 and Source Operand 2, and store the result in the Destination Operand.
+      - **``ADD`` (Addition)**
+        - Source Operand 1 + Source Operand 2 --> Destination Operand
+        - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes division by repeatedly subtracting Source Operand 2 from Source Operand 1 and counting the number of subtractions.
+
+
 
 - **Logical Operations**: Instructions for logical operations like AND, OR, XOR, and NOT are included.
   
