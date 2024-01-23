@@ -5,6 +5,7 @@
 #include "processor.h"
 
 //****************************** ALGORITHMIC OPERATIONS ******************************//
+//*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
 
 // ADD instruction execution function
 void executeADD(ProcessorState *state, int operand1, int operand2, Register *destination) {
@@ -30,6 +31,11 @@ void executeDIV(ProcessorState *state, int operand1, int operand2, Register *des
 void executeSUB(ProcessorState *state, int operand1, int operand2, Register *destination) {
     destination->value = operand1 - operand2;
 }
+
+//****************************** LOGICAL OPERATIONS ******************************//
+//************************** IMPLEMENT AND, OR, XOR, NOT *************************//
+
+
 
 //****************************** DATA MOVEMENT ******************************//
 
@@ -63,7 +69,6 @@ void executeSTR(uint16_t instr, uint16_t reg[8], uint16_t mem[MEMORY_SIZE]) {
     mem[instr] = reg[0];
 }
 
-
 void executeLD(ProcessorState *state, uint16_t r0, uint16_t memoryAddress, Memory *memory) {
     // Checking memory limits
     if (memoryAddress >= MEMORY_SIZE) {
@@ -75,12 +80,6 @@ void executeLD(ProcessorState *state, uint16_t r0, uint16_t memoryAddress, Memor
     printf("PC: %d\n", state->R0.value);
 }
 
-// LDR instruction execution function (load data from memory in register)
-void executeLDR() {
+//****************************** CONTROL FLOW ******************************//
 
-}
 
-// LEA instruction execution function (load effective address in register)
-void executeLEA() {
-
-}

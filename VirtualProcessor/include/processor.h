@@ -1,4 +1,4 @@
-#define MEMORY_SIZE 1000
+#define MEMORY_SIZE 10000
 
 // Register structure
 typedef struct {
@@ -25,7 +25,6 @@ typedef struct {
 typedef struct {
     uint16_t memory[MEMORY_SIZE];
 } Memory;
-
 
 //typedef struct {
 //    uint16_t memory[MEMORY_SIZE];
