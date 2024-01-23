@@ -7,7 +7,7 @@
 | Author       | Rémy CHARLES |
 | Reviewers    |              |
 | Created on   |  2024-01-12  |
-| Last updated |  2024-01-22  |
+| Last updated |  2024-01-23  |
 
 ## Table of contents
 
@@ -245,11 +245,11 @@ The operations of the assembly language define how each instruction manipulates 
 
 - **Memory Operations**: Descriptions of instructions for memory access, including direct and indirect addressing, and memory management techniques. 
   
-- **Arithmetic and Logical Operations**: Clarification on how arithmetic and logical instructions process data, including flags affected, and overflow handling. Arithmetic instructions include ```add```, ```sub```, ```mul```, and ```div```and logical instructions include ```and```, ```or```, ```xor```, and ```not```.
+- **Arithmetic and Logical Operations**: Clarification on how arithmetic and logical instructions process data, including flags affected, and overflow handling. Arithmetic instructions include ```ADD```, ```SUB```, ```MULT```, and ```DIV```and logical instructions include ```AND```, ```OR```, ```XOR```, and ```NOT```.
 
-- **Control Flow Operations**: Insight into how jump, branch, and call instructions manage the program flow, including condition checks and subroutine handling. ```jmp```, ```jz```, ```jnz```, ```je```, ```jne```, ```call```, and ```ret``` are included.
+- **Control Flow Operations**: Insight into how jump, branch, and call instructions manage the program flow, including condition checks and subroutine handling. ```JMP```, ```JZ```, ```JNZ```, ```JE```, ```JNE```, ```CALL```, and ```RET``` are included.
 
-- **System-Level Operations**: Overview of operations related to system calls and I/O handling, essential for interacting with the system and external environment. System call instructions include ```syscall```, ```in```, ```out```, ```nop```, and ```hlt```.
+- **System-Level Operations**: Overview of operations related to system calls and I/O handling, essential for interacting with the system and external environment. System call instructions include ```SYSCALL```, ```IN```, ```OUT```, ```NOP```, and ```HALT```.
 
 *Each operation will be described in the context of its effect on the processor state, including any changes to registers, memory, or the program counter. Examples will be provided to illustrate typical use cases and expected outcomes.*
 
