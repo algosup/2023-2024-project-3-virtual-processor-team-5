@@ -33,17 +33,17 @@
     - [7.5. Debugging and Logging](#75-debugging-and-logging)
   - [8. Virtual System Call Implementation](#8-virtual-system-call-implementation)
     - [8.1. Text Display](#81-text-display)
-      - [Functionality:](#functionality)
-      - [Advanced Features:](#advanced-features)
+      - [Functionality](#functionality)
+      - [Advanced Features](#advanced-features)
     - [8.2. Debugging Features](#82-debugging-features)
-      - [Comprehensive Tools:](#comprehensive-tools)
-      - [User Guide:](#user-guide)
+      - [Comprehensive Tools](#comprehensive-tools)
+      - [User Guide](#user-guide)
     - [8.3. I/O Operations](#83-io-operations)
-      - [Input Handling:](#input-handling)
-      - [Output Procedures:](#output-procedures)
+      - [Input Handling](#input-handling)
+      - [Output Procedures](#output-procedures)
     - [8.4. Extension Mechanisms](#84-extension-mechanisms)
-      - [Extensibility Framework:](#extensibility-framework)
-      - [Customization Strategies:](#customization-strategies)
+      - [Extensibility Framework](#extensibility-framework)
+      - [Customization Strategies](#customization-strategies)
   - [9. Conclusion](#9-conclusion)
   - [10. Glossary](#10-glossary)
 
@@ -328,7 +328,7 @@ This section elaborates on the implementation of virtual system calls within the
 
 ### 8.1. Text Display
 
-#### Functionality:
+#### Functionality
 The text display system call is a pivotal component of the Virtual Processor, enabling the output of text to the virtual screen. This functionality encompasses a wide range of features that contribute to a rich and interactive user experience. Some of the core functionalities include:
 
 - **Text Rendering:** The system call can render text on the virtual screen, supporting various fonts and character sizes.
@@ -337,7 +337,7 @@ The text display system call is a pivotal component of the Virtual Processor, en
 - **Cursor Management:** Users can control the position and behavior of the text cursor, making it easy to implement text-based interfaces and user interactions.
 - **Scrolling:** The system call supports scrolling of text when the content exceeds the visible screen area.
 
-#### Advanced Features:
+#### Advanced Features
 In addition to the fundamental text display capabilities, the system call offers advanced features to enhance user interactions and create dynamic virtual environments:
 
 - **Interactive Input:** Users can create interactive text-based forms and menus, where the cursor can be moved to specific input fields, and users can provide input via keyboard or other input methods.
@@ -348,14 +348,14 @@ In addition to the fundamental text display capabilities, the system call offers
 
 ### 8.2. Debugging Features
 
-#### Comprehensive Tools:
+#### Comprehensive Tools
 The debugging features provided by the Virtual Processor's system calls are extensive and essential for effective program development and troubleshooting. These tools include:
 
 - **Real-Time Variable Tracking:** Developers can monitor the values of variables and registers in real-time as the program executes, allowing for quick identification of issues.
 - **Stack Trace Analysis:** The system call provides detailed stack trace information, showing the call hierarchy of functions and procedures, aiding in identifying the source of errors.
 - **Conditional Breakpoints:** Developers can set breakpoints at specific points in the code and specify conditions for when the program should pause, allowing for precise debugging.
 
-#### User Guide:
+#### User Guide
 To make the best use of these debugging tools, a comprehensive user guide is provided. This guide offers step-by-step instructions on how to leverage the debugging features effectively. It includes:
 
 - **Setting Breakpoints:** A detailed explanation of how to set breakpoints at specific lines of code or memory addresses and configure conditions for breaking.
@@ -366,13 +366,13 @@ To make the best use of these debugging tools, a comprehensive user guide is pro
 
 ### 8.3. I/O Operations
 
-#### Input Handling:
+#### Input Handling
 The I/O system calls in the Virtual Processor cater to various forms of input, including keyboard input and file-based inputs. Key functionalities include:
 
 - **Keyboard Input:** The system call provides mechanisms to capture keyboard input from the user. It allows for the detection of keystrokes, including key codes and characters entered.
 - **File-Based Input:** Users can interact with files, reading data from external files and processing them within the virtual environment. This feature supports reading data records and configuration files.
 
-#### Output Procedures:
+#### Output Procedures
 Output management is a crucial aspect of the I/O system calls, ensuring that data is displayed or stored efficiently. Key procedures include:
 
 - **Display Output:** The system call supports the display of text, data, and graphics on the virtual screen. Users can control the positioning of output and apply formatting to enhance readability.
@@ -381,14 +381,14 @@ Output management is a crucial aspect of the I/O system calls, ensuring that dat
 
 ### 8.4. Extension Mechanisms
 
-#### Extensibility Framework:
+#### Extensibility Framework
 The architecture of the Virtual Processor's system calls is designed with extensibility in mind. This framework allows for the seamless addition of new system calls to enhance the processor's functionality. Key components of the extensibility framework include:
 
 - **API for System Calls:** A well-defined API allows developers to create custom system calls by providing access to essential functions and resources.
 - **System Call Registration:** Developers can register new system calls with the Virtual Processor, making them available for use within assembly programs.
 - **Resource Management:** The framework manages system resources efficiently, ensuring that custom system calls do not conflict with existing ones.
 
-#### Customization Strategies:
+#### Customization Strategies
 In addition to adding new system calls, developers can customize existing system calls to meet specific operational requirements. This customization can involve:
 
 - **Parameterization:** Adjusting system call parameters to tailor their behavior to specific use cases.
