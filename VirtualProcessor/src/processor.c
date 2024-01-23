@@ -58,20 +58,25 @@ int main() {
             printf("Enter memory address: ");
             scanf("%d", &memoryAddress);
             while (getchar() != '\n');
-            // Exécute l'instruction ADD
-            executeST(&cpu, cpu.R0.value, memoryAddress, &memory);
+            executeST(&cpu, cpu.R0.value, memoryAddress, &memory); // Execute ST instruction
         } else if ((strcmp(input, "STR") == 0)){
             uint16_t instr;
-            uint16_t *reg;
-            uint16_t *mem;
-            executeSTR(instr, reg, mem);
+            uint16_t reg[8];
+            uint16_t mem[MEMORY_SIZE];
+            executeSTR(instr, reg, mem); // Execute STR instruction
+            /*
+            int memoryAddress;
+            printf("Enter memory address: ");
+            scanf("%d", &memoryAddress);
+            while (getchar() != '\n');
+            executeSTR(memoryAddress, &cpu.R0, memory.memory); // Execute STR instruction
+            */
         } else if (strcmp(input, "LD")==0){
             int memoryAddress;
             printf("Enter memory address: ");
             scanf("%d", &memoryAddress);
             while (getchar() != '\n');
-            // Exécute l'instruction ADD
-            executeLD(&cpu, cpu.R0.value, memoryAddress, &memory);
+            executeLD(&cpu, cpu.R0.value, memoryAddress, &memory); // Execute LD instruction
         } else {
             printf("Unknown instruction. Try ADD, SUB, MUL, DIV.\n");
         }
