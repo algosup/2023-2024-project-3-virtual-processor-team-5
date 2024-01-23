@@ -1,4 +1,6 @@
 # Functional Specification - Team 5's Virtual Processor
+[<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px" align=right>](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/)
+[<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20" align="right">](https://github.com/RemyCHARLES)
 
 |              |              |
 | ------------ | :----------: |
@@ -11,7 +13,7 @@
 
 <details>
 
-<summary>Click to expand</summary>
+<summary>Click to expand 🖋️</summary>
 
 - [Functional Specification - Team 5's Virtual Processor](#functional-specification---team-5s-virtual-processor)
   - [Table of contents](#table-of-contents)
