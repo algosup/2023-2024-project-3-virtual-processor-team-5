@@ -58,6 +58,8 @@ This specification serves as a guideline for developers and contributors to unde
 
 <img src="img/functionalImg/SequencesDiagram.png">
 
+*The sequence diagram depicts the flow of operations in the execution of assembly code by a virtual processor. It begins with the C Program loading the code, followed by the Parser ensuring its correctness. The Virtual Processor oversees the execution flow, where the Instruction Decoder translates each command for the Execution Unit. System Calls are special functions, such as output display, which are executed as needed. This sequence loops until the program ends, with results displayed to the User.*
+
 
 
 ## 2. Development Environment
