@@ -1,4 +1,4 @@
-#define MEMORY_SIZE 0x1000
+#define MEMORY_SIZE 1000
 
 // Register structure
 typedef struct {
