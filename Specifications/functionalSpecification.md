@@ -56,6 +56,10 @@ The virtual processor aims to offer a simplified yet functional platform for und
 
 This specification serves as a guideline for developers and contributors to understand the project's goals, requirements, and design philosophy. It will ensure that all aspects of the project align with the outlined objectives and standards.
 
+<img src="img/functionalImg/SequencesDiagram.png">
+
+
+
 ## 2. Development Environment
 
 The development of the Virtual Processor will be conducted in a specific programming and toolset environment to ensure consistency, compatibility, and performance. The key components of this environment are:
