@@ -6,8 +6,11 @@
 #include "processor.h"
 #include "instructions.h"
 
+int registers[8];
+uint16_t result = 0;
 char file_directory[500];
 int fileLine;
+
 
 // read file with command line
 void read_file(char *filename, char *file_directory) {
@@ -57,7 +60,9 @@ void read_file(char *filename, char *file_directory) {
 				executeDIV(operand1, operand2);
         	} else if (strcmp(operation, "SUB") == 0) {
             	executeSUB(operand1, operand2);
-        	} else {
+        	} else if (strcmp(operation, "ST") == 0) {
+				executeST(registers, result);
+			} else {
             	printf("Error: Unknown operation '%s'.\n", operation);
         	}
     	} else {
@@ -67,3 +72,6 @@ void read_file(char *filename, char *file_directory) {
 	fclose(file);
 	printf("File read successfully.\n");
 }
+
+
+//****************************** ST RESULT FUNCTION ******************************//

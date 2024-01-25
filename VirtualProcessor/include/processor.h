@@ -1,4 +1,8 @@
 #define MEMORY_SIZE 10000
+#define NUM_REGISTERS 8
+
+uint16_t reg;
+uint16_t result;
 
 // Register structure
 typedef struct {
@@ -20,6 +24,7 @@ typedef struct {
     Register R5;
     Register R6;
     Register R7;
+    Register R[NUM_REGISTERS];// general register array
     uint16_t PC;  // Program counter
     Flags flags;  // Flags register
     int LR; // link register

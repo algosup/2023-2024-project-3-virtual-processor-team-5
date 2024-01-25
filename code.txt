@@ -1,3 +1,2 @@
 ADD 1,1
-SUB 2,1
-MUL 12,12
+ST R1,result
