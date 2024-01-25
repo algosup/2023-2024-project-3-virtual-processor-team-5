@@ -1,2 +1,2 @@
 ADD 1,1
-ST R1,result
+ST 1,2,42
