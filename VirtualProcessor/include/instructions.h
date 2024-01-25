@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdlib.h>
-
-#include "processor.h"
 
 uint16_t lastResult = 0; 
 

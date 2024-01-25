@@ -1,5 +1,3 @@
-#include "utils.h"
-
 #define MEMORY_SIZE 10000
 
 // Register structure

@@ -1,4 +1,4 @@
-#include "../include/instructions.h"
+#include "../include/utils.h"
 
 // Déclaration de fonctions pour éviter les avertissements de compilation
 void executeADD(uint16_t operand1, uint16_t operand2);
@@ -20,7 +20,7 @@ int main() {
     char input[100];
     printf("Simple Terminal\n");
 
-    read_file("code.txt", "/Users/gregory-pagnoux/Documents/project/project3_virtual-processor/2023-2024-project-3-virtual-processor-team-5/code.txt");
+    read_file("code.txt", "C:\\Users\\LucasMEGNAN\\Desktop\\Project VS code\\Project 3\\2023-2024-project-3-virtual-processor-team-5\\code.txt");
 
     while (1) {
         printf("> ");
