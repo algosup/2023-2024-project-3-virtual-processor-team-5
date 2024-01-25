@@ -34,31 +34,37 @@
 
 #### 01/22/2024:
 
-- 🌅 **Morning :**
-  
   - Choice of the architecture: LC-3
   
   - Finished the functional Specification
   
-  - Start of sprint 1 -> [Sprint 1 : Creation of the file architecture in vscode de Virtual Processor Team 5 | Trello](https://trello.com/c/0u34btvc/16-sprint-1-creation-of-the-file-architecture-in-vscode)
+  - Start of sprint 1 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;0u34btvc">Sprint 1 : Creation of the file architecture in vscode</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
   
   - Ensure that developers have the same code environment
   
-  - Start sprint2 -> [Sprint 2 : Implementation of the registers R_R0, R_R1, R_PC, R_4 ,R_COND de Virtual Processor Team 5 | Trello](https://trello.com/c/aHiIL3IT/11-sprint-2-implementation-of-the-registers-rr0-rr1-rpc-r4-rcond)
-  
-  🌇 **Afternoon :**
+  - Start sprint 2 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;aHiIL3IT">Sprint 2 : Implementation of the registers R0, R1, PC, R4 ,RCOND</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
   
   - Finished some diagrams for the functional Specification
   
-  - Start sprint4 -> [Sprint 3 : implementation of arithmetic operation de Virtual Processor Team 5 | Trello](https://trello.com/c/64mpeltr/18-sprint-3-implementation-of-arithmetic-operation)
+  - Start sprint 3 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;64mpeltr">Sprint 3 : implementation of arithmetic operation</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
 
 #### 01/23/2024:
 
-- 
+- Start of sprint 4 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;PQpbOy8v">Sprint 4 : implement ST instruction</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
+
+- Start of sprint 5 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;akOaLITp">Sprint 5 : Implement LOAD instruction</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
+
 
 #### 01/24/2024:
+- Continue of working on sprint 4  
+- Continue of working on sprint 5 
+- Start of the sprint 6 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;ADS9SeSD">Sprint 6 : Implement the CP instruction</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
+
 
 #### 01/25/2024:
+- Continue of working on sprint 6 : 
+
+
 
 #### 01/26/2024:
 
