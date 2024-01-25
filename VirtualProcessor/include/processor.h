@@ -1,9 +1,16 @@
+#include "utils.h"
+
 #define MEMORY_SIZE 10000
 
 // Register structure
 typedef struct {
     int value;
 } Register;
+
+typedef struct {
+    uint8_t sign;
+    uint8_t zero;
+} Flags;
 
 // Processor status structure
 typedef struct {
@@ -15,7 +22,8 @@ typedef struct {
     Register R5;
     Register R6;
     Register R7;
-    int PC;  // Program counter
+    uint16_t PC;  // Program counter
+    Flags flags;  // Flags register
     int LR; // link register
     int PSR; // processor status register
     int USP; // user stack pointer
@@ -26,6 +34,14 @@ typedef struct {
     uint16_t memory[MEMORY_SIZE];
 } Memory;
 
-//typedef struct {
-//    uint16_t memory[MEMORY_SIZE];
-//} uint16_t;
+uint16_t mem_read(Register *register_value) {
+    return register_value->value;
+}
+
+void update_flags(ProcessorState *state) {
+    // Met à jour le bit de signe
+    state->flags.sign = (state->R0.value & 0x8000) ? 1 : 0;
+
+    // Met à jour le bit de zéro
+    state->flags.zero = (state->R0.value == 0) ? 1 : 0;
+}
