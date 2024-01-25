@@ -5,30 +5,35 @@ uint16_t lastResult = 0;
 //*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
 
 // ADD instruction execution function
-void executeADD(uint16_t operand1, uint16_t operand2) {
+int executeADD(uint16_t operand1, uint16_t operand2) {
     lastResult = operand1 + operand2;
     printf("Result of ADD: %hu\n", lastResult);
+    return lastResult;
 }
 
 // SUB instruction execution function
-void executeSUB(uint16_t operand1, uint16_t operand2) {
+int executeSUB(uint16_t operand1, uint16_t operand2) {
     lastResult = operand1 - operand2;
     printf("Result of SUB: %hu\n", lastResult);
+    return lastResult;
 }
 
 // MUL instruction execution function
-void executeMUL(uint16_t operand1, uint16_t operand2) {
+int executeMUL(uint16_t operand1, uint16_t operand2) {
     lastResult = operand1 * operand2;
     printf("Result of MUL: %hu\n", lastResult);
+    return lastResult;
 }
 
 // DIV instruction execution function
-void executeDIV(uint16_t operand1, uint16_t operand2) {
+int executeDIV(uint16_t operand1, uint16_t operand2) {
     if (operand2 != 0) {
         lastResult = operand1 / operand2;
         printf("Result of DIV: %hu\n", lastResult);
+        return lastResult;
     } else {
         fprintf(stderr, "Error: Division by zero\n");
+        return 0;
     }
 }
 

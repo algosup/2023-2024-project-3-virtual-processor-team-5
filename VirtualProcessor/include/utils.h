@@ -6,13 +6,11 @@
 #include "processor.h"
 #include "instructions.h"
 
-registerIndex = registers;
-ProcessorState myProcessor;
-int registers[8];
-uint16_t result = 0;
+int registerIndex;
+uint16_t result;
 char file_directory[500];
 int fileLine;
-
+ProcessorState cpu = {0};
 
 // read file with command line
 void read_file(char *filename, char *file_directory) {
@@ -50,28 +48,30 @@ void read_file(char *filename, char *file_directory) {
 		if (strchr(line, ',') != NULL){
 			char *p = strchr(line, ',');
 			*p = ' ';
-		}
-    	if (sscanf(line, "%3s %d %d", operation, &operand1, &operand2) == 3) 
-		
-		{
+		} 
+		if (sscanf(line, "%3s %d %d", operation, &operand1, &operand2) == 3) {
         	if (strcmp(operation, "ADD") == 0) {
-				executeADD(operand1, operand2);
+				result = executeADD(operand1, operand2);
 			} else if (strcmp(operation, "MUL") == 0) {
-				executeMUL(operand1, operand2);
+				result = executeMUL(operand1, operand2);
 			} else if (strcmp(operation, "DIV") == 0) {
-				executeDIV(operand1, operand2);
+				result = executeDIV(operand1, operand2);
         	} else if (strcmp(operation, "SUB") == 0) {
-            	executeSUB(operand1, operand2);
-        	} else if (strcmp(operation, "ST") == 0) {	
-				executeST(&myProcessor, &registerIndex, 42);
-				}
-        		else {
-        		printf("Error: Each line must contain an operation and two operands.\n");
-				}
-		}
-		fclose(file);
-		printf("File read successfully.\n");
+            	result = executeSUB(operand1, operand2);
+        	} else {
+            	printf("Error: Unknown operation '%s'.\n", operation);
+        	}
+    	} else if (sscanf(line, "%2s %i %hi", operation, &registerIndex, &result) == 2) {
+			if (strcmp(operation, "ST") == 0) {
+				executeST(&cpu, registerIndex, result);
+			}
+		} else {
+        	printf("Error: Your lines aren't well written.\n");
+    	}
 	}
+	fclose(file);
+	printf("File read successfully.\n");
 }
+
 
 //****************************** ST RESULT FUNCTION ******************************//
