@@ -38,31 +38,36 @@
   
   - Finished the functional Specification
   
-  - Start of sprint 1 -> [Sprint 1 : Creation of the file architecture in vscode de Virtual Processor Team 5 | Trello](https://trello.com/c/0u34btvc/16-sprint-1-creation-of-the-file-architecture-in-vscode)
+  - Start of sprint 1 : https://trello.com/c/0u34btvc/16-sprint-1-creation-of-the-file-architecture-in-vscode
   
   - Ensure that developers have the same code environment
   
-  - Start sprint 2 -> [Sprint 2 : Implementation of the registers R_R0, R_R1, R_PC, R_4 ,R_COND de Virtual Processor Team 5 | Trello](https://trello.com/c/aHiIL3IT/11-sprint-2-implementation-of-the-registers-rr0-rr1-rpc-r4-rcond)
+  - Start of sprint 2 : https://trello.com/c/aHiIL3IT/11-sprint-2-implementation-of-the-registers-r0-r1-pc-r4-rcond
   
   - Finished some diagrams for the functional Specification
   
-  - Start sprint 3 -> [Sprint 3 : implementation of arithmetic operation de Virtual Processor Team 5 | Trello](https://trello.com/c/64mpeltr/18-sprint-3-implementation-of-arithmetic-operation)
+  - Start of sprint 3 : https://trello.com/c/64mpeltr/18-sprint-3-implementation-of-arithmetic-operation
 
 #### 01/23/2024:
+  - Start of sprint 4 : https://trello.com/c/PQpbOy8v/20-sprint-4-implement-st-instruction
 
-- Start of sprint 4 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;PQpbOy8v">Sprint 4 : implement ST instruction</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
+  - Start of sprint 5 : https://trello.com/c/akOaLITp/21-sprint-5-implement-load-instruction
 
-- Start of sprint 5 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;akOaLITp">Sprint 5 : Implement LOAD instruction</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
 
 
 #### 01/24/2024:
-- Continue of working on sprint 4  
-- Continue of working on sprint 5 
-- Start of the sprint 6 : <blockquote class="trello-card"><a href="https:&#x2F;&#x2F;trello.com&#x2F;c&#x2F;ADS9SeSD">Sprint 6 : Implement the CP instruction</a></blockquote><script src="https://p.trellocdn.com/embed.min.js"></script>
+  - Continue of working on sprint 4  
+  - Continue of working on sprint 5 
 
+  - Start of the sprint 6 : https://trello.com/c/ADS9SeSD/23-sprint-6-implement-the-copy-instruction
 
 #### 01/25/2024:
-- Continue of working on sprint 6 : 
+  - Continue of working on sprint 6 : 
+
+  - Start of the sprint 7 -> https://trello.com/c/CcG9ADXk/22-sprint-7-create-the-function-to-read-a-filetxt
+
+  - Start of the sprint 8 : ->  https://trello.com/c/5tZtJa8Q/25-sprint-8-implement-the-function-to-do-calcul-with-the-filetxt
+
 
 #### 01/26/2024:
 
