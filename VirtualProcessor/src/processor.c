@@ -34,7 +34,7 @@ int main() {
 
         // Analyzes the instruction
         if (strcmp(input, "exit") == 0) {
-            printf("Exiting...\n");
+            printf("\x1b[36mExiting...\x1b[0m\n");
             break; 
     } else if (strcmp(input, "ADD") == 0) {
             uint16_t operand1, operand2;
@@ -111,25 +111,8 @@ int main() {
                 fprintf(stderr, "\x1b[31mError: Invalid source register index\x1b[0m\n");
                 while (getchar() != '\n');
             }
-        }else if (strcmp(input, "COPY") == 0 || strcmp(input, "copy") == 0) {
-            int srcRegisterIndex, destRegisterIndex;
-            printf("Enter source register index (0-4): ");
-            if (scanf("%d", &srcRegisterIndex) == 1 && srcRegisterIndex >= 0 && srcRegisterIndex < NUM_REGISTERS) {
-                while (getchar() != '\n');
-                printf("Enter destination register index (0-4): ");
-                if (scanf("%d", &destRegisterIndex) == 1 && destRegisterIndex >= 0 && destRegisterIndex < NUM_REGISTERS) {
-                    while (getchar() != '\n');
-                    executeCOPY(&cpu, srcRegisterIndex, destRegisterIndex);
-                } else {
-                    fprintf(stderr, "\x1b[31mError: Invalid destination register index\x1b[0m\n");
-                    while (getchar() != '\n');
-                }
-            } else {
-                fprintf(stderr, "\x1b[31mError: Invalid source register index\x1b[0m\n");
-                while (getchar() != '\n');
-            }
         } else {
-            printf("Unknown instruction. Try ADD, SUB, MUL, DIV, ST, LD, COPY, or exit.\n");
+            printf("\x1b[33mUnknown instruction. Try ADD, SUB, MUL, DIV, ST, LD, COPY, or exit.\x1b[0m\n");
         }
     }
 

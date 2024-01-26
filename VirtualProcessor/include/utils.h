@@ -16,7 +16,7 @@ ProcessorState cpu = {0};
 void read_file(char *filename, char *file_directory) {
 	FILE *file = fopen(file_directory, "r");
 	if (file == NULL) {
-    printf("Could not open file.\n");
+    printf("x1b[31mCould not open file.\x1b[0m\n");
     return;}
 	
 	// if (file == NULL){
@@ -59,19 +59,22 @@ void read_file(char *filename, char *file_directory) {
         	} else if (strcmp(operation, "SUB") == 0) {
             	result = executeSUB(operand1, operand2);
         	} else {
-            	printf("Error: Unknown operation '%s'.\n", operation);
+            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
         	}
     	} else if (sscanf(line, "%2s %i %hi", operation, &registerIndex, &result) == 2) {
 			if (strcmp(operation, "ST") == 0) {
 				executeST(&cpu, registerIndex, result);
+			} else if (strcmp(operation, "LD") == 0) {
+				executeLD(&cpu, &cpu.R[registerIndex], registerIndex);
+			} else {
+				printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 			}
 		} else {
-        	printf("Error: Your lines aren't well written.\n");
+        	printf("x1b[31mError: Your lines aren't well written.\x1b[0m\n");
     	}
 	}
 	fclose(file);
-	printf("File read successfully.\n");
+	printf("\x1b[32mFile read successfully.\x1b[0m\n");
 }
-
 
 //****************************** ST RESULT FUNCTION ******************************//
