@@ -38,9 +38,11 @@ int executeDIV(uint16_t operand1, uint16_t operand2) {
 }
 
 //****************************** LOGICAL OPERATIONS ******************************//
-//************************** IMPLEMENT AND, OR, XOR, NOT *************************//
+//*********************** IMPLEMENT AND, OR, XOR, NOT, CMP ***********************//
 
+void executeCMP(ProcessorState *state){
 
+}
 
 //****************************** DATA MOVEMENT ******************************//
 
