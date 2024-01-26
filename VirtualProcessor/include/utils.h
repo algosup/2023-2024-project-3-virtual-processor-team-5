@@ -29,18 +29,22 @@ void read_file(char *filename, char *file_directory) {
 			if (strchr(line, ',') != NULL){
 				char *p = strchr(line, ',');
 				*p = ' ';
-			} 
-			if (sscanf(line, "%3s %d %d", operation, &operand1, &operand2) == 3) {
+			}
+			if (sscanf(line, "%2s %d %d", operation, &operand1, &operand2) == 3){
+				if (strcmp(operation, "LD") == 0) {
+					executeLD(&cpu, &cpu.R[operand1], operand2);
+				} else {
+	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
+	        	}
+			} else if (sscanf(line, "%3s %d %d", operation, &operand1, &operand2) == 3) {
 	        	if (strcmp(operation, "ADD") == 0) {
 					result = executeADD(operand1, operand2);
+	        	} else if (strcmp(operation, "SUB") == 0) {
+	            	result = executeSUB(operand1, operand2);
 				} else if (strcmp(operation, "MUL") == 0) {
 					result = executeMUL(operand1, operand2);
 				} else if (strcmp(operation, "DIV") == 0) {
 					result = executeDIV(operand1, operand2);
-	        	} else if (strcmp(operation, "SUB") == 0) {
-	            	result = executeSUB(operand1, operand2);
-				} else if (strcmp(operation, "LD") == 0) {
-					executeLD(&cpu, &cpu.R[operand1], operand2);
 	        	} else if (strcmp(operation, "CMP") == 0) {
 	            	executeCMP(&cpu, operand1, operand2);
 	        	} else {

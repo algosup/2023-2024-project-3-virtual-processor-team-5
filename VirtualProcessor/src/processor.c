@@ -2,9 +2,9 @@
 
 // Déclaration de fonctions pour éviter les avertissements de compilation
 int executeADD(uint16_t operand1, uint16_t operand2);
+int executeSUB(uint16_t operand1, uint16_t operand2);
 int executeMUL(uint16_t operand1, uint16_t operand2);
 int executeDIV(uint16_t operand1, uint16_t operand2);
-int executeSUB(uint16_t operand1, uint16_t operand2);
 void executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
 void executeST(ProcessorState *state, int registerIndex, int result);
 void executeLD(ProcessorState *state, Register *destination, int registerIndex);
@@ -46,6 +46,15 @@ int main() {
             while (getchar() != '\n');
             executeADD(operand1, operand2);
             
+        } else if (strcmp(input, "SUB") == 0) {
+            uint16_t operand1, operand2;
+            printf("Enter operand 1: ");
+            scanf("%hu", &operand1);
+            printf("Enter operand 2: ");
+            scanf("%hu", &operand2);
+            while (getchar() != '\n');
+            executeSUB(operand1, operand2);
+
         } else if (strcmp(input, "MUL") == 0) {
             uint16_t operand1, operand2;
             printf("Enter operand 1: ");
@@ -63,15 +72,6 @@ int main() {
             scanf("%hu", &operand2);
             while (getchar() != '\n');
             executeDIV(operand1, operand2);
-
-        } else if (strcmp(input, "SUB") == 0) {
-            uint16_t operand1, operand2;
-            printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
-            printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
-            while (getchar() != '\n');
-            executeSUB(operand1, operand2);
 
         } else if (strcmp(input, "ST") == 0) {
             int registerIndex;
