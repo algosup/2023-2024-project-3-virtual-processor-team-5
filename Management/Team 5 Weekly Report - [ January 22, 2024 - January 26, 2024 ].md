@@ -71,6 +71,14 @@
 
 
 #### 01/26/2024:
+- Start of the sprint 10 : https://trello.com/c/5O0T13Fm/28-sprint-10-create-the-function-of-logical-operation | Blocked for the moment, come back on this sprint next week
+- Start of sprint 11 : https://trello.com/c/vRUG88VQ/29-sprint-11-implement-ld-in-assembly-language
+-  Start of sprint 12 : https://trello.com/c/KuLAJlmk/30-sprint-12-implement-copy-in-assembly-language
+- Start of the sprint 13 : https://trello.com/c/ecWhKPVm/31-sprint-13-create-cmp-instruction
+- Start of sprint 14 : https://trello.com/c/QL9Uppda/32-sprint-14-implement-cmp-in-assembly-language
+- Start of sprint 15 : https://trello.com/c/QH3a9vqv/33-sprint-15-execution-jump-label
+-  Start of sprint 16 : https://trello.com/c/xbUMwyqo/34-sprint-16-implement-jmp-label
+
 
 ## II. Key Metrics and Performance Indicators
 
