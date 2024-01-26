@@ -1,4 +1,5 @@
 # Functional Specification - Team 5's Virtual Processor
+
 [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px" align=right>](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/)
 [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20" align="right">](https://github.com/RemyCHARLES)
 
@@ -192,7 +193,6 @@ The assembly language designed for the Virtual Processor will include a set of f
       - **``ADD`` (Addition)**
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes division by repeatedly subtracting Source Operand 2 from Source Operand 1 and counting the number of subtractions.
-
 
 
 - **Logical Operations**: Instructions for logical operations like AND, OR, XOR, and NOT are included.
