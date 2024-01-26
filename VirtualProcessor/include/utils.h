@@ -23,7 +23,7 @@ void read_file(char *filename, char *file_directory) {
 		char line[256];
 		while (fgets(line, sizeof(line), file)) {
 	    	int operand1, operand2;
-	    	char operation[4]; // For "ADD" or "SUB"
+	    	char operation[5];
 			// replace "," with " "
 			if (strchr(line, ',') != NULL){
 				char *p = strchr(line, ',');
@@ -43,6 +43,12 @@ void read_file(char *filename, char *file_directory) {
 	        	} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
+			} else if (sscanf(line, "%4s %d %d", operation, &operand1, &operand2) == 3) {
+				if (strcmp(operation, "COPY") == 0) {
+					executeCOPY(&cpu, operand1, operand2);
+				} else {
+					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
+				}
 	    	} else if (sscanf(line, "%2s %i %hi", operation, &registerIndex, &result) == 2) {
 				if (strcmp(operation, "ST") == 0) {
 					executeST(&cpu, registerIndex, result);

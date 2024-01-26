@@ -69,7 +69,7 @@ void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIn
         if (destRegisterIndex >= 0 && destRegisterIndex < NUM_REGISTERS) {
             state->R[destRegisterIndex].value = state->R[srcRegisterIndex].value;
             update_flags(state);
-            printf("Copied value %hu from R%d to R%d\n", state->R[destRegisterIndex].value, srcRegisterIndex, destRegisterIndex);
+            printf("Copied from register R%d to R%d\n", srcRegisterIndex, destRegisterIndex);
         } else {
             fprintf(stderr, "\x1b[31mError: Invalid destination register index\x1b[0m\n");
         }
