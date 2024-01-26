@@ -55,13 +55,30 @@ void executeST(ProcessorState *state, int registerIndex, int result) {
 }
 // LD instruction execution function (loading)
 void executeLD(ProcessorState *state, Register *destination, int registerIndex) {
-    if (registerIndex >= 0 && registerIndex < 5) {
-        destination->value = state->R0.value;
-        update_flags(state);
-        printf("Loaded value %hu from register R%d to R%ld\n", destination->value, registerIndex, destination - &state->R0);
+    int sourceRegisterIndex;
+    printf("Enter register index (0-8) to load the value from: ");
+    if (scanf("%d", &sourceRegisterIndex) == 1) {
+        // verify if the conversion succeeded
+        while (getchar() != '\n');
+        if (sourceRegisterIndex >= 0 && sourceRegisterIndex < NUM_REGISTERS) {
+            destination->value = state->R[sourceRegisterIndex].value;
+            update_flags(state);
+            printf("Loaded value %hu from register R%d to R%ld\n", destination->value, sourceRegisterIndex, destination - state->R);
+        } else {
+            fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+        }
     } else {
-        fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+        fprintf(stderr, "\x1b[31mError: Invalid input\x1b[0m\n");
+        while (getchar() != '\n');
     }
+
+    // if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
+    //     destination->value = state->R[registerIndex].value;
+    //     update_flags(state);
+    //     printf("Loaded value %hu from register R%d to R%ld\n", destination->value, registerIndex, destination - state->R);
+    // } else {
+    //     fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+    // }
 }
 
 void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex) {

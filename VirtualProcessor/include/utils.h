@@ -70,7 +70,7 @@ void read_file(char *filename, char *file_directory) {
 				printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 			}
 		} else {
-        	printf("x1b[31mError: Your lines aren't well written.\x1b[0m\n");
+        	printf("\x1b[31mError: Your lines aren't well written.\x1b[0m\n");
     	}
 	}
 	fclose(file);

@@ -20,7 +20,7 @@ int main() {
     char input[100];
     printf("Simple Terminal\n");
 
-    read_file("code.txt", "/Users/gregory-pagnoux/Documents/project/project3_virtual-processor/2023-2024-project-3-virtual-processor-team-5/code.txt");
+    read_file("code.txt", "C:\\Users\\LucasMEGNAN\\Desktop\\Project VS code\\Project 3\\2023-2024-project-3-virtual-processor-team-5\\code.txt");
 
     while (1) {
         printf("> ");
@@ -84,7 +84,7 @@ int main() {
             }
         } else if (strcmp(input, "LD") == 0) {
             int registerIndex;
-            printf("Enter register index (0-4): ");
+            printf("Enter register index (0-8): ");
             if (scanf("%d", &registerIndex) == 1) {
                 // verify if the conversion succeeded
                 while (getchar() != '\n');  // Consumes newline character remaining in buffer
@@ -96,10 +96,10 @@ int main() {
             }
         } else if (strcmp(input, "COPY") == 0 || strcmp(input, "copy") == 0) {
             int srcRegisterIndex, destRegisterIndex;
-            printf("Enter source register index (0-4): ");
+            printf("Enter source register index (0-8): ");
             if (scanf("%d", &srcRegisterIndex) == 1 && srcRegisterIndex >= 0 && srcRegisterIndex < NUM_REGISTERS) {
                 while (getchar() != '\n');
-                printf("Enter destination register index (0-4): ");
+                printf("Enter destination register index (0-8): ");
                 if (scanf("%d", &destRegisterIndex) == 1 && destRegisterIndex >= 0 && destRegisterIndex < NUM_REGISTERS) {
                     while (getchar() != '\n');
                     executeCOPY(&cpu, srcRegisterIndex, destRegisterIndex);
