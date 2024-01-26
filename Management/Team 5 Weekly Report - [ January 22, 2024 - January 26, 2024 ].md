@@ -63,7 +63,10 @@
 
 
 #### 01/25/2024:
-- Continue of working on sprint 6 : 
+- Continue working on the sprint 6  
+- Create the function to read a .Txt file from our C program -> Sprint 7 : Create the function to read a file.txt de Virtual Processor Team 5 | Trello
+- Create a function to perform arithmetical operation using value from our .txt file -> Sprint 8 : implement the function to do calcul with the file.txt de Virtual Processor Team 5 | Trello
+- Start of the sprint 9 -> Sprint 9 : Implement a function to store a value into a register from the .txt file with the ST instruction de Virtual Processor Team 5 | Trello
 
 
 
