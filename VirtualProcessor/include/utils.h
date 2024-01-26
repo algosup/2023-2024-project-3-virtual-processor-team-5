@@ -40,6 +40,8 @@ void read_file(char *filename, char *file_directory) {
 	            	result = executeSUB(operand1, operand2);
 				} else if (strcmp(operation, "LD") == 0) {
 					executeLD(&cpu, &cpu.R[operand1], operand2);
+	        	} else if (strcmp(operation, "CMP") == 0) {
+	            	executeCMP(&cpu, operand1, operand2);
 	        	} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}

@@ -40,8 +40,18 @@ int executeDIV(uint16_t operand1, uint16_t operand2) {
 //****************************** LOGICAL OPERATIONS ******************************//
 //*********************** IMPLEMENT AND, OR, XOR, NOT, CMP ***********************//
 
-void executeCMP(ProcessorState *state){
-
+void executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
+    if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
+        if (state->R[registerIndex1].value == state->R[registerIndex2].value) {
+            printf("Values in register R%d and R%d are equal.\n", registerIndex1, registerIndex2);
+        } else if (state->R[registerIndex1].value > state->R[registerIndex2].value) {
+            printf("Value in register R%d is greater than value in register R%d.\n", registerIndex1, registerIndex2);
+        } else {
+            printf("Value in register R%d is less than value in register R%d.\n", registerIndex1, registerIndex2);
+        }
+    } else {
+        fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+    }
 }
 
 //****************************** DATA MOVEMENT ******************************//

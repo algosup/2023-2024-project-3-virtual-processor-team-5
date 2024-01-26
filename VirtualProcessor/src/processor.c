@@ -11,6 +11,7 @@ uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);
 void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex);
 void read_file(char *filename, char *file_directory);
+void executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
 
 int main() {
     Memory memory = {{0}};  // Initializes memory with zeros
@@ -20,7 +21,7 @@ int main() {
     char input[100];
     printf("Simple Terminal\n");
 
-    read_file("code.txt", "code.txt");
+    read_file("code.txt", "C:\\Users\\LucasMEGNAN\\Desktop\\Project VS code\\Project 3\\2023-2024-project-3-virtual-processor-team-5\\code.txt");
 
     while (1) {
         printf("> ");

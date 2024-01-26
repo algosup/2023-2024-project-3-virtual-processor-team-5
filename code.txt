@@ -3,3 +3,4 @@ ST 1,result
 LD 4,1
 COPY 4,5
 LD 6,5
+CMP 5,6
