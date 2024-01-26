@@ -1,0 +1,14 @@
+# Ignore generated documentation files
+/doc/
+
+# Ignore compiled documentation files
+/build/
+
+# Ignore temporary documentation files
+/tmp/
+
+# Ignore documentation configuration files
+/.doc/
+
+# Ignore documentation output files
+/output/
