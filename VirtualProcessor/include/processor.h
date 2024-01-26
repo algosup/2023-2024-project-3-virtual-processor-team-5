@@ -31,6 +31,7 @@ typedef struct {
     int PSR; // processor status register
     int USP; // user stack pointer
     int SSP; // system stack pointer
+    int instructionPointer;
 } ProcessorState;
 
 typedef struct {

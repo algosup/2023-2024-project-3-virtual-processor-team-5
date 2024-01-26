@@ -7,6 +7,12 @@
 #include "processor.h"
 #include "instructions.h"
 
+#define MAX_LABELS 100
+Label labels[MAX_LABELS];
+int numLabels = 0;
+int numInstructions = 0;  // Add this line to define numInstructions
+char labelName[10];
+
 int registerIndex;
 uint16_t result;
 char file_directory[500];
@@ -29,6 +35,12 @@ void read_file(char *filename, char *file_directory) {
 			if (strchr(line, ',') != NULL){
 				char *p = strchr(line, ',');
 				*p = ' ';
+			}
+			if (line[strlen(line) - 1] == ':') {
+				strncpy(labels[numLabels].name, line, strlen(line) - 1);
+				labels[numLabels].instructionIndex = numInstructions;
+				numLabels++;
+				printf("label");
 			}
 			if (sscanf(line, "%2s %d %d", operation, &operand1, &operand2) == 3){
 				if (strcmp(operation, "LD") == 0) {
@@ -59,6 +71,12 @@ void read_file(char *filename, char *file_directory) {
 	    	} else if (sscanf(line, "%2s %i %hi", operation, &registerIndex, &result) == 2) {
 				if (strcmp(operation, "ST") == 0) {
 					executeST(&cpu, registerIndex, result);
+				} else {
+					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
+				}
+			} else if (sscanf(line, "%3s %4s ", operation, labelName) == 2) {
+				if (strcmp(operation, "JMP") == 0) {
+					jumpToLabel(&cpu, labels, numLabels, labelName);
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 				}

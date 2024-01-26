@@ -93,4 +93,20 @@ void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIn
 }
 //****************************** CONTROL FLOW ******************************//
 
+// Structure to store a label
+typedef struct {
+    char name[10];
+    int instructionIndex;
+} Label;
 
+// Function to jump to a label
+void jumpToLabel(ProcessorState *state, Label *labels, int numLabels, const char *labelName) {
+    for (int i = 0; i < numLabels; i++) {
+        if (strcmp(labels[i].name, labelName) == 0) {
+            state->instructionPointer = labels[i].instructionIndex;
+            printf("Jumped to label %s\n", labelName);
+            return;
+        }
+    }
+    fprintf(stderr, "\x1b[31mError: Label not found\x1b[0m\n");
+}
