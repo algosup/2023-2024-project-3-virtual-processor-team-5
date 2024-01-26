@@ -9,7 +9,8 @@ void executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
 void executeST(ProcessorState *state, int registerIndex, int result);
 void executeLD(ProcessorState *state, Register *destination, int registerIndex);
 void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex);
-void jumpToLabel(ProcessorState *state, Label *labels, int numLabels, const char *labelName);
+int readLabel(Label *labels, int numLabels, const char *labelName);
+void jumpToLabel(Label *labels, int numLabels, const char *labelName, int *instructionPointer);
 uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);
 void read_file(char *filename, char *file_directory);
@@ -63,7 +64,7 @@ int main() {
             printf("Enter operand 2: ");
             scanf("%hu", &operand2);
             while (getchar() != '\n');
-            executeMUL(operand1, operand2);
+            executeMUL(operand1, result);
 
         } else if (strcmp(input, "DIV") == 0) {
             uint16_t operand1, operand2;
@@ -117,6 +118,5 @@ int main() {
             printf("\x1b[33mUnknown instruction. Try ADD, SUB, MUL, DIV, ST, LD, COPY, CMP or exit.\x1b[0m\n");
         }
     }
-
     return 0;
 }

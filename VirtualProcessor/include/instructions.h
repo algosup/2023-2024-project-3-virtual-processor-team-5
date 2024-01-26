@@ -1,5 +1,6 @@
 
 uint16_t lastResult = 0; 
+#define MAX_LABELS 100
 
 //****************************** ALGORITHMIC OPERATIONS ******************************//
 //*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
@@ -93,20 +94,32 @@ void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIn
 }
 //****************************** CONTROL FLOW ******************************//
 
-// Structure to store a label
 typedef struct {
-    char name[10];
-    int instructionIndex;
+    char name[10];  // The name of the label
+    int instructionIndex;  // The index of the instruction the label refers to
 } Label;
 
-// Function to jump to a label
-void jumpToLabel(ProcessorState *state, Label *labels, int numLabels, const char *labelName) {
+int readLabel(Label *labels, int numLabels, const char *labelName) {
     for (int i = 0; i < numLabels; i++) {
         if (strcmp(labels[i].name, labelName) == 0) {
-            state->instructionPointer = labels[i].instructionIndex;
-            printf("Jumped to label %s\n", labelName);
-            return;
+            return labels[i].instructionIndex;
         }
     }
-    fprintf(stderr, "\x1b[31mError: Label not found\x1b[0m\n");
+    // If the label is not found, return an invalid value
+    return -1;
+}
+
+void jumpToLabel(Label *labels, int numLabels, const char *labelName, int *instructionPointer) {
+    int labelFound = 0;
+    for (int i = 0; i < numLabels; i++) {
+        if (strcmp(labels[i].name, labelName) == 0) {
+            *instructionPointer = labels[i].instructionIndex;
+            labelFound = 1;
+            break;
+        }
+    }
+    // If the label is not found, set the instruction pointer to an invalid value
+    if (!labelFound) {
+        *instructionPointer = -1;
+    }
 }
