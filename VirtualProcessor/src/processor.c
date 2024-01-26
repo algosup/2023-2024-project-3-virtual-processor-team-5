@@ -20,7 +20,7 @@ int main() {
     char input[100];
     printf("Simple Terminal\n");
 
-    read_file("code.txt", "C:\\Users\\LucasMEGNAN\\Desktop\\Project VS code\\Project 3\\2023-2024-project-3-virtual-processor-team-5\\code.txt");
+    read_file("code.txt", "code.txt");
 
     while (1) {
         printf("> ");
