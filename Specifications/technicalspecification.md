@@ -1,14 +1,19 @@
 # Technical Specifications
+|              |              |
+| ------------ | :----------: |
+| Author       | Mathis lebel |
+| Reviewers    |              |
+| Created on   |  2024-01-15  |
+| Last updated |  2024-02-09  |
 
-
-| Role | Name | mail | github |
-|---|---|---|---|
-| Project Manager | Wilfried PORTET | wilfried.portet@algosup.com | https://github.com/PortetWilfried|
-| Program Manager | Rémy CHARLES |remy.charles@algosup.com  | https://github.com/RemyCHARLES |
-| Tech Lead | Mathis LEBEL |mathis.lebel@algosup.com  | https://github.com/mathislebel |
-| Software Developer | Lucas MEGNAN |lucas.megnan@algosup.com | https://github.com/LucasMegnan |
-| Software Developer | Grégory PAGNOUX | gregory.pagnoux@algosup.com | https://github.com/Gregory-Pagnoux |
-| Quality Assurance | Atifa AMIRI|atifa.amiri@algosup.com  | https://github.com/Atifabaran|
+| Role                | Name                                       | Email                                       | LinkedIn                                        | GitHub                                       |
+|---------------------|--------------------------------------------|---------------------------------------------|------------------------------------------------|----------------------------------------------|
+| Project Manager     | <img src="picture_of_wilfried.png" width="30px"/> Wilfried PORTET      | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:wilfried.portet@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/wilfried-portet-a882b9293/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/PortetWilfried) |
+| Program Manager     | <img src="picture_of_remy.png" width="30px"/> Rémy CHARLES         | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:remy.charles@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/RemyCHARLES) |
+| Tech Lead           | <img src="picture_of_mathis.png" width="30px"/> Mathis LEBEL          | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:mathis.lebel@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/mathis-lebel-429114293/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/mathislebel) |
+| Software Developer  | <img src="picture_of_lucas.png" width="30px"/> Lucas MEGNAN          | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:lucas.megnan@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/lucas-megnan/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/LucasMegnan)     |
+| Software Developer  | <img src="picture_of_gregory.png" width="30px"/> Grégory PAGNOUX       | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:gregory.pagnoux@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/gregory-pagnoux-313b3a251/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/Gregory-Pagnoux) |
+| Quality Assurance   | <img src="picture_of_atifa.png" width="30px"/> Atifa AMIRI           | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:atifa.amiri@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/atifa-amiri-565a1225b/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/Atifabaran)     |
 
 
 <details>
@@ -128,25 +133,25 @@ With that being said, we will try to cover as many functional and non-functional
 
 The document should also benefit other stakeholders and project owners by giving insight into our methodology and may serve as a future reference for maintenance or simple documentation purposes.
 # Glossary
-## ASSEMBLY:
+### ASSEMBLY:
 An assembler is a low-level programming language designed specifically for specific computer architectures, usually tied to a particular processor. It lies between machine language (direct binary representation of processor instructions) and more programmer-friendly high-level languages(a high-level programming language is designed to be more easily understood by humans, providing greater abstraction and usability compared to low-level languages ​​such as assembly or machine language.).
 
-## INTERPRETER:
+### INTERPRETER:
 An interpreter is software responsible for directly executing programs written in a high-level programming language, without requiring a prior compilation step. Unlike compilers, interpreters translate source code into executable instructions on the fly, making development and debugging easier by allowing more flexible interaction with the code.
 
-## PROCESSOR:
+### PROCESSOR:
 A processor, also called a central processing unit (CPU), is a computer component that executes machine instructions, handles logical and arithmetic operations, and manages the flow of data within a computer system. It interprets and executes instructions from programs stored in memory, thereby coordinating the fundamental operations necessary for a computer to function.
 
-## VIRTUAL PROCESSOR:
+### VIRTUAL PROCESSOR:
 A virtual machine, in virtual processor terms, is a software emulation of a physical processor, allowing programs to run as if they were running on dedicated physical hardware. It creates an isolated environment, called a virtual machine, in which an operating system or application can operate independently of the underlying hardware. Virtual processors are often used to run multiple operating systems or applications on a single physical machine, providing flexibility and more efficient resource management.
 
-## COMPILER:
+### COMPILER:
 A compiler is software that translates source code written in a high-level programming language into executable binary code specific to a hardware architecture. It performs this conversion in several stages, including lexical analysis, parsing, intermediate code generation, code optimization, and finally, machine code or bytecode generation. The final result of the compiler is an executable program independent of the source code, allowing its execution on the target platform without requiring the presence of the compiler.
 
-## DEBUGGER:
+### DEBUGGER:
 A debugger is a software tool used by programmers to detect, analyze, and correct errors in a program's source code. It allows you to follow program execution step by step, inspect variable values, identify logic errors, and pause execution to examine the execution context at specific points. Debuggers provide features such as breakpoints, watches to monitor variables, execution tracers, and the ability to run the program step by step to facilitate the debugging process and improve the reliability of the code.
 
-## Logical operation (OR,XOR,AND,NOT):
+### Logical operation (OR,XOR,AND,NOT):
 Logical operations (OR, XOR, AND, NOT) are fundamental operations in the field of binary logic used in computer science. Here are brief definitions for each of these operations:
 
 OR (OR): The OR logical operation returns true (1) if at least one of the operands is true (1). Otherwise, it returns false (0).
@@ -159,10 +164,10 @@ NOT: The NOT logic operation inverts the logic value of its operand. If the oper
 
 These operations are commonly used in binary data manipulation at the hardware level and in logical expressions in programming. They are essential for logical calculations and flow control in computer systems.X
 
-## IDE:
+### IDE:
 An integrated development environment (IDE) is software that brings together several tools intended to facilitate software development. It typically offers a text editor for writing source code, a compiler or interpreter for turning the code into an executable, a debugger for detecting and correcting errors, and other features such as versioning, tools user interface design, performance analyzers, etc. IDEs are designed to improve the efficiency of programmers by providing an integrated environment that simplifies tasks related to software development. Examples of popular IDEs include Eclipse, Visual Studio, IntelliJ IDEA, and PyCharm.
 
-## C language:
+### C laguage:
 The C programming language is a high-level, procedural, imperative language originally developed by Dennis Ritchie in the early 1970s at Bell Labs. It played a fundamental role in the development of many operating systems and inspired many other programming languages.
 
 The C language offers direct control over memory and system resources, making it a preferred choice for system and low-level development. It uses a simple and compact syntax, with a modular programming approach, encouraging code reuse. C is also used for developing desktop applications, embedded systems, and is the basis of languages ​​such as C++ and Objective-C.
@@ -178,6 +183,7 @@ The C language is still widely used in software development, and many critical s
 # Project Overview
 
 ## Project Brief
+
 
 ## Requirements
 
