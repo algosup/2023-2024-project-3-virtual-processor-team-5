@@ -136,9 +136,8 @@ void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIn
     } else {
         fprintf(stderr, "\x1b[31mError: Invalid source register index\x1b[0m\n");
     }
-
-    
 }
+
 //****************************** CONTROL FLOW ******************************//
 
 typedef struct {
@@ -163,3 +162,17 @@ void jumpToLabel(Label *labels, int numLabels, const char *labelName, FILE *file
         printf("lebel not found: %s\n", labelName);  // Print the label name that was not found
     }
 }
+
+//CALL instruction execution function
+void executeCALL(){
+
+}
+
+// RET instruction execution function
+void executeRET(){
+
+}
+
+//************************** SPECIAL INSTRUCTIONS **************************//
+
+
