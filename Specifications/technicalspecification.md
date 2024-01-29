@@ -15,90 +15,86 @@
 | Software Developer  | <img src="img/technicalImg/picture_of_gregory.png" width="30px"/> Grégory PAGNOUX       | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:gregory.pagnoux@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/gregory-pagnoux-313b3a251/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/Gregory-Pagnoux) |
 | Quality Assurance   | <img src="img/technicalImg/picture_of_atifa.png" width="30px"/> Atifa AMIRI           | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:atifa.amiri@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/atifa-amiri-565a1225b/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/Atifabaran)     |
 
-
 <details>
 
-<summary>
-
-## Table of Content
-
-</summary>
+<summary>Table of Contents</summary>
 
 - [1. Introduction](#1-introduction)
- 	- [Document Purpose & Definition](#document-purpose--definition)
- 	- [Glossary](#glossary)
-	  - [ASSEMBLY](#assembly)
-	  - [INTERPRETER](#interpreter)
-	  - [PROCESSOR](#processor)
-	  - [VIRTUAL PROCESSOR](#virtual-processor)
-	  - [COMPILER](#compiler)
-	  - [DEBUGGER](#debugger)
-	  - [Logical operation (OR,XOR,AND,NOT)](#logical-operation-orxorandnot)
-	  - [IDE](#ide)
-	  - [C laguage](#c-laguage)
- 	- [Project Overview](#project-overview)
-  		- [Project Brief](#project-brief)
-  		- [Requirements](#requirements)
-			- ➭ [Setting up the Development Environment](#setting-up-the-development-environment)
-                    - [Hardware Requirements](#hardware-requirements)
-                    - [Software Requirements](#software-requirements)
-				- [Coding Methodology](#coding-methodology)
-                    - [Workflow](#-workflow)
-					- [Coding Conventions](#-coding-conventions)
-                    - [Documenting Conventions](#-documenting-conventions)
-                    - [Test Procedure](#-test-procedure)
-            - ➭ [Setting up the Virtual Processor](#setting-up-the-virtual-processor)
-                - [Hardware Requirements](#hardware-requirements-1)
-                - [Software Requirements](#software-requirements-1)
-        - [Assumptions & Constraints](#assumptions--constraints)
-- [2. Technical Specification](#2-technical-specifications)
-	- [Folder Structure](#folder-structure)
-	- [Data Structures](#data-structures)
-    - [security](#security)
-- [How to make it](#how-to-make-it)
-    - [Architecture of Code](#architecture-of-code)
-	    - [Modularity](#modularity)
-		    - [Module Breakdown](#module-breakdown)
-			- [Header Files](#header-files)
-		- [Abstraction](#abstraction)
-		    - [Memory Management](#memory-management)
-			- [Registers](#registers)
-		- [Instruction Interpreter](#instruction-interpreter)
-		    - [Parsing](#parsing) 
-			- [Execution](#execution)
-		- [Input/Output Management](#input/output-management)
-		    - [I/O Simulation](#i/o-simulation)
-		- [Testing and Validation](#testing-and-validation)
-		    - [Unit Testing](#unit-testing)
-		- [Continuous Integration](#continuous-integration)
-		- [Documentation and Coding Standards](#documentation-and-coding-standards)
-		    - [Comments and Documentation](#comments-and-documentation)
-			- [Adherence to Standards](#adherence-to-standards)
-        - [User Interface](#user-interface)
-		    - [CLI or GUI](#cli-or-gui)
-		- [Scalability and Maintenance](#scalability-and-maintenance)
-		    -[Scalable Design](#scalable-design)
-		- [Directory Structure](#directory-structure)
-    - [Understand the Basic of Processor](#understand-the-basic-of-processor)
-	- [Define the Instruction Set](#define-the-instruction-set)
-	- [Design the Architecture](#design-the-architecture)
-	- [Programming the Virtual Processor](#programming-the-virtual-processor)
-		- [Choice of Programming Language](#choice-of-programming-language)
-		- [Implement Components](#implement-compoments)
-		- [Instruction Interpretation](#instruction-interpretation)
-    - [Simulate Memory and Input/Output](#Simulate-Memory-and-Input/Output)
-		- [Memory](#memory)
-		- [Input/Output](#input/output)
-	- [Testing and Debugging](#testing-and-debugging)
-	- [User Interface](#user-interface)
-	- [Documentation and Maintenance](#documentation-and-maintenance)
-- [3. Conclusion](#3-conclusion)
-	- [Thanks](#thanks)
+  - [1.1 Customer Request](#11-customer-request)
+  - [1.2 Document Purpose & Definition](#12-document-purpose--definition)
+  - [1.3 Glossary](#13-glossary)
+    - [ASSEMBLY](#assembly)
+    - [INTERPRETER](#interpreter)
+    - [PROCESSOR](#processor)
+    - [VIRTUAL PROCESSOR](#virtual-processor)
+    - [COMPILER](#compiler)
+    - [DEBUGGER](#debugger)
+    - [Logical Operation (OR, XOR, AND, NOT)](#logical-operation-or-xor-and-not)
+    - [IDE](#ide)
+    - [C Language](#c-language)
+  - [1.4 Project Overview](#14-project-overview)
+    - [1.4.1 Project Brief](#141-project-brief)
+    - [1.4.2 Requirements](#142-requirements)
+      - [Setting up the Development Environment](#setting-up-the-development-environment)
+        - [Hardware Requirements](#hardware-requirements)
+        - [Software Requirements](#software-requirements)
+      - [Coding Methodology](#coding-methodology)
+        - [Workflow](#workflow)
+        - [Coding Conventions](#coding-conventions)
+        - [Documenting Conventions](#documenting-conventions)
+        - [Test Procedure](#test-procedure)
+      - [Setting up the Virtual Processor](#setting-up-the-virtual-processor)
+        - [Hardware Requirements](#hardware-requirements-1)
+        - [Software Requirements](#software-requirements-1)
+    - [1.4.3 Assumptions & Constraints](#143-assumptions--constraints)
+- [2. Technical Specifications](#2-technical-specifications)
+  - [2.1 Folder Structure](#21-folder-structure)
+  - [2.2 Data Structures](#22-data-structures)
+  - [2.3 Security](#23-security)
+- [3. How to Make It](#3-how-to-make-it)
+  - [3.1 Architecture](#31-architecture)
+    - [3.1.1 Modularity](#311-modularity)
+      - [Module Breakdown](#module-breakdown)
+      - [Header Files](#header-files)
+    - [3.1.2 Abstraction](#312-abstraction)
+      - [Memory Management](#memory-management)
+      - [Registers](#registers)
+    - [3.1.3 Instruction Interpreter](#313-instruction-interpreter)
+      - [Parsing](#parsing)
+      - [Execution](#execution)
+    - [3.1.4 Input/Output Management](#314-inputoutput-management)
+      - [I/O Simulation](#io-simulation)
+    - [3.1.5 Testing and Validation](#315-testing-and-validation)
+      - [Unit Testing](#unit-testing)
+    - [3.1.6 Continuous Integration](#316-continuous-integration)
+    - [3.1.7 Documentation and Coding Standards](#317-documentation-and-coding-standards)
+      - [Comments and Documentation](#comments-and-documentation)
+      - [Adherence to Standards](#adherence-to-standards)
+    - [3.1.8 User Interface](#318-user-interface)
+      - [CLI or GUI](#cli-or-gui)
+    - [3.1.9 Scalability and Maintenance](#319-scalability-and-maintenance)
+      - [Scalable Design](#scalable-design)
+    - [3.1.10 Directory Structure](#3110-directory-structure)
+  - [3.2 Understand the Basics of Processor](#32-understand-the-basics-of-processor)
+  - [3.3 Define the Instruction Set](#33-define-the-instruction-set)
+  - [3.4 Design the Architecture](#34-design-the-architecture)
+  - [3.5 Programming the Virtual Processor](#35-programming-the-virtual-processor)
+    - [3.5.1 Choice of Programming Language](#351-choice-of-programming-language)
+    - [3.5.2 Implement Components](#352-implement-components)
+    - [3.5.3 Instruction Interpretation](#353-instruction-interpretation)
+  - [3.6 Simulate Memory and Input/Output](#36-simulate-memory-and-inputoutput)
+    - [3.6.1 Memory](#361-memory)
+    - [3.6.2 Input/Output](#362-inputoutput)
+  - [3.7 Testing and Debugging](#37-testing-and-debugging)
+  - [3.8 User Interface](#38-user-interface)
+  - [3.9 Documentation and Maintenance](#39-documentation-and-maintenance)
+- [4. Conclusion](#4-conclusion)
+  - [4.1 Thanks](#41-thanks)
 
 </details>
 
 # 1. Introduction
-
+## 1.1 Customer Request
 We are asked in the call of tender to create a virtual processor and an interpreter to run assembly code on this processor. This project must be carried out in the basic C code language, that is to say without the use of any external library apart from the standard C libraries. This project's recommendations are to use gcc as compiler and Visual Studio Code as IDE.
 
 First, we need to invent a minimal assembly language for our processor. Our set of instructions must contain at least the following instructions:
@@ -121,7 +117,9 @@ semantically valid and detect syntactic errors.In order to see that the assembly
 display text in a virtual terminal, accessible from assembly code. we also need to display
 the contents of the registers and have a built-in debugger.
 And finally we need to be able to write small assembly programs conceptually similar to unit tests to prove that everything works as expected.
-# Document Purpose & Definition
+
+## 1.2 Document Purpose & Definition
+
 The goal of the Technical Specifications is to take the Functional Requirements which defines the features, scope and goals of the project, to dissect each requirement and turn it into instructions, as clear as possible, to guide the development team as well as the quality assurance team in the successful completion of their mission.
 
 We therefore encourage thorough reading of the [Functional Specifications](https://github.com/algosup/2023-2024-project-3-virtual-processor-team-5/blob/main/Specifications/functionalSpecification.md) before further reading.
@@ -132,7 +130,9 @@ In a sense, while the Functional Requirements represent the "What/Why" aspect of
 With that being said, we will try to cover as many functional and non-functional aspects of the project while making technological and architectural decisions, evaluating those decisions, measuring their associated risks and impact (providing mitigation) and compare those to other potential solutions.
 
 The document should also benefit other stakeholders and project owners by giving insight into our methodology and may serve as a future reference for maintenance or simple documentation purposes.
-# Glossary
+
+## 1.3 Glossary
+
 ### ASSEMBLY:
 An assembler is a low-level programming language designed specifically for specific computer architectures, usually tied to a particular processor. It lies between machine language (direct binary representation of processor instructions) and more programmer-friendly high-level languages(a high-level programming language is designed to be more easily understood by humans, providing greater abstraction and usability compared to low-level languages ​​such as assembly or machine language.).
 
@@ -151,7 +151,7 @@ A compiler is software that translates source code written in a high-level progr
 ### DEBUGGER:
 A debugger is a software tool used by programmers to detect, analyze, and correct errors in a program's source code. It allows you to follow program execution step by step, inspect variable values, identify logic errors, and pause execution to examine the execution context at specific points. Debuggers provide features such as breakpoints, watches to monitor variables, execution tracers, and the ability to run the program step by step to facilitate the debugging process and improve the reliability of the code.
 
-### Logical operation (OR,XOR,AND,NOT):
+### Logical Operation (OR, XOR, AND, NOT):
 Logical operations (OR, XOR, AND, NOT) are fundamental operations in the field of binary logic used in computer science. Here are brief definitions for each of these operations:
 
 OR (OR): The OR logical operation returns true (1) if at least one of the operands is true (1). Otherwise, it returns false (0).
@@ -162,12 +162,12 @@ AND: The logical AND operation returns true (1) only if both operands are true (
 
 NOT: The NOT logic operation inverts the logic value of its operand. If the operand is true (1), NOT will return false (0), and vice versa.
 
-These operations are commonly used in binary data manipulation at the hardware level and in logical expressions in programming. They are essential for logical calculations and flow control in computer systems.X
+These operations are commonly used in binary data manipulation at the hardware level and in logical expressions in programming. They are essential for logical calculations and flow control in computer systems.
 
 ### IDE:
 An integrated development environment (IDE) is software that brings together several tools intended to facilitate software development. It typically offers a text editor for writing source code, a compiler or interpreter for turning the code into an executable, a debugger for detecting and correcting errors, and other features such as versioning, tools user interface design, performance analyzers, etc. IDEs are designed to improve the efficiency of programmers by providing an integrated environment that simplifies tasks related to software development. Examples of popular IDEs include Eclipse, Visual Studio, IntelliJ IDEA, and PyCharm.
 
-### C laguage:
+### C Language:
 The C programming language is a high-level, procedural, imperative language originally developed by Dennis Ritchie in the early 1970s at Bell Labs. It played a fundamental role in the development of many operating systems and inspired many other programming languages.
 
 The C language offers direct control over memory and system resources, making it a preferred choice for system and low-level development. It uses a simple and compact syntax, with a modular programming approach, encouraging code reuse. C is also used for developing desktop applications, embedded systems, and is the basis of languages ​​such as C++ and Objective-C.
@@ -180,143 +180,159 @@ Efficiency: The C language allows direct access to memory, providing significant
 Modularity: Modular programming is encouraged through functions and libraries, making code reuse easy.
 The C language is still widely used in software development, and many critical systems and applications depend on it. 
 
-# Project Overview
+## 1.4 Project Overview
 
-## Project Brief
+### 1.4.1 Project Brief
+...
 
+### 1.4.2 Requirements
+...
 
-## Requirements
+#### Setting up the Development Environment
 
-## Setting up the Development Environment
+##### Hardware Requirements
+...
 
-### Hardware Requirements
+##### Software Requirements
+...
 
-### Software Requirements
+#### Coding Methodology
+...
 
-### Coding Methodology
+##### Workflow
+...
 
-#### ➭ <ins>Workflow</ins>
+##### Coding Conventions
+...
 
-#### ➭ <ins>Coding Conventions</ins>
+##### Documenting Conventions
+...
 
-#### ➭ <ins>Commenting Conventions</ins>
+##### Test Procedure
+...
 
-#### ➭ <ins>Test Procedure</ins>
+#### Setting up the Virtual Processor
 
-## Setting up the Virtual Processor
+##### Hardware Requirements
+...
 
-### Hardware Requirements
+##### Software Requirements
+...
 
-### Software Requirements
-
-## Assumptions & Constraints
+### 1.4.3 Assumptions & Constraints
+...
 
 # 2. Technical Specifications
 
-## Folder Structure
+## 2.1 Folder Structure
+...
 
-## Data Structures
+## 2.2 Data Structures
+...
 
-## Security
+## 2.3 Security
+...
 
-# How to make it
+# 3. How to Make It
 
-## Architecture
+## 3.1 Architecture
 
-### Modularity
+### 3.1.1 Modularity
 
 #### Module Breakdown
+...
 
 #### Header Files
+...
 
-### Abstraction
+### 3.1.2 Abstraction
 
 #### Memory Management
+...
 
 #### Registers
+...
 
-### Instruction Interpreter
+### 3.1.3 Instruction Interpreter
 
 #### Parsing
+...
 
 #### Execution
+...
 
-### Input/Output Management
+### 3.1.4 Input/Output Management
 
 #### I/O Simulation
+...
 
-### Testing and Validation
+### 3.1.5 Testing and Validation
 
 #### Unit Testing
+...
 
-### Continuous Integration
+### 3.1.6 Continuous Integration
+...
 
-### Documentation and Coding Standards
+### 3.1.7 Documentation and Coding Standards
 
 #### Comments and Documentation
+...
 
 #### Adherence to Standards
+...
 
-### User Interface
+### 3.1.8 User Interface
 
 #### CLI or GUI
+...
 
-### Scalability and Maintenance
+### 3.1.9 Scalability and Maintenance
 
 #### Scalable Design
+...
 
-### Directory Structure
-```
-virtual_processor/
-|-- src/
-|   |-- main.c              // Main entry point
-|   |-- interpreter.c       // Interpreter implementation
-|   |-- processor.c         // Virtual processor implementation
-|   |-- instructions.c      // Instruction set and execution functions
-|   |-- utils.c             // Utility functions
-|
-|-- include/
-|   |-- interpreter.h       // Header file for the interpreter
-|   |-- processor.h         // Header file for the virtual processor
-|   |-- instructions.h      // Header file for instructions
-|   |-- utils.h             // Header file for utility functions
-|
-|-- Makefile               // Makefile for building the project
-|-- README.md              // Project documentation
-|-- programs/              // Example programs for testing
-|   |-- add_program.c      // Example program with ADD instruction
-|   |-- halt_program.c     // Example program with HALT instruction
-|
-|-- build/                 // Directory to store compiled binaries
-|-- bin/                   // Directory to store the final executable
-```
+### 3.1.10 Directory Structure
+...
 
-## Understand the Basic of Processor
+## 3.2 Understand the Basics of Processor
+...
 
-## Define the Instruction Set
+## 3.3 Define the Instruction Set
+...
 
-## Design the Architecture
+## 3.4 Design the Architecture
+...
 
-## Programming the Virtual Processor
+## 3.5 Programming the Virtual Processor
 
-### Choice of Programming Language
+### 3.5.1 Choice of Programming Language
+...
 
-### Implement Components
+### 3.5.2 Implement Components
+...
 
-### Instruction Interpretation
+### 3.5.3 Instruction Interpretation
+...
 
-## Simulate Memory and Input/Output
+## 3.6 Simulate Memory and Input/Output
 
-### Memory
+### 3.6.1 Memory
+...
 
-### Input/Output
+### 3.6.2 Input/Output
+...
 
-## Testing and Debugging
+## 3.7 Testing and Debugging
+...
 
-## User Interface
+## 3.8 User Interface
+...
 
-## Documentation and Maintenance
+## 3.9 Documentation and Maintenance
+...
 
-# 3. Conclusion
+# 4. Conclusion
 
-## Thanks
+## 4.1 Thanks
+...
