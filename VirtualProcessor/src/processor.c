@@ -5,12 +5,11 @@ int executeADD(uint16_t operand1, uint16_t operand2);
 int executeSUB(uint16_t operand1, uint16_t operand2);
 int executeMUL(uint16_t operand1, uint16_t operand2);
 int executeDIV(uint16_t operand1, uint16_t operand2);
-void executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
+bool executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
 void executeST(ProcessorState *state, int registerIndex, int result);
 void executeLD(ProcessorState *state, Register *destination, int registerIndex);
 void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex);
-int readLabel(Label *labels, int numLabels, const char *labelName);
-void jumpToLabel(Label *labels, int numLabels, const char *labelName, int *instructionPointer);
+void jumpToLabel(Label *labels, int numLabels, const char *labelName, FILE *file);
 uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);
 void read_file(char *filename, char *file_directory);
@@ -23,7 +22,8 @@ int main() {
     char input[100];
     printf("Simple Terminal\n");
 
-    read_file("code.txt", "C:\\Users\\LucasMEGNAN\\Desktop\\Project VS code\\Project 3\\2023-2024-project-3-virtual-processor-team-5\\code.txt");
+    //read_file("code.txt", "code.txt");
+    read_file("loop.txt", "loop.txt");
 
     while (1) {
         printf("> ");

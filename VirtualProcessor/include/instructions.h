@@ -1,6 +1,4 @@
-
 uint16_t lastResult = 0; 
-#define MAX_LABELS 100
 
 //****************************** ALGORITHMIC OPERATIONS ******************************//
 //*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
@@ -41,17 +39,22 @@ int executeDIV(uint16_t operand1, uint16_t operand2) {
 //****************************** LOGICAL OPERATIONS ******************************//
 //*********************** IMPLEMENT AND, OR, XOR, NOT, CMP ***********************//
 
-void executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
+bool executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
         if (state->R[registerIndex1].value == state->R[registerIndex2].value) {
+
             printf("Values in register R%d and R%d are equal.\n", registerIndex1, registerIndex2);
+            return true;
         } else if (state->R[registerIndex1].value > state->R[registerIndex2].value) {
             printf("Value in register R%d is greater than value in register R%d.\n", registerIndex1, registerIndex2);
+            return false;
         } else {
             printf("Value in register R%d is less than value in register R%d.\n", registerIndex1, registerIndex2);
+            return false;
         }
     } else {
         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+        return false;
     }
 }
 
@@ -59,9 +62,13 @@ void executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
 
 void executeST(ProcessorState *state, int registerIndex, int result) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
-        state->R[registerIndex].value = result; // Use result instead of lastResult
-        update_flags(state);
-        printf("Stored result %d in register R%d\n", result, registerIndex);
+        if (state->R[registerIndex].value != 0) {
+            state->R[registerIndex].value = state->R[registerIndex].value + result; // add result to lastResult
+        } else {
+            state->R[registerIndex].value = result; // Use result instead of lastResult
+            update_flags(state);
+            printf("Stored result %d in register R%d\n", result, registerIndex);
+        }
     } else {
         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
     }
@@ -95,31 +102,24 @@ void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIn
 //****************************** CONTROL FLOW ******************************//
 
 typedef struct {
-    char name[10];  // The name of the label
-    int instructionIndex;  // The index of the instruction the label refers to
+    char name[10];
+    int instructionIndex;
+    uint16_t address;
+    int lineNumber;
+    long filePosition; // Remember the file position of each label
 } Label;
 
-int readLabel(Label *labels, int numLabels, const char *labelName) {
-    for (int i = 0; i < numLabels; i++) {
-        if (strcmp(labels[i].name, labelName) == 0) {
-            return labels[i].instructionIndex;
-        }
-    }
-    // If the label is not found, return an invalid value
-    return -1;
-}
-
-void jumpToLabel(Label *labels, int numLabels, const char *labelName, int *instructionPointer) {
+// Function to jump to a label
+void jumpToLabel(Label *labels, int numLabels, const char *labelName, FILE *file) {
     int labelFound = 0;
     for (int i = 0; i < numLabels; i++) {
         if (strcmp(labels[i].name, labelName) == 0) {
-            *instructionPointer = labels[i].instructionIndex;
+            fseek(file, labels[i].filePosition, SEEK_SET);  // Move the file pointer to the position of the label
             labelFound = 1;
-            break;
         }
     }
-    // If the label is not found, set the instruction pointer to an invalid value
+    // If the label is not found, print an error message
     if (!labelFound) {
-        *instructionPointer = -1;
+        printf("lebel not found: %s\n", labelName);  // Print the label name that was not found
     }
 }
