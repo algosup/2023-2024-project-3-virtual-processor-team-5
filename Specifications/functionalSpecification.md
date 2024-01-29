@@ -3,12 +3,12 @@
 [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px" align=right>](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/)
 [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20" align="right">](https://github.com/RemyCHARLES)
 
-|              |              |
-| ------------ | :----------: |
-| Author       | Rémy CHARLES |
-| Reviewers    |              |
-| Created on   |  2024-01-12  |
-| Last updated |  2024-01-23  |
+|**Author**|Rémy CHARLES|
+|:---|:---|
+|**Version**|**1.1**|
+|**Project**|**Virtual Processor**|
+|**Created on**|**2024-01-12**|
+|**Last updated**|**2024-01-23**|
 
 ## Table of contents
 
@@ -54,9 +54,9 @@
 
 ## 1. Introduction
 
-The purpose of this document is to provide a comprehensive functional specification for Team 5's Virtual Processor Project. This project involves the creation of a virtual processor designed to execute assembly code. The processor must to be developed in the C programming language, adhering to principles of portability and efficiency. This document outlines the essential elements and specifications of the project, including the development environment, assembly language design, and implementation details.
+The purpose of this document is to provide a comprehensive functional specification for **Team 5's Virtual Processor Project**. This project involves the creation of a **virtual processor** designed to execute **assembly code**. The processor must to be developed in the **C programming language**, adhering to principles of portability and efficiency. This document outlines the essential elements and specifications of the project, including the development environment, assembly language design, and implementation details.
 
-The virtual processor aims to offer a simplified yet functional platform for understanding and executing basic assembly instructions. It serves as an educational tool, facilitating the learning of low-level programming concepts. The processor will be equipped to handle a custom assembly language, which will be fully detailed in this specification. The project will emphasize the importance of efficient programming practices and the intricacies of processor design and operation.
+The virtual processor aims to offer a simplified yet functional platform for understanding and executing basic assembly instructions. It serves as an educational tool, facilitating the learning of low-level programming concepts. The processor will be equipped to handle a **custom** assembly language, which will be fully detailed in this specification. The project will emphasize the importance of efficient programming practices and the intricacies of processor design and operation.
 
 This specification serves as a guideline for developers and contributors to understand the project's goals, requirements, and design philosophy. It will ensure that all aspects of the project align with the outlined objectives and standards.
 
@@ -66,7 +66,7 @@ This specification serves as a guideline for developers and contributors to unde
 
 ## 2. Development Environment
 
-The development of the Virtual Processor will be conducted in a specific programming and toolset environment to ensure consistency, compatibility, and performance. The key components of this environment are:
+The development of the Virtual Processor will be conducted in a specific programming and toolset environment to ensure **consistency**, **compatibility**, and **performance**. The key components of this environment are:
 
 - **Programming Language**: The entire project is to be developed in standard C language. This choice is made to leverage the portability and efficiency of C, making the virtual processor adaptable to various platforms.
 
@@ -123,7 +123,7 @@ This section outlines the standards the virtual processor must adhere to that do
 
 ## 6. Assembly Language Specification
 
-The virtual processor will be equipped to handle a custom assembly language. This language will be designed to be simple and intuitive, allowing for easy comprehension and execution. The language will be fully detailed in this section, including instructions, operations, and syntax.
+The virtual processor will be equipped to handle a custom assembly language. This language will be designed to be **simple** and **intuitive**, allowing for easy comprehension and execution. The language will be fully detailed in this section, including **instructions**, **operations**, and **syntax**.
 
 ### 6.1. Instructions
 
@@ -269,7 +269,7 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 ### 6.2. Operations
 
-The operations of the assembly language define how each instruction manipulates data and controls the flow of the program. This section will detail the operational characteristics of the assembly language, which are critical for the Virtual Processor’s functionality:
+The operations of the assembly language define how each instruction manipulates data and controls the flow of the program. This section will detail the **operational characteristics** of the assembly language, which are critical for the Virtual Processor’s functionality:
 
 - **Register Operations**: Detailed explanations of how instructions interact with registers, including register loading, storing, and manipulation. Registers' name: 
     - ``R0`` - ``R7``: General-purpose registers
@@ -291,7 +291,7 @@ The operations of the assembly language define how each instruction manipulates 
 
 ## 7. C Program Development
 
-The C program is essential for the Virtual Processor, acting as the interface for interpreting and executing the assembly language. This section details its intricate design and comprehensive implementation.
+The C program is essential for the Virtual Processor, acting as the **interface** for **interpreting** and **executing** the **assembly language**. This section details its intricate design and comprehensive implementation.
 
 ### 7.1. Program Structure
 - **Overview:** This part describes the overarching structure of the C program, emphasizing modularity and efficient processing.
@@ -401,9 +401,9 @@ Enhancing the Virtual Processor's capabilities through these system calls ensure
 
 ## 9. Conclusion
 
-Throughout this functional specification document, we have delineated a comprehensive framework for the construction of Team 5's Virtual Processor. From the foundational development environment, through the meticulous assembly language specifications, to the nuanced virtual system call implementation, each section has been carefully crafted to serve as a beacon guiding the development journey. The document has established a clear set of functional, usability, and non-functional requirements that are pivotal to the creation of a virtual processor that is not only a robust educational platform but also an embodiment of technical excellence.
+Throughout this functional specification document, we have delineated a comprehensive framework for the construction of **Team 5's Virtual Processor**. From the foundational development environment, through the meticulous assembly language specifications, to the nuanced virtual system call implementation, each section has been carefully crafted to serve as a beacon guiding the development journey. The document has established a clear set of **functional**, **usability**, and **non-functional requirements** that are pivotal to the creation of a virtual processor that is not only a robust educational platform but also an embodiment of technical excellence.
 
-In the pursuit of these objectives, the document emphasizes the importance of a collaborative development environment, leveraging standardized tools and practices to ensure consistency and quality in the project's outcomes. The processor's custom assembly language has been designed with an educational focus, ensuring that learning the fundamental concepts of low-level programming is both accessible and engaging. Moreover, the detailed C program development guidelines underscore the importance of a methodical approach to software construction, one that fosters maintainability and scalability.
+In the pursuit of these objectives, the document emphasizes the importance of a collaborative development environment, leveraging standardized tools and practices to ensure consistency and quality in the project's outcomes. The processor's custom assembly language has been designed with an educational focus, ensuring that learning the fundamental concepts of low-level programming is both accessible and engaging. Moreover, the detailed C program development guidelines underscore the importance of a methodical approach to software construction, one that fosters **maintainability** and **scalability**.
 
 The virtual system call implementation stands out as a feature that bridges the gap between the theoretical aspects of assembly language and practical software application, offering a suite of capabilities that will encourage innovation and exploration among its users.
 
