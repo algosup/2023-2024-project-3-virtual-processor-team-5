@@ -21,7 +21,7 @@
   - [1. Introduction](#1-introduction)
   - [2. Development Environment](#2-development-environment)
   - [3. Functional Requirements](#3-functional-requirements)
-  - [4. Uability Requirements](#4-uability-requirements)
+  - [4. Usability Requirements](#4-usability-requirements)
   - [5. Non-Functional Requirements](#5-non-functional-requirements)
   - [6. Assembly Language Specification](#6-assembly-language-specification)
     - [6.1. Instructions](#61-instructions)
@@ -98,7 +98,7 @@ This section defines the capabilities that the virtual processor must possess:
 | **FR4** | **Program Loading**           | The system should allow loading and execution of assembly programs from an external source.                |
 | **FR5** | **Debugging Support**         | The system must provide debugging capabilities for the assembly code being executed.                       |
 
-## 4. Uability Requirements
+## 4. Usability Requirements
 
 This section outlines the expectations for how the system will interact with its users:
 | *ID*    | *Requirement*      | *Description*                                                                                                                 |
@@ -131,33 +131,71 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 - **Data Movement Instructions**: These will include instructions for loading and storing data, moving data between registers, and handling immediate values. 
 
-    - **``ST`` (Move Data)**
+    - **``MOV`` (Move Data)**
       - Source Operand --> Destination Operand
       - Operation: Copy data from source to destination.
+  
+    ```assembly 
+    ; Example: Moving data from R1 to R2
+    MOV R1, #10   ; Load immediate value 10 into R1
+    MOV R1, R2     ; Move data from R1 to R2
+    ```
 
     - **``LDR`` (Load from Memory)**
       - Memory Location (Address) --> Register
       - Operation: Load data from memory into the register.
 
+    ```assembly
+    ; Example: Loading data from memory into R1
+    LDR R1, [0x1000]   ; Load data from memory address 0x1000 into R1
+    ```
+
     - **``STR`` (Store to Memory)**
       - Register --> Memory Location (Address)
       - Operation: Store data from register into memory.
+
+    ```assembly
+    ; Example: Storing data from R1 into memory
+    MOV R1, #5         ; Load immediate value 5 into R1
+    STR R1, [0x1000]   ; Store data from R1 into memory address 0x1000
+    ```
 
     - **``PUSH`` (Push onto Stack)**
       - Register --> Stack
       - Operation: Push data from register onto the stack.
 
+    ```assembly
+    ; Example: Pushing a register's content onto the stack
+    MOV R1, #8    ; Load immediate value 8 into R1
+    PUSH R1       ; Push the contents of R1 onto the stack
+    ```
+
     - **``POP`` (Pop from Stack)**
       - Stack --> Register
       - Operation: Pop data from stack into the register.
+
+    ```assembly
+    ; Example: Popping the top of the stack into a register
+    POP R2        ; Pop the top of the stack into R2
+    ```
 
     - **``LEA`` (Load Effective Address)**
       - Memory Location (Address) --> Register
       - Operation: Load the address into the register.
 
+    ```assembly
+    ; Example: Loading an address into a register
+    LEA R3, [0x2000]   ; Load the address 0x2000 into R3
+    ```
+
     - **``LDI`` (Load Immediate)**
       - Immediate Value --> Register
       - Operation: Load immediate value into the register.
+
+    ```assembly
+    ; Example: Loading an immediate value into a register
+    LDI R4, #15    ; Load immediate value 15 into R4
+    ```
 
 
 - **Arithmetic Operations**: Basic arithmetic instructions such as addition, subtraction, multiplication, and division will be implemented.
@@ -166,6 +204,13 @@ The assembly language designed for the Virtual Processor will include a set of f
      To perform subtraction, you can use a combination of the following two instructions:
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand.
+
+    ```assembly
+    ; Example: Adding two register values
+    MOV R1, #10       ; Load immediate value 10 into R1
+    MOV R2, #20       ; Load immediate value 20 into R2
+    ADD R3, R1, R2    ; R3 = R1 + R2 (30)
+    ```
 
    - **``SUB`` (Subtraction)**
        To perform subtraction, you can use a combination of the following two instructions:
@@ -176,6 +221,13 @@ The assembly language designed for the Virtual Processor will include a set of f
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes subtraction by adding the bitwise NOT of the second operand.
 
+    ```assembly
+    ; Example: Subtracting one register from another
+    MOV R1, #30       ; Load immediate value 30 into R1
+    MOV R2, #20       ; Load immediate value 20 into R2
+    SUB R3, R1, R2    ; R3 = R1 - R2 (10)
+    ```
+
    - **``MULT`` (Multiplication)**
   To perform multiplication, you can use a combination of the following two instructions:
       - **``AND`` (Bitwise AND)**
@@ -184,6 +236,14 @@ The assembly language designed for the Virtual Processor will include a set of f
       - **``ADD`` (Addition)**
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes multiplication by repeatedly adding Source Operand 1 to itself (Source Operand 2 times).
+
+    ```assembly
+    ; Example: Multiplying two register values
+    MOV R1, #4        ; Load immediate value 4 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    MULT R3, R1, R2   ; R3 = R1 * R2 (20)
+    ```
+
 
    - **``DIV`` (Division)**
   To perform division in LC3, you can use a combination of the following two instructions:
@@ -194,6 +254,13 @@ The assembly language designed for the Virtual Processor will include a set of f
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes division by repeatedly subtracting Source Operand 2 from Source Operand 1 and counting the number of subtractions.
 
+    ```assembly
+    ; Example: Dividing one register by another
+    MOV R1, #20       ; Load immediate value 20 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    DIV R3, R1, R2    ; R3 = R1 / R2 (4)
+    ```
+
 
 - **Logical Operations**: Instructions for logical operations like AND, OR, XOR, and NOT are included.
   
@@ -201,17 +268,44 @@ The assembly language designed for the Virtual Processor will include a set of f
       - Source Operand 1 AND Source Operand 2 --> Destination Operand
       - Operation: Perform logical AND.
 
+    ```assembly
+    ; Example: AND operation between two registers
+    MOV R1, #12       ; Load immediate value 12 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    AND R3, R1, R2    ; R3 = R1 AND R2 (4)
+    ```
+
     - **``OR`` (Logical OR)**
       - Source Operand 1 OR Source Operand 2 --> Destination Operand
       - Operation: Perform logical OR.
+
+    ```assembly
+    ; Example: OR operation between two registers
+    MOV R1, #12       ; Load immediate value 12 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    OR R3, R1, R2     ; R3 = R1 OR R2 (13)
+    ```
 
     - **``XOR`` (Logical XOR)**
       - Source Operand 1 XOR Source Operand 2 --> Destination Operand
       - Operation: Perform logical XOR.
 
+    ```assembly
+    ; Example: XOR operation between two registers
+    MOV R1, #12       ; Load immediate value 12 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    XOR R3, R1, R2    ; R3 = R1 XOR R2 (9)
+    ```
+
     - **``NOT`` (Logical NOT)**
       - NOT Source Operand --> Destination Operand
       - Operation: Perform logical NOT.
+
+    ```assembly
+    ; Example: NOT operation on a register
+    MOV R1, #12       ; Load immediate value 12 into R1
+    NOT R2, R1        ; R2 = NOT R1
+    ```
 
 - **Control Flow**: Instructions for branch, jump, and call operations will facilitate the control flow within the assembly programs. 
   
@@ -219,29 +313,68 @@ The assembly language designed for the Virtual Processor will include a set of f
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address.
 
+    ```assembly
+    ; Example: Unconditional jump to an address
+    JMP 0x3000       ; Jump to address 0x3000
+    ```
+
     - **``JZ`` (Jump if Zero)**
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address if the zero flag is set.
+
+    ```assembly
+    ; Example: Conditional jump if zero flag is set
+    CMP R1, R2       ; Compare R1 and R2
+    JZ 0x3000        ; Jump to 0x3000 if zero flag is set
+    ```
 
     - **``JNZ`` (Jump if Not Zero)**
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address if the zero flag is not set.
 
+    ```assembly
+    ; Example: Conditional jump if zero flag is not set
+    CMP R1, R2       ; Compare R1 and R2
+    JNZ 0x3000       ; Jump to 0x3000 if zero flag is not set
+    ```
+
     - **``JE`` (Jump if Equal)**
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address if the equal flag is set.
+
+    ```assembly
+    ; Example: Conditional jump if equal flag is set
+    CMP R1, R2       ; Compare R1 and R2
+    JE 0x3000        ; Jump to 0x3000 if equal flag is set
+    ```
 
     - **``JNE`` (Jump if Not Equal)**
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address if the equal flag is not set.
 
+    ```assembly
+    ; Example: Conditional jump if equal flag is not set
+    CMP R1, R2       ; Compare R1 and R2
+    JNE 0x3000       ; Jump to 0x3000 if equal flag is not set
+    ```
+
     - **``CALL`` (Call Subroutine)**
       - Destination Operand --> Program Counter
       - Operation: Call the subroutine at the specified address.
 
+    ```assembly
+    ; Example: Calling a subroutine
+    CALL 0x4000      ; Call subroutine at 0x4000
+    ```
+
     - **``RET`` (Return from Subroutine)**
       - Stack --> Program Counter
       - Operation: Return from the subroutine.
+  
+    ```assembly
+    ; Example: Returning from a subroutine
+    RET              ; Return from subroutine
+    ```
 
 - **Special Instructions**: A set of special instructions for system calls, input/output operations, and other processor-specific tasks. 
   
@@ -249,21 +382,48 @@ The assembly language designed for the Virtual Processor will include a set of f
       - System Call Number --> System Call Handler
       - Operation: Invoke the specified system call.
 
+    ```assembly
+    ; Example: Invoking a system call
+    MOV R1, #1       ; Load system call number into R1
+    SYSCALL R1       ; Perform system call #1
+    ```
+
     - **``IN`` (Input)**
       - Input Device --> Register
       - Operation: Read input from the specified device.
+
+    ```assembly
+    ; Example: Reading input from a device
+    IN R2, #2        ; Read input from device #2 into R2
+    ```
 
     - **``OUT`` (Output)**
       - Register --> Output Device
       - Operation: Write output to the specified device.
 
+    ```assembly
+    ; Example: Writing output to a device
+    MOV R3, #123     ; Load data into R3
+    OUT R3, #3       ; Write output from R3 to device #3
+    ```
+
     - **``NOP`` (No Operation)**
       - No Operation
       - Operation: Do nothing.
 
+    ```assembly
+    ; Example: Executing a no operation
+    NOP              ; Do nothing
+    ```
+
     - **``HALT`` (Halt)**
       - Halt
       - Operation: Halt the processor. 
+
+    ```assembly
+    ; Example: Halting the processor
+    HALT             ; Halt the processor
+    ```
 
 *Each instruction will be described in detail, including its syntax, operation, and usage examples. This will ensure a clear understanding of how to program using the Virtual Processor's assembly language.*
 
