@@ -2,20 +2,14 @@
 
 ## Team Members
 
+
 | Name              | Role              |
-
 |-------------------|-------------------|
-
 | Wilfried Portet   | Project Manager   |
-
 | Remy Charles      | Program manager   |
-
 | Mathis Lebel      | Tech Lead         |
-
 | Lucas Megnan      | Software engineer |
-
 | Gregrory Pagnoux  | Softaware engineer|
-
 | Atifa Amiri       | Quality Assurance |
 
 ## Table of content
