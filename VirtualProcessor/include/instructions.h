@@ -58,6 +58,46 @@ bool executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
     }
 }
 
+// AND instruction execution function
+void executeAND(ProcessorState *state, int registerIndex1, int registerIndex2) {
+    if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
+        state->R[registerIndex1].value = state->R[registerIndex1].value & state->R[registerIndex2].value;
+        printf("Result of AND: %hu\n", state->R[registerIndex1].value);
+    } else {
+        fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+    }
+}
+
+// XOR instruction execution function
+void executeXOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
+    if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
+        state->R[registerIndex1].value = state->R[registerIndex1].value ^ state->R[registerIndex2].value;
+        printf("Result of XOR: %hu\n", state->R[registerIndex1].value);
+    } else {
+        fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+    }
+}
+
+// NOT instruction execution function
+void executeNOT(ProcessorState *state, int registerIndex) {
+    if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
+        state->R[registerIndex].value = ~(state->R[registerIndex].value);
+        printf("Result of NOT: %hu\n", state->R[registerIndex].value);
+    } else {
+        fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+    }
+}
+
+// OR instruction execution function (use binary operators)
+void executeOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
+    if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
+        state->R[registerIndex1].value = state->R[registerIndex1].value | state->R[registerIndex2].value;
+        printf("Result of OR: %hu\n", state->R[registerIndex1].value);
+    } else {
+        fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
+    }
+}
+
 //****************************** DATA MOVEMENT ******************************//
 
 void executeST(ProcessorState *state, int registerIndex, int result) {

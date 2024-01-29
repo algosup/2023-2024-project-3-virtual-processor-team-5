@@ -1,9 +1,0 @@
-SUB 2,1
-ST 1,result
-loop:
-SUB 2,1
-ST 2,result
-CMP 1,2
-JMP loop
-LD 0,1
-LD 3,2

@@ -54,6 +54,8 @@ void read_file(char *filename, char *file_directory) {
 			if (sscanf(line, "%2s %d %d", operation, &operand1, &operand2) == 3){
 				if (strcmp(operation, "LD") == 0) {
 					executeLD(&cpu, &cpu.R[operand1], operand2);
+				} else if (strcmp(operation, "OR") == 0) {
+					executeOR(&cpu, operand1, operand2);
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
@@ -74,9 +76,25 @@ void read_file(char *filename, char *file_directory) {
 					result = executeDIV(operand1, operand2);
 	        	} else if (strcmp(operation, "CMP") == 0) {
 	            	resultCMP = executeCMP(&cpu, operand1, operand2);
-	        	} else {
+	        	} else if (strcmp(operation, "AND") == 0) {
+					executeAND(&cpu, operand1, operand2);
+				} else if (strcmp(operation, "XOR") == 0) {
+					executeXOR(&cpu, operand1, operand2);
+				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
+			} else if (sscanf(line, "%3s %d", operation, &operand1) == 2) {
+                if (strcmp(operation, "NOT") == 0) {
+                    executeNOT(&cpu, operand1);
+                } else {
+                    printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
+                }
+			} else if (sscanf(line, "%4s %d %d", operation, &operand1, &operand2) == 3) {
+				if (strcmp(operation, "COPY") == 0) {
+					executeCOPY(&cpu, operand1, operand2);
+				} else {
+					printf("\x1b[31mError: Your lines aren't well written.\x1b[0m\n");
+				}
 			} else if (sscanf(line, "%3s %4s", operation, labelName) == 2) {
 				if (strcmp(operation, "JMP") == 0) {
 					// Store the label and its position
@@ -87,6 +105,7 @@ void read_file(char *filename, char *file_directory) {
 								fseek(file, labels[i].filePosition, SEEK_SET);
                 			}
             			}
+			
 					} else if (!resultCMP) {
 						continue;
 					} else {
@@ -95,12 +114,6 @@ void read_file(char *filename, char *file_directory) {
 					}
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
-				}
-			} else if (sscanf(line, "%4s %d %d", operation, &operand1, &operand2) == 3) {
-				if (strcmp(operation, "COPY") == 0) {
-					executeCOPY(&cpu, operand1, operand2);
-				} else {
-					printf("\x1b[31mError: Your lines aren't well written.\x1b[0m\n");
 				}
 			}
 		}
