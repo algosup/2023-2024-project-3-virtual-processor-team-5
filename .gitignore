@@ -10,5 +10,3 @@
 # Ignore documentation configuration files
 /.doc/
 
-# Ignore documentation output files
-/output/

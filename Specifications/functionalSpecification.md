@@ -3,12 +3,16 @@
 [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px" align=right>](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/)
 [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20" align="right">](https://github.com/RemyCHARLES)
 
-|              |              |
-| ------------ | :----------: |
-| Author       | Rémy CHARLES |
-| Reviewers    |              |
-| Created on   |  2024-01-12  |
-| Last updated |  2024-01-23  |
+
+
+|**Author**|Rémy CHARLES|
+|:---|:---|
+|**Version**|**1.1**|
+|**Project**|**Virtual Processor**|
+|**Created on**|**2024-01-12**|
+|**Last updated**|**2024-01-23**|
+
+
 
 ## Table of contents
 
@@ -21,7 +25,7 @@
   - [1. Introduction](#1-introduction)
   - [2. Development Environment](#2-development-environment)
   - [3. Functional Requirements](#3-functional-requirements)
-  - [4. Uability Requirements](#4-uability-requirements)
+  - [4. Usability Requirements](#4-usability-requirements)
   - [5. Non-Functional Requirements](#5-non-functional-requirements)
   - [6. Assembly Language Specification](#6-assembly-language-specification)
     - [6.1. Instructions](#61-instructions)
@@ -54,9 +58,9 @@
 
 ## 1. Introduction
 
-The purpose of this document is to provide a comprehensive functional specification for Team 5's Virtual Processor Project. This project involves the creation of a virtual processor designed to execute assembly code. The processor must to be developed in the C programming language, adhering to principles of portability and efficiency. This document outlines the essential elements and specifications of the project, including the development environment, assembly language design, and implementation details.
+The purpose of this document is to provide a comprehensive functional specification for **Team 5's Virtual Processor Project**. This project involves the creation of a **virtual processor** designed to execute **assembly code**. The processor must to be developed in the **C programming language**, adhering to principles of portability and efficiency. This document outlines the essential elements and specifications of the project, including the development environment, assembly language design, and implementation details.
 
-The virtual processor aims to offer a simplified yet functional platform for understanding and executing basic assembly instructions. It serves as an educational tool, facilitating the learning of low-level programming concepts. The processor will be equipped to handle a custom assembly language, which will be fully detailed in this specification. The project will emphasize the importance of efficient programming practices and the intricacies of processor design and operation.
+The virtual processor aims to offer a simplified yet functional platform for understanding and executing basic assembly instructions. It serves as an educational tool, facilitating the learning of low-level programming concepts. The processor will be equipped to handle a **custom** assembly language, which will be fully detailed in this specification. The project will emphasize the importance of efficient programming practices and the intricacies of processor design and operation.
 
 This specification serves as a guideline for developers and contributors to understand the project's goals, requirements, and design philosophy. It will ensure that all aspects of the project align with the outlined objectives and standards.
 
@@ -66,7 +70,7 @@ This specification serves as a guideline for developers and contributors to unde
 
 ## 2. Development Environment
 
-The development of the Virtual Processor will be conducted in a specific programming and toolset environment to ensure consistency, compatibility, and performance. The key components of this environment are:
+The development of the Virtual Processor will be conducted in a specific programming and toolset environment to ensure **consistency**, **compatibility**, and **performance**. The key components of this environment are:
 
 - **Programming Language**: The entire project is to be developed in standard C language. This choice is made to leverage the portability and efficiency of C, making the virtual processor adaptable to various platforms.
 
@@ -90,6 +94,9 @@ This environment is chosen to balance functionality, ease of use, and accessibil
 ## 3. Functional Requirements
 
 This section defines the capabilities that the virtual processor must possess:
+
+<center>
+
 | *ID*    | *Requirement*                 | *Description*                                                                                              |
 | ------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | **FR1** | **Instruction Set Execution** | The system must execute the predefined instruction set accurately.                                         |
@@ -98,9 +105,14 @@ This section defines the capabilities that the virtual processor must possess:
 | **FR4** | **Program Loading**           | The system should allow loading and execution of assembly programs from an external source.                |
 | **FR5** | **Debugging Support**         | The system must provide debugging capabilities for the assembly code being executed.                       |
 
-## 4. Uability Requirements
+</center>
+
+## 4. Usability Requirements
 
 This section outlines the expectations for how the system will interact with its users:
+
+<center>
+
 | *ID*    | *Requirement*      | *Description*                                                                                                                 |
 | ------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
 | **UR1** | **Documentation**  | Comprehensive documentation must be provided, detailing system use and capabilities.                                          |
@@ -108,9 +120,14 @@ This section outlines the expectations for how the system will interact with its
 | **UR3** | **Learning Curve** | The system should be designed such that a new user can write and execute a simple program within a few hours of introduction. |
 | **UR4** | **Accessibility**  | Interface design must consider accessibility guidelines to be usable by people with a wide range of abilities.                |
 
+</center>
+
 ## 5. Non-Functional Requirements
 
 This section outlines the standards the virtual processor must adhere to that do not pertain directly to specific functionalities:
+
+<center>
+
 | *ID*     | *Requirement*       | *Description*                                                                                                  |
 | -------- | ------------------- | -------------------------------------------------------------------------------------------------------------- |
 | **NFR1** | **Performance**     | The system should execute instructions within the predefined time limits to ensure efficiency.                 |
@@ -120,10 +137,13 @@ This section outlines the standards the virtual processor must adhere to that do
 | **NFR5** | **Portability**     | The system must be able to run in different environments without requiring changes.                            |
 | **NFR6** | **Compliance**      | The system must comply with all relevant legal and regulatory requirements.                                    |
 
+</center>
 
 ## 6. Assembly Language Specification
 
-The virtual processor will be equipped to handle a custom assembly language. This language will be designed to be simple and intuitive, allowing for easy comprehension and execution. The language will be fully detailed in this section, including instructions, operations, and syntax.
+The virtual processor will be equipped to handle a custom assembly language. This language will be designed to be **simple** and **intuitive**, allowing for easy comprehension and execution. The language will be fully detailed in this section, including **instructions**, **operations**, and **syntax**.
+
+🔥 You can find a detailed description of the assembly language in the [Assembly Language Specification](../Documentation/AssemblyLanguageSpecification.md)
 
 ### 6.1. Instructions
 
@@ -131,34 +151,98 @@ The assembly language designed for the Virtual Processor will include a set of f
 
 - **Data Movement Instructions**: These will include instructions for loading and storing data, moving data between registers, and handling immediate values. 
 
-    - **``ST`` (Move Data)**
+    - **``MOV`` (Move Data)**
       - Source Operand --> Destination Operand
       - Operation: Copy data from source to destination.
+  
+  <br>
+  
+    ```assembly 
+    ; Example: Moving data from R1 to R2
+    MOV R1, #10   ; Load immediate value 10 into R1
+    MOV R1, R2     ; Move data from R1 to R2
+    ```
+
+  <br>
 
     - **``LDR`` (Load from Memory)**
       - Memory Location (Address) --> Register
       - Operation: Load data from memory into the register.
 
+  <br>
+
+    ```assembly
+    ; Example: Loading data from memory into R1
+    LDR R1, [0x1000]   ; Load data from memory address 0x1000 into R1
+    ```
+  
+  <br>
+
     - **``STR`` (Store to Memory)**
       - Register --> Memory Location (Address)
       - Operation: Store data from register into memory.
+
+  <br>
+
+    ```assembly
+    ; Example: Storing data from R1 into memory
+    MOV R1, #5         ; Load immediate value 5 into R1
+    STR R1, [0x1000]   ; Store data from R1 into memory address 0x1000
+    ```
+
+  <br>
 
     - **``PUSH`` (Push onto Stack)**
       - Register --> Stack
       - Operation: Push data from register onto the stack.
 
+  <br>
+
+    ```assembly
+    ; Example: Pushing a register's content onto the stack
+    MOV R1, #8    ; Load immediate value 8 into R1
+    PUSH R1       ; Push the contents of R1 onto the stack
+    ```
+  
+  <br>
+
     - **``POP`` (Pop from Stack)**
       - Stack --> Register
       - Operation: Pop data from stack into the register.
+
+  <br>
+
+    ```assembly
+    ; Example: Popping the top of the stack into a register
+    POP R2        ; Pop the top of the stack into R2
+    ```
+  <br>
 
     - **``LEA`` (Load Effective Address)**
       - Memory Location (Address) --> Register
       - Operation: Load the address into the register.
 
+  <br>
+
+    ```assembly
+    ; Example: Loading an address into a register
+    LEA R3, [0x2000]   ; Load the address 0x2000 into R3
+    ```
+
+  <br>
+
     - **``LDI`` (Load Immediate)**
       - Immediate Value --> Register
       - Operation: Load immediate value into the register.
 
+  <br>
+
+    ```assembly
+    ; Example: Loading an immediate value into a register
+    LDI R4, #15    ; Load immediate value 15 into R4
+    ```
+  
+  <br>
 
 - **Arithmetic Operations**: Basic arithmetic instructions such as addition, subtraction, multiplication, and division will be implemented.
   
@@ -166,6 +250,17 @@ The assembly language designed for the Virtual Processor will include a set of f
      To perform subtraction, you can use a combination of the following two instructions:
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand.
+  
+  <br>
+
+    ```assembly
+    ; Example: Adding two register values
+    MOV R1, #10       ; Load immediate value 10 into R1
+    MOV R2, #20       ; Load immediate value 20 into R2
+    ADD R3, R1, R2    ; R3 = R1 + R2 (30)
+    ```
+  
+  <br>
 
    - **``SUB`` (Subtraction)**
        To perform subtraction, you can use a combination of the following two instructions:
@@ -176,6 +271,17 @@ The assembly language designed for the Virtual Processor will include a set of f
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes subtraction by adding the bitwise NOT of the second operand.
 
+  <br>
+
+    ```assembly
+    ; Example: Subtracting one register from another
+    MOV R1, #30       ; Load immediate value 30 into R1
+    MOV R2, #20       ; Load immediate value 20 into R2
+    SUB R3, R1, R2    ; R3 = R1 - R2 (10)
+    ```
+
+  <br>
+
    - **``MULT`` (Multiplication)**
   To perform multiplication, you can use a combination of the following two instructions:
       - **``AND`` (Bitwise AND)**
@@ -184,6 +290,17 @@ The assembly language designed for the Virtual Processor will include a set of f
       - **``ADD`` (Addition)**
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes multiplication by repeatedly adding Source Operand 1 to itself (Source Operand 2 times).
+
+  <br>
+
+    ```assembly
+    ; Example: Multiplying two register values
+    MOV R1, #4        ; Load immediate value 4 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    MULT R3, R1, R2   ; R3 = R1 * R2 (20)
+    ```
+
+  <br>
 
    - **``DIV`` (Division)**
   To perform division in LC3, you can use a combination of the following two instructions:
@@ -194,6 +311,16 @@ The assembly language designed for the Virtual Processor will include a set of f
         - Source Operand 1 + Source Operand 2 --> Destination Operand
         - Operation: Add values from Source Operand 1 and Source Operand 2, and store the result in the Destination Operand. This effectively accomplishes division by repeatedly subtracting Source Operand 2 from Source Operand 1 and counting the number of subtractions.
 
+  <br>
+
+    ```assembly
+    ; Example: Dividing one register by another
+    MOV R1, #20       ; Load immediate value 20 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    DIV R3, R1, R2    ; R3 = R1 / R2 (4)
+    ```
+
+  <br>
 
 - **Logical Operations**: Instructions for logical operations like AND, OR, XOR, and NOT are included.
   
@@ -201,17 +328,60 @@ The assembly language designed for the Virtual Processor will include a set of f
       - Source Operand 1 AND Source Operand 2 --> Destination Operand
       - Operation: Perform logical AND.
 
+  <br>
+
+    ```assembly
+    ; Example: AND operation between two registers
+    MOV R1, #12       ; Load immediate value 12 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    AND R3, R1, R2    ; R3 = R1 AND R2 (4)
+    ```
+
+  <br>
+
     - **``OR`` (Logical OR)**
       - Source Operand 1 OR Source Operand 2 --> Destination Operand
       - Operation: Perform logical OR.
+
+  <br>
+
+    ```assembly
+    ; Example: OR operation between two registers
+    MOV R1, #12       ; Load immediate value 12 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    OR R3, R1, R2     ; R3 = R1 OR R2 (13)
+    ```
+
+  <br>
 
     - **``XOR`` (Logical XOR)**
       - Source Operand 1 XOR Source Operand 2 --> Destination Operand
       - Operation: Perform logical XOR.
 
+  <br>
+
+    ```assembly
+    ; Example: XOR operation between two registers
+    MOV R1, #12       ; Load immediate value 12 into R1
+    MOV R2, #5        ; Load immediate value 5 into R2
+    XOR R3, R1, R2    ; R3 = R1 XOR R2 (9)
+    ```
+
+  <br>
+
     - **``NOT`` (Logical NOT)**
       - NOT Source Operand --> Destination Operand
       - Operation: Perform logical NOT.
+
+  <br>
+
+    ```assembly
+    ; Example: NOT operation on a register
+    MOV R1, #12       ; Load immediate value 12 into R1
+    NOT R2, R1        ; R2 = NOT R1
+    ```
+  
+  <br>
 
 - **Control Flow**: Instructions for branch, jump, and call operations will facilitate the control flow within the assembly programs. 
   
@@ -219,29 +389,96 @@ The assembly language designed for the Virtual Processor will include a set of f
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address.
 
+  <br>
+
+    ```assembly
+    ; Example: Unconditional jump to an address
+    JMP 0x3000       ; Jump to address 0x3000
+    ```
+
+  <br>
+
     - **``JZ`` (Jump if Zero)**
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address if the zero flag is set.
+
+  <br>
+
+    ```assembly
+    ; Example: Conditional jump if zero flag is set
+    CMP R1, R2       ; Compare R1 and R2
+    JZ 0x3000        ; Jump to 0x3000 if zero flag is set
+    ```
+
+  <br>
 
     - **``JNZ`` (Jump if Not Zero)**
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address if the zero flag is not set.
 
+  <br>
+
+    ```assembly
+    ; Example: Conditional jump if zero flag is not set
+    CMP R1, R2       ; Compare R1 and R2
+    JNZ 0x3000       ; Jump to 0x3000 if zero flag is not set
+    ```
+
+  <br>  
+
     - **``JE`` (Jump if Equal)**
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address if the equal flag is set.
+
+  <br>
+
+    ```assembly
+    ; Example: Conditional jump if equal flag is set
+    CMP R1, R2       ; Compare R1 and R2
+    JE 0x3000        ; Jump to 0x3000 if equal flag is set
+    ```
+
+  <br>
 
     - **``JNE`` (Jump if Not Equal)**
       - Destination Operand --> Program Counter
       - Operation: Jump to the specified address if the equal flag is not set.
 
+  <br>
+
+    ```assembly
+    ; Example: Conditional jump if equal flag is not set
+    CMP R1, R2       ; Compare R1 and R2
+    JNE 0x3000       ; Jump to 0x3000 if equal flag is not set
+    ```
+
+  <br>
+
     - **``CALL`` (Call Subroutine)**
       - Destination Operand --> Program Counter
       - Operation: Call the subroutine at the specified address.
 
+  <br>
+
+    ```assembly
+    ; Example: Calling a subroutine
+    CALL 0x4000      ; Call subroutine at 0x4000
+    ```
+
+  <br>
+
     - **``RET`` (Return from Subroutine)**
       - Stack --> Program Counter
       - Operation: Return from the subroutine.
+  
+  <br>
+
+    ```assembly
+    ; Example: Returning from a subroutine
+    RET              ; Return from subroutine
+    ```
+  
+  <br>
 
 - **Special Instructions**: A set of special instructions for system calls, input/output operations, and other processor-specific tasks. 
   
@@ -249,27 +486,74 @@ The assembly language designed for the Virtual Processor will include a set of f
       - System Call Number --> System Call Handler
       - Operation: Invoke the specified system call.
 
+  <br>
+
+    ```assembly
+    ; Example: Invoking a system call
+    MOV R1, #1       ; Load system call number into R1
+    SYSCALL R1       ; Perform system call #1
+    ```
+
+  <br>
+
     - **``IN`` (Input)**
       - Input Device --> Register
       - Operation: Read input from the specified device.
+
+  <br>
+
+    ```assembly
+    ; Example: Reading input from a device
+    IN R2, #2        ; Read input from device #2 into R2
+    ```
+  
+  <br>
 
     - **``OUT`` (Output)**
       - Register --> Output Device
       - Operation: Write output to the specified device.
 
+  <br>
+
+    ```assembly
+    ; Example: Writing output to a device
+    MOV R3, #123     ; Load data into R3
+    OUT R3, #3       ; Write output from R3 to device #3
+    ```
+
+  <br>
+
     - **``NOP`` (No Operation)**
       - No Operation
       - Operation: Do nothing.
+
+  <br>
+
+    ```assembly
+    ; Example: Executing a no operation
+    NOP              ; Do nothing
+    ```
+
+  <br>
 
     - **``HALT`` (Halt)**
       - Halt
       - Operation: Halt the processor. 
 
+  <br>
+
+    ```assembly
+    ; Example: Halting the processor
+    HALT             ; Halt the processor
+    ```
+
+  <br>
+
 *Each instruction will be described in detail, including its syntax, operation, and usage examples. This will ensure a clear understanding of how to program using the Virtual Processor's assembly language.*
 
 ### 6.2. Operations
 
-The operations of the assembly language define how each instruction manipulates data and controls the flow of the program. This section will detail the operational characteristics of the assembly language, which are critical for the Virtual Processor’s functionality:
+The operations of the assembly language define how each instruction manipulates data and controls the flow of the program. This section will detail the **operational characteristics** of the assembly language, which are critical for the Virtual Processor’s functionality:
 
 - **Register Operations**: Detailed explanations of how instructions interact with registers, including register loading, storing, and manipulation. Registers' name: 
     - ``R0`` - ``R7``: General-purpose registers
@@ -291,7 +575,7 @@ The operations of the assembly language define how each instruction manipulates 
 
 ## 7. C Program Development
 
-The C program is essential for the Virtual Processor, acting as the interface for interpreting and executing the assembly language. This section details its intricate design and comprehensive implementation.
+The C program is essential for the Virtual Processor, acting as the **interface** for **interpreting** and **executing** the **assembly language**. This section details its intricate design and comprehensive implementation.
 
 ### 7.1. Program Structure
 - **Overview:** This part describes the overarching structure of the C program, emphasizing modularity and efficient processing.
@@ -401,9 +685,9 @@ Enhancing the Virtual Processor's capabilities through these system calls ensure
 
 ## 9. Conclusion
 
-Throughout this functional specification document, we have delineated a comprehensive framework for the construction of Team 5's Virtual Processor. From the foundational development environment, through the meticulous assembly language specifications, to the nuanced virtual system call implementation, each section has been carefully crafted to serve as a beacon guiding the development journey. The document has established a clear set of functional, usability, and non-functional requirements that are pivotal to the creation of a virtual processor that is not only a robust educational platform but also an embodiment of technical excellence.
+Throughout this functional specification document, we have delineated a comprehensive framework for the construction of **Team 5's Virtual Processor**. From the foundational development environment, through the meticulous assembly language specifications, to the nuanced virtual system call implementation, each section has been carefully crafted to serve as a beacon guiding the development journey. The document has established a clear set of **functional**, **usability**, and **non-functional requirements** that are pivotal to the creation of a virtual processor that is not only a robust educational platform but also an embodiment of technical excellence.
 
-In the pursuit of these objectives, the document emphasizes the importance of a collaborative development environment, leveraging standardized tools and practices to ensure consistency and quality in the project's outcomes. The processor's custom assembly language has been designed with an educational focus, ensuring that learning the fundamental concepts of low-level programming is both accessible and engaging. Moreover, the detailed C program development guidelines underscore the importance of a methodical approach to software construction, one that fosters maintainability and scalability.
+In the pursuit of these objectives, the document emphasizes the importance of a collaborative development environment, leveraging standardized tools and practices to ensure consistency and quality in the project's outcomes. The processor's custom assembly language has been designed with an educational focus, ensuring that learning the fundamental concepts of low-level programming is both accessible and engaging. Moreover, the detailed C program development guidelines underscore the importance of a methodical approach to software construction, one that fosters **maintainability** and **scalability**.
 
 The virtual system call implementation stands out as a feature that bridges the gap between the theoretical aspects of assembly language and practical software application, offering a suite of capabilities that will encourage innovation and exploration among its users.
 
