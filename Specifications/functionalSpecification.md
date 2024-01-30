@@ -143,6 +143,8 @@ This section outlines the standards the virtual processor must adhere to that do
 
 The virtual processor will be equipped to handle a custom assembly language. This language will be designed to be **simple** and **intuitive**, allowing for easy comprehension and execution. The language will be fully detailed in this section, including **instructions**, **operations**, and **syntax**.
 
+🔥 You can find a detailed description of the assembly language in the [Assembly Language Specification](../Documentation/AssemblyLanguageSpecification.md)
+
 ### 6.1. Instructions
 
 The assembly language designed for the Virtual Processor will include a set of fundamental instructions. These instructions form the core functionality of the language, enabling basic programming operations. The instruction set is designed to be minimal yet sufficient for a wide range of tasks. Key aspects include:
