@@ -2,6 +2,7 @@
 
 *This document provides a comprehensive guide to the assembly language for the virtual processor. It covers the language's syntax, instruction set, and operational characteristics, along with practical programming examples and best practices.*
 
+<details>
 <summary>Table of Contents</summary>
 
 - [Assembly Documentation](#assembly-documentation)
@@ -174,6 +175,8 @@
       - [13.4.1 Pursuing Further Knowledge](#1341-pursuing-further-knowledge)
       - [13.4.2 Contributing to the Community](#1342-contributing-to-the-community)
     - [13.5 Final Thoughts](#135-final-thoughts)
+
+</details>
 
 ## Chapter 1: Introduction to the Assembly Language for the Virtual Processor
 
