@@ -3,12 +3,16 @@
 [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg"  width="20px" align=right>](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/)
 [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20" align="right">](https://github.com/RemyCHARLES)
 
+
+
 |**Author**|Rémy CHARLES|
 |:---|:---|
 |**Version**|**1.1**|
 |**Project**|**Virtual Processor**|
 |**Created on**|**2024-01-12**|
 |**Last updated**|**2024-01-23**|
+
+
 
 ## Table of contents
 
@@ -90,6 +94,9 @@ This environment is chosen to balance functionality, ease of use, and accessibil
 ## 3. Functional Requirements
 
 This section defines the capabilities that the virtual processor must possess:
+
+<center>
+
 | *ID*    | *Requirement*                 | *Description*                                                                                              |
 | ------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | **FR1** | **Instruction Set Execution** | The system must execute the predefined instruction set accurately.                                         |
@@ -98,9 +105,14 @@ This section defines the capabilities that the virtual processor must possess:
 | **FR4** | **Program Loading**           | The system should allow loading and execution of assembly programs from an external source.                |
 | **FR5** | **Debugging Support**         | The system must provide debugging capabilities for the assembly code being executed.                       |
 
+</center>
+
 ## 4. Usability Requirements
 
 This section outlines the expectations for how the system will interact with its users:
+
+<center>
+
 | *ID*    | *Requirement*      | *Description*                                                                                                                 |
 | ------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
 | **UR1** | **Documentation**  | Comprehensive documentation must be provided, detailing system use and capabilities.                                          |
@@ -108,9 +120,14 @@ This section outlines the expectations for how the system will interact with its
 | **UR3** | **Learning Curve** | The system should be designed such that a new user can write and execute a simple program within a few hours of introduction. |
 | **UR4** | **Accessibility**  | Interface design must consider accessibility guidelines to be usable by people with a wide range of abilities.                |
 
+</center>
+
 ## 5. Non-Functional Requirements
 
 This section outlines the standards the virtual processor must adhere to that do not pertain directly to specific functionalities:
+
+<center>
+
 | *ID*     | *Requirement*       | *Description*                                                                                                  |
 | -------- | ------------------- | -------------------------------------------------------------------------------------------------------------- |
 | **NFR1** | **Performance**     | The system should execute instructions within the predefined time limits to ensure efficiency.                 |
@@ -120,6 +137,7 @@ This section outlines the standards the virtual processor must adhere to that do
 | **NFR5** | **Portability**     | The system must be able to run in different environments without requiring changes.                            |
 | **NFR6** | **Compliance**      | The system must comply with all relevant legal and regulatory requirements.                                    |
 
+</center>
 
 ## 6. Assembly Language Specification
 
