@@ -6,7 +6,7 @@
 | Created on   |  2024-01-15  |
 | Last updated |  2024-02-09  |
 
-| Role                | Name                                       | Email                                       | LinkedIn                                        | GitHub                                       |
+| Role                | Name                                       | Email                                          | LinkedIn                                        | GitHub                                       |
 |---------------------|--------------------------------------------|---------------------------------------------|------------------------------------------------|----------------------------------------------|
 | Project Manager     | <img src="img/technicalImg/picture_of_wilfried.png" width="30px"/> Wilfried PORTET      | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:wilfried.portet@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/wilfried-portet-a882b9293/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/PortetWilfried) |
 | Program Manager     | <img src="img/technicalImg/picture_of_remy.png" width="30px"/> Rémy CHARLES         | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:remy.charles@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/RemyCHARLES) |
@@ -15,9 +15,9 @@
 | Software Developer  | <img src="img/technicalImg/picture_of_gregory.png" width="30px"/> Grégory PAGNOUX       | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:gregory.pagnoux@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/gregory-pagnoux-313b3a251/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/Gregory-Pagnoux) |
 | Quality Assurance   | <img src="img/technicalImg/picture_of_atifa.png" width="30px"/> Atifa AMIRI           | [<img src="https://img.icons8.com/material-rounded/24/000000/mail.png"/>](mailto:atifa.amiri@algosup.com) | [<img src="https://www.presse-citron.net/app/uploads/2020/06/linkedin-logo.jpg" width="20px">](https://www.linkedin.com/in/atifa-amiri-565a1225b/) | [<img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" width="20px">](https://github.com/Atifabaran)     |
 
+## Table of Contents
 <details>
-
-<summary>Table of Contents</summary>
+<summary>Click to expand</summary>
 
 - [1. Introduction](#1-introduction)
   - [1.1 Customer Request](#11-customer-request)
@@ -36,10 +36,18 @@
     - [1.4.1 Project Brief](#141-project-brief)
     - [1.4.2 Requirements](#142-requirements)
       - [Setting up the Development Environment](#setting-up-the-development-environment)
-        - [Hardware Requirements](#hardware-requirements)
         - [Software Requirements](#software-requirements)
       - [Coding Methodology](#coding-methodology)
-        - [Workflow](#workflow)
+        - [How We'll Go About It](#how-well-go-about-it)
+          - [Requirements Analysis](#requirements-analysis)
+          - [Quick Daily Meetings](#quick-daily-meetings)
+          - [Version Control with Git](#version-control-with-git)
+          - [Modular Development](#modular-development)
+          - [Continuous Integration](#continuous-integration)
+          - [Testing](#testing)
+          - [Documentation](#documentation)
+          - [Debugging](#debugging)
+          - [Code Reviews](code-reviews)
         - [Coding Conventions](#coding-conventions)
         - [Documenting Conventions](#documenting-conventions)
         - [Test Procedure](#test-procedure)
@@ -90,7 +98,6 @@
   - [3.9 Documentation and Maintenance](#39-documentation-and-maintenance)
 - [4. Conclusion](#4-conclusion)
   - [4.1 Thanks](#41-thanks)
-
 </details>
 
 # 1. Introduction
@@ -183,24 +190,70 @@ The C language is still widely used in software development, and many critical s
 ## 1.4 Project Overview
 
 ### 1.4.1 Project Brief
-...
+As stated in the Functional Requirements,this project involves the creation of a virtual processor designed to execute assembly code.
+
+we have been given 7 week to complete this project
+Looking deeper into the project we decided to have a meeting together to find out what to start, to agree on the direction to take and also to know what we wanted as a result at the end of the project.
+After this meeting we decided to adopt a step-by-step strategy with daily tasks. We find that this method is simpler to follow and is the simplest to be effective.
 
 ### 1.4.2 Requirements
-...
+Even if this document is intended to be as exhaustive and demonstrative as possible, it is expected that its reader has some basic knowledge in virtual machines, more precisely in this case in virtual processors, and also certain knowledge in programming.
+
+As indicated in the call for tender, at the end of the project we must be able to code in an assembler created by us with an interpreter also created by us, execute it on a virtual processor also created by us, be able to prove that it executes well by making a virtual terminal and finally we can also display
+the contents of the registers and have a built-in debugger.
+
+the task may seem difficult, it is true that it is not the simplest project but with good organization and respect for the tasks the project can greatly improve the ease of progress of this project.
+
+As an IDE visual studio code allows us to run all our programs in a simple and portable way, which means that PC and Mac team members will be able to run and test the program, which will prove useful during the process of development.
 
 #### Setting up the Development Environment
 
-##### Hardware Requirements
-...
-
+The first step is to set up the development environment, which we can define as follows:
 ##### Software Requirements
-...
+- [VSCode](https://code.visualstudio.com/) as an IDE to run our code simply and efficiently
+- the programming language is [C](https://en.wikipedia.org/wiki/C_(programming_language)#:~:text=C%20is%20an%20imperative%20procedural,all%20with%20minimal%20runtime) to program our entire project
+- pour compiler notre en c nous utilisons le compiler [GCC](https://gcc.gnu.org)
+- we use Github or other source control management to  communicate the progress of our project, [Github](https://github.com/) is recommended for this task.
+- we also use [trello](https://trello.com/) for our step-by-step strategy by putting the different tasks to do during the day for better optimization of time.
 
 #### Coding Methodology
-...
 
-##### Workflow
-...
+##### How We'll Go About It
+
+1. ######  **Requirements Analysis:**
+  - We begin by thoroughly understanding what the clients want, detailing all the requirements.
+
+2. ###### **Quick Daily Meetings:**
+  - Every day, we gather quickly to discuss progress, potential issues, and plan tasks for the day.
+  - We keep our Trello board updated for effective organization.
+
+3. ######  **Version Control with Git:**
+  - We use Git and GitHub to keep track of all versions of our code.
+  - Whenever we add something new or fix a bug, we create a specific branch.
+
+4. ######  **Modular Development:**
+  - The project is broken down into logical pieces, each serving a specific purpose.
+  - We use header files to clearly define what each piece does.
+  - For each piece, we write tests to ensure it functions correctly.
+
+5. ######  **Continuous Integration:**
+  - Whenever we make a change, we ensure the entire project compiles correctly and passes all tests.
+
+6. ######  **Testing:**
+  - We avoid unpleasant surprises by writing tests for everything. Small tests for each piece and comprehensive tests for the entire system.
+  - This prevents tears later on.
+
+7. ######  **Documentation:**
+  - No need to guess what each piece does. We document everything.
+  - Clear comments in the code and a detailed README for everyone to understand.
+
+8. ######  **Debugging:**
+  - We're not all perfect, so we use debugging tools to track down and eliminate bugs.
+  - Serious testing and debugging during development.
+
+9. ######  **Code Reviews:**
+  - We trust each other, but two pairs of eyes are better than one. We review the code of others and provide constructive feedback.
+
 
 ##### Coding Conventions
 ...
