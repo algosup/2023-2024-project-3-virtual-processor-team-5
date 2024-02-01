@@ -98,7 +98,6 @@
   - [3.8 User Interface](#38-user-interface) 
   - [3.9 Documentation and Maintenance](#39-documentation-and-maintenance) 
 - [4. Conclusion](#4-conclusion) 
-  - [4.1 Thanks](#41-thanks) 
 
 
 </details>
