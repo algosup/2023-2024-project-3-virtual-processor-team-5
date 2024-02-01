@@ -19,79 +19,88 @@
 <details>
 <summary>Click to expand</summary>
 
-- [1. Introduction](#1-introduction)
-  - [1.1 Customer Request](#11-customer-request)
-  - [1.2 Document Purpose & Definition](#12-document-purpose--definition)
-  - [1.3 Glossary](#13-glossary)
-    - [ASSEMBLY](#assembly)
-    - [INTERPRETER](#interpreter)
-    - [PROCESSOR](#processor)
-    - [VIRTUAL PROCESSOR](#virtual-processor)
-    - [COMPILER](#compiler)
-    - [DEBUGGER](#debugger)
-    - [Logical Operation (OR, XOR, AND, NOT)](#logical-operation-or-xor-and-not)
-    - [IDE](#ide)
-    - [C Language](#c-language)
-  - [1.4 Project Overview](#14-project-overview)
-    - [1.4.1 Project Brief](#141-project-brief)
-    - [1.4.2 Requirements](#142-requirements)
-      - [Setting up the Development Environment](#setting-up-the-development-environment)
-        - [Software Requirements](#software-requirements)
-      - [Coding Methodology](#coding-methodology)
-        - [How We'll Go About It](#how-well-go-about-it)
-        - [Workflow](#workflow)
-        - [Coding conventions](#coding-conventions)
-            - [Naming](#naming)
-            - [Formatting](#formatting)
-            - [Comments](#comments)
-        - [Documenting Conventions](#documenting-conventions)
-        - [Test Procedure](#test-procedure)
-      - [Setting up the Virtual Processor](#setting-up-the-virtual-processor)
-        - [Software Requirements](#software-requirements-1)
-    - [1.4.3 Assumptions & Constraints](#143-assumptions--constraints)
-- [2. Technical Specifications](#2-technical-specifications)
-  - [2.1 Folder Structure](#21-folder-structure)
-  - [2.2 Data Structures](#22-data-structures)
-  - [2.3 Security](#23-security)
-- [3. How to Make It](#3-how-to-make-it)
-  - [3.1 Architecture](#31-architecture)
-    - [3.1.1 Modularity](#311-modularity)
-      - [Module Breakdown](#module-breakdown)
-      - [Header Files](#header-files)
-    - [3.1.2 Abstraction](#312-abstraction)
-      - [Memory Management](#memory-management)
-      - [Registers](#registers)
-    - [3.1.3 Instruction Interpreter](#313-instruction-interpreter)
-      - [Parsing](#parsing)
-      - [Execution](#execution)
-    - [3.1.4 Input/Output Management](#314-inputoutput-management)
-      - [I/O Simulation](#io-simulation)
-    - [3.1.5 Testing and Validation](#315-testing-and-validation)
-      - [Unit Testing](#unit-testing)
-    - [3.1.6 Continuous Integration](#316-continuous-integration)
-    - [3.1.7 Documentation and Coding Standards](#317-documentation-and-coding-standards)
-      - [Comments and Documentation](#comments-and-documentation)
-      - [Adherence to Standards](#adherence-to-standards)
-    - [3.1.8 User Interface](#318-user-interface)
-      - [CLI or GUI](#cli-or-gui)
-    - [3.1.9 Scalability and Maintenance](#319-scalability-and-maintenance)
-      - [Scalable Design](#scalable-design)
-    - [3.1.10 Directory Structure](#3110-directory-structure)
-  - [3.2 Understand the Basics of Processor](#32-understand-the-basics-of-processor)
-  - [3.3 Define the Instruction Set](#33-define-the-instruction-set)
-  - [3.4 Design the Architecture](#34-design-the-architecture)
-  - [3.5 Programming the Virtual Processor](#35-programming-the-virtual-processor)
-    - [3.5.1 Choice of Programming Language](#351-choice-of-programming-language)
-    - [3.5.2 Implement Components](#352-implement-components)
-    - [3.5.3 Instruction Interpretation](#353-instruction-interpretation)
-  - [3.6 Simulate Memory and Input/Output](#36-simulate-memory-and-inputoutput)
-    - [3.6.1 Memory](#361-memory)
-    - [3.6.2 Input/Output](#362-inputoutput)
-  - [3.7 Testing and Debugging](#37-testing-and-debugging)
-  - [3.8 User Interface](#38-user-interface)
-  - [3.9 Documentation and Maintenance](#39-documentation-and-maintenance)
-- [4. Conclusion](#4-conclusion)
-  - [4.1 Thanks](#41-thanks)
+- [1. Introduction](#1-introduction) 🚀
+  - [1.1 Customer Request](#11-customer-request) 📜
+  - [1.2 Document Purpose & Definition](#12-document-purpose--definition) 📋
+  - [1.3 Glossary](#13-glossary) 📚
+    - [ASSEMBLY](#assembly) 💻
+    - [INTERPRETER](#interpreter) 🔄
+    - [PROCESSOR](#processor) ⚙️
+    - [VIRTUAL PROCESSOR](#virtual-processor) 🌐
+    - [COMPILER](#compiler) 🛠️
+    - [DEBUGGER](#debugger) 🐞
+    - [Logical Operation (OR, XOR, AND, NOT)](#logical-operation-or-xor-and-not) ⚙️
+    - [IDE](#ide) 💻
+    - [C Language](#c-language) 📝
+  - [1.4 Project Overview](#14-project-overview) 🌐
+    - [1.4.1 Project Brief](#141-project-brief) 📜
+    - [1.4.2 Requirements](#142-requirements) 📋
+      - [Setting up the Development Environment](#setting-up-the-development-environment) 🛠️
+        - [Software Requirements](#software-requirements) 🛠️
+      - [Coding Methodology](#coding-methodology) 🧑‍💻
+        - [How We'll Go About It](#how-well-go-about-it) 🔄
+        - [Workflow](#workflow) 🔄
+        - [Coding conventions](#coding-conventions) 📝
+            - [Naming](#naming) 📛
+            - [Formatting](#formatting) 📐
+            - [Comments](#comments) 💬
+        - [Documenting Conventions](#documenting-conventions) 📝
+        - [Test Procedure](#test-procedure) 🧪
+      - [Setting up the Virtual Processor](#setting-up-the-virtual-processor) ⚙️
+        - [Software Requirements](#software-requirements-1) 🛠️
+        - [Coding Methodology](#coding-methodology-1) 🧑‍💻
+            - [Testing Framework:](#testing-framework) 🧪
+            - [Debugger:](#debugger) 🐞
+            - [Continuous Integration:](#continuous-integration) 🔄
+            - [Virtual Terminal Implementation:](#virtual-terminal-implementation) 🌐
+            - [Built-in Debugger Implementation:](#built-in-debugger-implementation) 🐞
+            - [System Call Implementation:](#system-call-implementation) ⚙️
+    - [1.4.3 Assumptions & Constraints](#143-assumptions--constraints) 🤔
+- [2. Technical Specifications](#2-technical-specifications) ⚙️
+  - [2.1 Folder Structure](#21-folder-structure) 📁
+  - [2.2 Data Structures](#22-data-structures) 📊
+  - [2.3 Security](#23-security) 🔒
+- [3. How to Make It](#3-how-to-make-it) 🛠️
+  - [3.1 Architecture](#31-architecture) 🏛️
+    - [3.1.1 Modularity](#311-modularity) 🧩
+      - [Module Breakdown](#module-breakdown) 🧩
+      - [Header Files](#header-files) 📄
+    - [3.1.2 Abstraction](#312-abstraction) 🤖
+      - [Memory Management](#memory-management) 💾
+      - [Registers](#registers) 🗃️
+    - [3.1.3 Instruction Interpreter](#313-instruction-interpreter) ⚙️
+      - [Parsing](#parsing) 📝
+      - [Execution](#execution) ▶️
+    - [3.1.4 Input/Output Management](#314-inputoutput-management) 🔄
+      - [I/O Simulation](#io-simulation) 📥📤
+    - [3.1.5 Testing and Validation](#315-testing-and-validation) 🧪
+      - [Unit Testing](#unit-testing) 🧪
+    - [3.1.6 Continuous Integration](#316-continuous-integration) 🔄
+    - [3.1.7 Documentation and Coding Standards](#317-documentation-and-coding-standards) 📝
+      - [Comments and Documentation](#comments-and-documentation) 💬
+      - [Adherence to Standards](#adherence-to-standards) 📜
+    - [3.1.8 User Interface](#318-user-interface) 🖥️
+      - [CLI or GUI](#cli-or-gui) 💻
+    - [3.1.9 Scalability and Maintenance](#319-scalability-and-maintenance) 🔄
+      - [Scalable Design](#scalable-design) 📈
+    - [3.1.10 Directory Structure](#3110-directory-structure) 📂
+  - [3.2 Understand the Basics of Processor](#32-understand-the-basics-of-processor) ⚙️
+  - [3.3 Define the Instruction Set](#33-define-the-instruction-set) 📝
+  - [3.4 Design the Architecture](#34-design-the-architecture) 🏛️
+  - [3.5 Programming the Virtual Processor](#35-programming-the-virtual-processor) ⚙️
+    - [3.5.1 Choice of Programming Language](#351-choice-of-programming-language) 📝
+    - [3.5.2 Implement Components](#352-implement-components) 🛠️
+    - [3.5.3 Instruction Interpretation](#353-instruction-interpretation) ⚙️
+  - [3.6 Simulate Memory and Input/Output](#36-simulate-memory-and-inputoutput) 🔄
+    - [3.6.1 Memory](#361-memory) 💾
+    - [3.6.2 Input/Output](#362-inputoutput) 📥📤
+  - [3.7 Testing and Debugging](#37-testing-and-debugging) 🧪🐞
+  - [3.8 User Interface](#38-user-interface) 🖥️
+  - [3.9 Documentation and Maintenance](#39-documentation-and-maintenance) 📝
+- [4. Conclusion](#4-conclusion) 🎉
+  - [4.1 Thanks](#41-thanks) 🙏
+
+
 </details>
 
 # 1. Introduction
@@ -281,8 +290,8 @@ We will return to this more at the end of this document.
 
 ##### Documenting Conventions
 
-Nous générerons automatiquement la documentation pour ce projet.
-la facons d'utilisation sera également inclus dans le readme.
+We will automatically generate documentation for this project.
+How to use it will also be included in the readme.
 
 ##### Test Procedure
 
@@ -290,7 +299,44 @@ we will test all the functionalities of the project little by little during the 
 
 #### Setting up the Virtual Processor
 ##### Software Requirements
-...
+For the virtual processor development, we need the following software tools and components:
+
+- [Visual Studio Code (VSCode)](https://code.visualstudio.com/): We will use VSCode as the IDE for writing, editing, and managing our C code. It provides a simple and efficient platform for development.
+
+- [C](https://en.wikipedia.org/wiki/C_(programming_language)#:~:text=C%20is%20an%20imperative%20procedural,all%20with%20minimal%20runtime): The entire project will be implemented in the C language. It is a powerful and efficient language, suitable for system-level development.
+
+- [GCC (GNU Compiler Collection)](https://gcc.gnu.org): We will use GCC as the C compiler for our project.
+
+- [GitHub](https://github.com/): We will utilize GitHub for source code management, version control, and collaboration among team members.
+
+- [Trello](https://trello.com/): Trello will be our project management tool for organizing tasks, setting priorities, and tracking progress with a step-by-step strategy.
+
+#### Coding Methodology
+
+##### Testing Framework:
+
+Unit Testing Framework (e.g., Unity or CUnit): To ensure the correctness of our code, we will implement unit tests for individual components and system functionalities. The choice of a specific testing framework will be determined during the project.
+
+##### Debugger:
+
+Debugger in Visual Studio Code: We will leverage the debugging features provided by VSCode to identify, analyze, and correct errors in our code. This includes setting breakpoints, inspecting variable values, and stepping through code execution.
+
+##### Continuous Integration:
+
+Continuous Integration Tool (e.g., Jenkins or Travis CI): To maintain code quality, we will implement continuous integration, ensuring that the entire project compiles correctly and passes all tests with each code change.
+
+##### Virtual Terminal Implementation:
+
+A mechanism to simulate a virtual terminal for displaying text output from assembly code. This will be implemented as part of the virtual processor, and the details will be defined during the development process.
+
+##### Built-in Debugger Implementation:
+
+A built-in debugger for the virtual processor, integrated into the development environment. This debugger will assist in identifying and resolving issues during the execution of assembly code.
+
+##### System Call Implementation:
+
+Implementation of a virtual system call mechanism to facilitate interaction between assembly code and the virtual processor, particularly for displaying text output.
+These software tools and components will form the foundation for setting up the virtual processor development environment and ensuring a smooth development process.
 
 ### 1.4.3 Assumptions & Constraints
 ...
