@@ -1,5 +1,5 @@
-ADD 3,2
+ADD 1,1
 ST 2,result
-ADD 4,5
-ST 1,result
-NOT 1
+SUB 5,4
+ST 0,result
+HLT

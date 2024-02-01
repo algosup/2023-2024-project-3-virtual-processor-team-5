@@ -53,65 +53,66 @@ void read_file(char *filename, char *file_directory) {
 			}
 			if (sscanf(line, "%2s %d %d", operation, &operand1, &operand2) == 3){
 				if (strcmp(operation, "LD") == 0) {
-					executeLD(&cpu, &cpu.R[operand1], operand2);
+					ExecuteLD(&cpu, &cpu.R[operand1], operand2);
 				} else if (strcmp(operation, "OR") == 0) {
-					executeOR(&cpu, operand1, operand2);
+					ExecuteOR(&cpu, operand1, operand2);
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
 	    	} else if (sscanf(line, "%2s %i %hi", operation, &registerIndex, &result) == 2) {
 				if (strcmp(operation, "ST") == 0) {
-					executeST(&cpu, registerIndex, result);
+					ExecuteST(&cpu, registerIndex, result);
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 				}
 			} else if (sscanf(line, "%3s %d %d", operation, &operand1, &operand2) == 3) {
 	        	if (strcmp(operation, "ADD") == 0) {
-					result = executeADD(operand1, operand2);
+					result = ExecuteADD(operand1, operand2);
 	        	} else if (strcmp(operation, "SUB") == 0) {
-	            	result = executeSUB(operand1, operand2);
+	            	result = ExecuteSUB(operand1, operand2);
 				} else if (strcmp(operation, "MUL") == 0) {
-					result = executeMUL(operand1, operand2);
+					result = ExecuteMUL(operand1, operand2);
 				} else if (strcmp(operation, "DIV") == 0) {
-					result = executeDIV(operand1, operand2);
+					result = ExecuteDIV(operand1, operand2);
 	        	} else if (strcmp(operation, "CMP") == 0) {
-	            	resultCMP = executeCMP(&cpu, operand1, operand2);
+	            	resultCMP = ExecuteCMP(&cpu, operand1, operand2);
 	        	} else if (strcmp(operation, "AND") == 0) {
-					executeAND(&cpu, operand1, operand2);
+					ExecuteAND(&cpu, operand1, operand2);
 				} else if (strcmp(operation, "XOR") == 0) {
-					executeXOR(&cpu, operand1, operand2);
+					ExecuteXOR(&cpu, operand1, operand2);
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
 			} else if (sscanf(line, "%3s %d", operation, &operand1) == 2) {
                 if (strcmp(operation, "NOT") == 0) {
-                    executeNOT(&cpu, operand1);
+                    ExecuteNOT(&cpu, operand1);
+				} else if (strcmp(operation, "REM") == 0) {
+					ExecuteREM(&cpu, operand1);
                 } else {
                     printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
                 }
 			} else if (sscanf(line, "%4s %d %d", operation, &operand1, &operand2) == 3) {
 				if (strcmp(operation, "COPY") == 0) {
-					executeCOPY(&cpu, operand1, operand2);
+					ExecuteCOPY(&cpu, operand1, operand2);
 				} else {
 					printf("\x1b[31mError: Your lines aren't well written.\x1b[0m\n");
 				}
-			} else if (sscanf(line, "%3s %4s", operation, labelName) == 2) {
+			} else if (sscanf(line, "%3s %9s", operation, labelName) == 2) {
 				if (strcmp(operation, "JMP") == 0) {
 					// Store the label and its position
 					if (resultCMP) {
 						for (int i = 0; i < numLabel; i++) {
                 			if (strcmp(labels[i].name, labelName) == 0) {
-								jumpToLabel(labels, numLabel, labelName, file);
 								fseek(file, labels[i].filePosition, SEEK_SET);
                 			}
             			}
-			
-					} else if (!resultCMP) {
-						continue;
-					} else {
-						jumpToLabel(labels, numLabel, labelName, file);
-						continue;
 					}
+				} else {
+					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
+				}
+			} else if (sscanf(line, "%3s", operation) == 1) {
+				if (strcmp(operation, "HLT") == 0) {
+					break;
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 				}

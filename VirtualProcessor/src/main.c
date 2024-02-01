@@ -1,19 +1,19 @@
 #include "../include/utils.h"
 
 // Déclaration de fonctions pour éviter les avertissements de compilation
-int executeADD(uint16_t operand1, uint16_t operand2);
-int executeSUB(uint16_t operand1, uint16_t operand2);
-int executeMUL(uint16_t operand1, uint16_t operand2);
-int executeDIV(uint16_t operand1, uint16_t operand2);
-bool executeCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
-void executeST(ProcessorState *state, int registerIndex, int result);
-void executeLD(ProcessorState *state, Register *destination, int registerIndex);
-void executeCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex);
-void jumpToLabel(Label *labels, int numLabels, const char *labelName, FILE *file);
-void executeAND(ProcessorState *state, int registerIndex1, int registerIndex2);
-void executeXOR(ProcessorState *state, int registerIndex1, int registerIndex2);
-void executeNOT(ProcessorState *state, int registerIndex);
-void executeOR(ProcessorState *state, int registerIndex1, int registerIndex2);
+int ExecuteADD(uint16_t operand1, uint16_t operand2);
+int ExecuteSUB(uint16_t operand1, uint16_t operand2);
+int ExecuteMUL(uint16_t operand1, uint16_t operand2);
+int ExecuteDIV(uint16_t operand1, uint16_t operand2);
+bool ExecuteCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
+void ExecuteST(ProcessorState *state, int registerIndex, int result);
+void ExecuteLD(ProcessorState *state, Register *destination, int registerIndex);
+void ExecuteCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex);
+void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2);
+void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2);
+void ExecuteNOT(ProcessorState *state, int registerIndex);
+void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2);
+void ExecuteREM( ProcessorState *state, int registerIndex);
 uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);
 void read_file(char *filename, char *file_directory);
@@ -29,7 +29,7 @@ int main() {
     read_file("code.txt", "code.txt");
 
     while (1) {
-        printf("> ");
+        printf("\n> ");
         fgets(input, sizeof(input), stdin);
 
         // Deletes the newline character from the buffer
@@ -41,15 +41,15 @@ int main() {
         // Analyzes the instruction
         if (strcmp(input, "exit") == 0) {
             printf("\x1b[36mExiting...\x1b[0m\n");
-            break; 
-    } else if (strcmp(input, "ADD") == 0) {
+            break;
+        } else if (strcmp(input, "ADD") == 0) {
             uint16_t operand1, operand2;
             printf("Enter operand 1: ");
             scanf("%hu", &operand1);
             printf("Enter operand 2: ");
             scanf("%hu", &operand2);
             while (getchar() != '\n');
-            executeADD(operand1, operand2);
+            ExecuteADD(operand1, operand2);
             
         } else if (strcmp(input, "SUB") == 0) {
             uint16_t operand1, operand2;
@@ -58,7 +58,7 @@ int main() {
             printf("Enter operand 2: ");
             scanf("%hu", &operand2);
             while (getchar() != '\n');
-            executeSUB(operand1, operand2);
+            ExecuteSUB(operand1, operand2);
 
         } else if (strcmp(input, "MUL") == 0) {
             uint16_t operand1, operand2;
@@ -67,7 +67,7 @@ int main() {
             printf("Enter operand 2: ");
             scanf("%hu", &operand2);
             while (getchar() != '\n');
-            executeMUL(operand1, result);
+            ExecuteMUL(operand1, result);
 
         } else if (strcmp(input, "DIV") == 0) {
             uint16_t operand1, operand2;
@@ -76,14 +76,48 @@ int main() {
             printf("Enter operand 2: ");
             scanf("%hu", &operand2);
             while (getchar() != '\n');
-            executeDIV(operand1, operand2);
+            ExecuteDIV(operand1, operand2);
+
+        } else if (strcmp(input, "AND") == 0) {
+            uint16_t operand1, operand2;
+            printf("Enter operand 1: ");
+            scanf("%hu", &operand1);
+            printf("Enter operand 2: ");
+            scanf("%hu", &operand2);
+            while (getchar() != '\n');
+            ExecuteAND(&cpu, operand1, operand2);
+
+        } else if (strcmp(input, "OR") == 0) {
+            uint16_t operand1, operand2;
+            printf("Enter operand 1: ");
+            scanf("%hu", &operand1);
+            printf("Enter operand 2: ");
+            scanf("%hu", &operand2);
+            while (getchar() != '\n');
+            ExecuteOR(&cpu, operand1, operand2);
+
+        } else if (strcmp(input, "XOR") == 0) {
+            uint16_t operand1, operand2;
+            printf("Enter operand 1: ");
+            scanf("%hu", &operand1);
+            printf("Enter operand 2: ");
+            scanf("%hu", &operand2);
+            while (getchar() != '\n');
+            ExecuteXOR(&cpu, operand1, operand2);
+
+        } else if (strcmp(input, "NOT") == 0) {
+            uint16_t operand1;
+            printf("Enter operand 1: ");
+            scanf("%hu", &operand1);
+            while (getchar() != '\n');
+            ExecuteNOT(&cpu, operand1);
 
         } else if (strcmp(input, "ST") == 0) {
             int registerIndex;
-            printf("Enter register index (0-4) to store the result: ");
+            printf("Enter register index (0-8) to store the result: ");
             if (scanf("%d", &registerIndex) == 1) {
                 while (getchar() != '\n');
-                executeST(&cpu, registerIndex, result);
+                ExecuteST(&cpu, registerIndex, result);
             } else {
                 fprintf(stderr, "\x1b[31mError: Invalid input\x1b[0m\n");
                 while (getchar() != '\n');
@@ -94,7 +128,7 @@ int main() {
             if (scanf("%d", &registerIndex) == 1) {
                 // verify if the conversion succeeded
                 while (getchar() != '\n');  // Consumes newline character remaining in buffer
-                executeLD(&cpu, &cpu.R1, registerIndex);
+                ExecuteLD(&cpu, &cpu.R1, registerIndex);
             } else {
                 fprintf(stderr, "\x1b[31mError: Invalid input\x1b[0m\n");
                 // Cleans buffer in case of incorrect input
@@ -108,7 +142,7 @@ int main() {
                 printf("Enter destination register index (0-8): ");
                 if (scanf("%d", &destRegisterIndex) == 1 && destRegisterIndex >= 0 && destRegisterIndex < NUM_REGISTERS) {
                     while (getchar() != '\n');
-                    executeCOPY(&cpu, srcRegisterIndex, destRegisterIndex);
+                    ExecuteCOPY(&cpu, srcRegisterIndex, destRegisterIndex);
                 } else {
                     fprintf(stderr, "\x1b[31mError: Invalid destination register index\x1b[0m\n");
                     while (getchar() != '\n');
@@ -117,8 +151,23 @@ int main() {
                 fprintf(stderr, "\x1b[31mError: Invalid source register index\x1b[0m\n");
                 while (getchar() != '\n');
             }
+        } else if (strcmp(input, "CMP") == 0) {
+            uint16_t operand1, operand2;
+            printf("Enter operand 1: ");
+            scanf("%hu", &operand1);
+            printf("Enter operand 2: ");
+            scanf("%hu", &operand2);
+            while (getchar() != '\n');
+            ExecuteCMP(&cpu, operand1, operand2);
+
+        } else if (strcmp(input, "REM") == 0) {
+            uint16_t operand1;
+            printf("Enter operand 1: ");
+            scanf("%hu", &operand1);
+            while (getchar() != '\n');
+            ExecuteREM(&cpu, operand1);
         } else {
-            printf("\x1b[33mUnknown instruction. Try ADD, SUB, MUL, DIV, ST, LD, COPY, CMP or exit.\x1b[0m\n");
+            printf("\x1b[33mUnknown instruction. Try ADD, SUB, MUL, DIV, AND, OR, XOR, NOT, ST, LD, COPY, CMP, REM or exit.\x1b[0m\n");
         }
     }
     return 0;
