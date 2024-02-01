@@ -98,6 +98,7 @@
   - [3.8 User Interface](#38-user-interface) 
   - [3.9 Documentation and Maintenance](#39-documentation-and-maintenance) 
 - [4. Conclusion](#4-conclusion) 
+  - [4.1 Thanks](#41-thanks) 
 
 
 </details>
@@ -142,25 +143,25 @@ The document should also benefit other stakeholders and project owners by giving
 
 ## 1.3 Glossary
 
-### ASSEMBLY:
+#### ASSEMBLY:
 An assembler is a low-level programming language designed specifically for specific computer architectures, usually tied to a particular processor. It lies between machine language (direct binary representation of processor instructions) and more programmer-friendly high-level languages(a high-level programming language is designed to be more easily understood by humans, providing greater abstraction and usability compared to low-level languages ​​such as assembly or machine language.).
 
-### INTERPRETER:
+#### INTERPRETER:
 An interpreter is software responsible for directly executing programs written in a high-level programming language, without requiring a prior compilation step. Unlike compilers, interpreters translate source code into executable instructions on the fly, making development and debugging easier by allowing more flexible interaction with the code.
 
-### PROCESSOR:
+#### PROCESSOR:
 A processor, also called a central processing unit (CPU), is a computer component that executes machine instructions, handles logical and arithmetic operations, and manages the flow of data within a computer system. It interprets and executes instructions from programs stored in memory, thereby coordinating the fundamental operations necessary for a computer to function.
 
-### VIRTUAL PROCESSOR:
+#### VIRTUAL PROCESSOR:
 A virtual machine, in virtual processor terms, is a software emulation of a physical processor, allowing programs to run as if they were running on dedicated physical hardware. It creates an isolated environment, called a virtual machine, in which an operating system or application can operate independently of the underlying hardware. Virtual processors are often used to run multiple operating systems or applications on a single physical machine, providing flexibility and more efficient resource management.
 
-### COMPILER:
+#### COMPILER:
 A compiler is software that translates source code written in a high-level programming language into executable binary code specific to a hardware architecture. It performs this conversion in several stages, including lexical analysis, parsing, intermediate code generation, code optimization, and finally, machine code or bytecode generation. The final result of the compiler is an executable program independent of the source code, allowing its execution on the target platform without requiring the presence of the compiler.
 
-### DEBUGGER:
+#### DEBUGGER:
 A debugger is a software tool used by programmers to detect, analyze, and correct errors in a program's source code. It allows you to follow program execution step by step, inspect variable values, identify logic errors, and pause execution to examine the execution context at specific points. Debuggers provide features such as breakpoints, watches to monitor variables, execution tracers, and the ability to run the program step by step to facilitate the debugging process and improve the reliability of the code.
 
-### Logical Operation (OR, XOR, AND, NOT):
+#### Logical Operation (OR, XOR, AND, NOT):
 Logical operations (OR, XOR, AND, NOT) are fundamental operations in the field of binary logic used in computer science. Here are brief definitions for each of these operations:
 
 OR (OR): The OR logical operation returns true (1) if at least one of the operands is true (1). Otherwise, it returns false (0).
@@ -173,10 +174,10 @@ NOT: The NOT logic operation inverts the logic value of its operand. If the oper
 
 These operations are commonly used in binary data manipulation at the hardware level and in logical expressions in programming. They are essential for logical calculations and flow control in computer systems.
 
-### IDE:
+#### IDE:
 An integrated development environment (IDE) is software that brings together several tools intended to facilitate software development. It typically offers a text editor for writing source code, a compiler or interpreter for turning the code into an executable, a debugger for detecting and correcting errors, and other features such as versioning, tools user interface design, performance analyzers, etc. IDEs are designed to improve the efficiency of programmers by providing an integrated environment that simplifies tasks related to software development. Examples of popular IDEs include Eclipse, Visual Studio, IntelliJ IDEA, and PyCharm.
 
-### C Language:
+#### C Language:
 The C programming language is a high-level, procedural, imperative language originally developed by Dennis Ritchie in the early 1970s at Bell Labs. It played a fundamental role in the development of many operating systems and inspired many other programming languages.
 
 The C language offers direct control over memory and system resources, making it a preferred choice for system and low-level development. It uses a simple and compact syntax, with a modular programming approach, encouraging code reuse. C is also used for developing desktop applications, embedded systems, and is the basis of languages ​​such as C++ and Objective-C.
@@ -222,38 +223,38 @@ The first step is to set up the development environment, which we can define as 
 
 ##### How We'll Go About It
 
-1. ######  **Requirements Analysis:**
+1. #####  **Requirements Analysis:**
   - We begin by thoroughly understanding what the clients want, detailing all the requirements.
 
-2. ###### **Quick Daily Meetings:**
+2. ##### **Quick Daily Meetings:**
   - Every day, we gather quickly to discuss progress, potential issues, and plan tasks for the day.
   - We keep our Trello board updated for effective organization.
 
-3. ######  **Version Control with Git:**
+3. #####  **Version Control with Git:**
   - We use Git and GitHub to keep track of all versions of our code.
   - Whenever we add something new or fix a bug, we create a specific branch.
 
-4. ######  **Modular Development:**
+4. #####  **Modular Development:**
   - The project is broken down into logical pieces, each serving a specific purpose.
   - We use header files to clearly define what each piece does.
   - For each piece, we write tests to ensure it functions correctly.
 
-5. ######  **Continuous Integration:**
+5. #####  **Continuous Integration:**
   - Whenever we make a change, we ensure the entire project compiles correctly and passes all tests.
 
-6. ######  **Testing:**
+6. #####  **Testing:**
   - We avoid unpleasant surprises by writing tests for everything. Small tests for each piece and comprehensive tests for the entire system.
   - This prevents tears later on.
 
-7. ######  **Documentation:**
+7. #####  **Documentation:**
   - No need to guess what each piece does. We document everything.
   - Clear comments in the code and a detailed README for everyone to understand.
 
-8. ######  **Debugging:**
+8. #####  **Debugging:**
   - We're not all perfect, so we use debugging tools to track down and eliminate bugs.
   - Serious testing and debugging during development.
 
-9. ######  **Code Reviews:**
+9. #####  **Code Reviews:**
   - We trust each other, but two pairs of eyes are better than one. We review the code of others and provide constructive feedback.
 
 ##### Workflow
@@ -451,3 +452,6 @@ These software tools and components will form the foundation for setting up the 
 ...
 
 # 4. Conclusion
+
+## 4.1 Thanks
+...
