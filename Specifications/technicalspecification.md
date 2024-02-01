@@ -142,19 +142,45 @@ With that being said, we will try to cover as many functional and non-functional
 The document should also benefit other stakeholders and project owners by giving insight into our methodology and may serve as a future reference for maintenance or simple documentation purposes.
 
 ## 1.3 Glossary
-| Term                    | Definition                                                                                                                                                                                                        |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **C Language**          | A general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system.                                                  |
-| **GCC**                 | The GNU Compiler Collection (GCC) is a compiler system produced by the GNU Project supporting various programming languages.                                                                                      |
-| **IDE**                 | An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.                                                    |
-| **VS Code**             | Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux, and macOS.                                                                                                                  |
-| **Git**                 | Git is a distributed version-control system for tracking changes in source code during software development.                                                                                                      |
-| **GitHub**              | GitHub is a provider of Internet hosting for software development and version control using Git.                                                                                                                  |
-| **Assembly Language**   | A low-level programming language for a computer or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions.               |
-| **System Call**         | A system call is the programmatic way in which a computer program requests a service from the kernel of the operating system it is executed on.                                                                   |
-| **Virtual System Call** | A virtual system call is a system call that is implemented in software rather than by the operating system.                                                                                                       |
-| **Virtual Processor**   | A virtual processor is a software-based processor that executes assembly code.                                                                                                                                    |
-| **Assembler**           | An assembler is a software tool that translates assembly language code into machine code, allowing it to be executed by a computer's processor. It plays a key role in the assembly language programming process. |
+
+### ASSEMBLY:
+An assembler is a low-level programming language designed specifically for specific computer architectures, usually tied to a particular processor. It lies between machine language (direct binary representation of processor instructions) and more programmer-friendly high-level languages(a high-level programming language is designed to be more easily understood by humans, providing greater abstraction and usability compared to low-level languages ​​such as assembly or machine language.).
+
+### INTERPRETER:
+An interpreter is software responsible for directly executing programs written in a high-level programming language, without requiring a prior compilation step. Unlike compilers, interpreters translate source code into executable instructions on the fly, making development and debugging easier by allowing more flexible interaction with the code.
+
+### PROCESSOR:
+A processor, also called a central processing unit (CPU), is a computer component that executes machine instructions, handles logical and arithmetic operations, and manages the flow of data within a computer system. It interprets and executes instructions from programs stored in memory, thereby coordinating the fundamental operations necessary for a computer to function.
+
+### VIRTUAL PROCESSOR:
+A virtual machine, in virtual processor terms, is a software emulation of a physical processor, allowing programs to run as if they were running on dedicated physical hardware. It creates an isolated environment, called a virtual machine, in which an operating system or application can operate independently of the underlying hardware. Virtual processors are often used to run multiple operating systems or applications on a single physical machine, providing flexibility and more efficient resource management.
+
+### COMPILER:
+A compiler is software that translates source code written in a high-level programming language into executable binary code specific to a hardware architecture. It performs this conversion in several stages, including lexical analysis, parsing, intermediate code generation, code optimization, and finally, machine code or bytecode generation. The final result of the compiler is an executable program independent of the source code, allowing its execution on the target platform without requiring the presence of the compiler.
+
+### DEBUGGER:
+A debugger is a software tool used by programmers to detect, analyze, and correct errors in a program's source code. It allows you to follow program execution step by step, inspect variable values, identify logic errors, and pause execution to examine the execution context at specific points. Debuggers provide features such as breakpoints, watches to monitor variables, execution tracers, and the ability to run the program step by step to facilitate the debugging process and improve the reliability of the code.
+
+### Logical Operation (OR, XOR, AND, NOT):
+Logical operations (OR, XOR, AND, NOT) are fundamental operations in the field of binary logic used in computer science. Here are brief definitions for each of these operations:
+
+OR (OR): The OR logical operation returns true (1) if at least one of the operands is true (1). Otherwise, it returns false (0).
+
+XOR (exclusive OR): The XOR logical operation returns true (1) if exactly one of the operands is true (1), but not both. If neither or both are true, it returns false (0).
+
+AND: The logical AND operation returns true (1) only if both operands are true (1). Otherwise, it returns false (0).
+
+NOT: The NOT logic operation inverts the logic value of its operand. If the operand is true (1), NOT will return false (0), and vice versa.
+
+These operations are commonly used in binary data manipulation at the hardware level and in logical expressions in programming. They are essential for logical calculations and flow control in computer systems.
+
+### IDE:
+An integrated development environment (IDE) is software that brings together several tools intended to facilitate software development. It typically offers a text editor for writing source code, a compiler or interpreter for turning the code into an executable, a debugger for detecting and correcting errors, and other features such as versioning, tools user interface design, performance analyzers, etc. IDEs are designed to improve the efficiency of programmers by providing an integrated environment that simplifies tasks related to software development. Examples of popular IDEs include Eclipse, Visual Studio, IntelliJ IDEA, and PyCharm.
+
+### C Language:
+The C programming language is a high-level, procedural, imperative language originally developed by Dennis Ritchie in the early 1970s at Bell Labs. It played a fundamental role in the development of many operating systems and inspired many other programming languages.
+
+The C language offers direct control over memory and system resources, making it a preferred choice for system and low-level development. It uses a simple and compact syntax, with a modular programming approach, encouraging code reuse. C is also used for developing desktop applications, embedded systems, and is the basis of languages ​​such as C++ and Objective-C.
 
 Key features of the C language:
 
