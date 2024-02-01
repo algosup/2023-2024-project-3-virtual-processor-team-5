@@ -39,20 +39,14 @@
         - [Software Requirements](#software-requirements)
       - [Coding Methodology](#coding-methodology)
         - [How We'll Go About It](#how-well-go-about-it)
-          - [Requirements Analysis](#requirements-analysis)
-          - [Quick Daily Meetings](#quick-daily-meetings)
-          - [Version Control with Git](#version-control-with-git)
-          - [Modular Development](#modular-development)
-          - [Continuous Integration](#continuous-integration)
-          - [Testing](#testing)
-          - [Documentation](#documentation)
-          - [Debugging](#debugging)
-          - [Code Reviews](code-reviews)
-        - [Coding Conventions](#coding-conventions)
+        - [Workflow](#workflow)
+        - [Coding conventions](#coding-conventions)
+            - [Naming](#naming)
+            - [Formatting](#formatting)
+            - [Comments](#comments)
         - [Documenting Conventions](#documenting-conventions)
         - [Test Procedure](#test-procedure)
       - [Setting up the Virtual Processor](#setting-up-the-virtual-processor)
-        - [Hardware Requirements](#hardware-requirements-1)
         - [Software Requirements](#software-requirements-1)
     - [1.4.3 Assumptions & Constraints](#143-assumptions--constraints)
 - [2. Technical Specifications](#2-technical-specifications)
@@ -254,21 +248,47 @@ The first step is to set up the development environment, which we can define as 
 9. ######  **Code Reviews:**
   - We trust each other, but two pairs of eyes are better than one. We review the code of others and provide constructive feedback.
 
+##### Workflow
+The development team began working on features requested in the project's call for tender, such as storing an immediate value in a register.
+• Copy the value of one register to another register.
+• Read the value in memory at the address contained by a register and store it in
+another register.
+• Storing the value of a register in memory at the address contained by another register.
+• Compare the contents of the registers.
+• Unconditionally move to a label.
+• Jump conditionally to a label.
+• Calling a subroutine.
+• Return from a subroutine.
+• The 4 basic arithmetic operations: addition, subtraction, multiplication and division.
+• The 4 basic logical operations: OR, AND, XOR and NOT.
+before the specifications are fully understood and defined.
 
+Once the functional specifications are dissected into the technical specifications, the project functions and features are all reflected in the trello in the form of “Tasks” which we prefer to call “tickets” internally.
+Each of these tickets is then sent to QA in the "next release" section once verified, the tickets are sent to the "done" section, assigned to the team members and prioritized by the project manager or technical manager, in function of the task.
+
+Each ticket represents a part of the work, a bug found, a feature request, an update. This abstraction makes it possible to track many types of tasks, break them down even further, and move forward quickly.
+We will return to this more at the end of this document.
 ##### Coding Conventions
-...
+###### Naming
+- We use camelCase notation for our variables and functions.
+- Constants are in uppercase with underscores.
+###### Formatting
+- We indent with 4 spaces to ensure consistent readability.
+- Opening braces are placed on the same line as the control statements.
+###### Comments
+- We use meaningful comments to clarify the code.
+- Comment near 100% of the Functions in the code.
 
 ##### Documenting Conventions
-...
+
+Nous générerons automatiquement la documentation pour ce projet.
+la facons d'utilisation sera également inclus dans le readme.
 
 ##### Test Procedure
-...
+
+we will test all the functionalities of the project little by little during the project for better efficiency instead of testing everything on the same day to avoid an unpleasant surprise on the day of the final rendering.
 
 #### Setting up the Virtual Processor
-
-##### Hardware Requirements
-...
-
 ##### Software Requirements
 ...
 
