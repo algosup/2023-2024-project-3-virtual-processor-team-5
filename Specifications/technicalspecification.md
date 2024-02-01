@@ -452,6 +452,3 @@ These software tools and components will form the foundation for setting up the 
 ...
 
 # 4. Conclusion
-
-## 4.1 Thanks
-...
