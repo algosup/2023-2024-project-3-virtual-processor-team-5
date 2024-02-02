@@ -19,26 +19,25 @@
 <details>
 <summary>Click to expand</summary>
 
-- [1. Introduction](#1-introduction) 
-  - [1.1 Customer Request](#11-customer-request) 
-  - [1.2 Document Purpose & Definition](#12-document-purpose--definition) 
-  - [1.3 Glossary](#13-glossary) 
-    - [ASSEMBLY](#assembly) 
-    - [INTERPRETER](#interpreter) 
-    - [PROCESSOR](#processor) 
-    - [VIRTUAL PROCESSOR](#virtual-processor) 
-    - [COMPILER](#compiler) 
-    - [DEBUGGER](#debugger) 
-    - [Logical Operation (OR, XOR, AND, NOT)](#logical-operation-or-xor-and-not) 
-    - [IDE](#ide) 
-    - [C Language](#c-language) 
-  - [1.4 Project Overview](#14-project-overview) 
-    - [1.4.1 Project Brief](#141-project-brief) 
-    - [1.4.2 Requirements](#142-requirements)   
+- [Introduction](#introduction) 
+  - [Customer Request](#customer-request) 
+  - [Document Purpose & Definition](#document-purpose--definition) 
+  - [Project Overview](#project-overview) 
+    - [Project Brief](#project-brief) 
+    - [Requirements](#requirements)   
       - [Setting up the Development Environment](#setting-up-the-development-environment) 
         - [Software Requirements](#software-requirements) 
       - [Coding Methodology](#coding-methodology) 
-        - [How We'll Go About It](#how-well-go-about-it) 
+        - [How We'll Go About It](#how-well-go-about-it)
+            - [Requirements Analysis](#requirements-analysis)
+            - [Quick Daily Meetings](#quick-daily-meetings)
+            - [Version Control with Git](#version-control-with-git)
+            - [Modular Development](#modular-development)
+            - [Continuous Integration](#continuous-integration)
+            - [Testing](#testing)
+            - [Documentation](#documentation)
+            - [Debugging](#debugging)
+            - [Code Reviews](#code-reviews)
         - [Workflow](#workflow) 
         - [Coding conventions](#coding-conventions) 
             - [Naming](#naming) 
@@ -55,56 +54,69 @@
             - [Virtual Terminal Implementation:](#virtual-terminal-implementation) 
             - [Built-in Debugger Implementation:](#built-in-debugger-implementation) 
             - [System Call Implementation:](#system-call-implementation) 
-    - [1.4.3 Assumptions & Constraints](#143-assumptions--constraints) 
-- [2. Technical Specifications](#2-technical-specifications) 
-  - [2.1 Folder Structure](#21-folder-structure) 
-  - [2.2 Data Structures](#22-data-structures) 
-  - [2.3 Security](#23-security) 
-- [3. How to Make It](#3-how-to-make-it) 
-  - [3.1 Architecture](#31-architecture) 
-    - [3.1.1 Modularity](#311-modularity)
+    - [Assumptions & Constraints](#assumptions--constraints) 
+- [Technical Specifications](#technical-specifications) 
+  - [Folder Structure](#folder-structure) 
+  - [Data Structures](#data-structures) 
+    - [Register Structure](#register-structure)
+    - [Memory Structure](#memory-structure)
+    - [instruction-structure](#instruction-structure)
+    - [virtual terminal structure](#virtual-terminal-structure)
+  - [Security](#security) 
+- [How to Make It](#how-to-make-it) 
+  - [Architecture](#architecture) 
+    - [Syntaxe of our Code](#Syntaxe-of-our-Code)
+    - [Modularity](#modularity)
       - [Module Breakdown](#module-breakdown) 
       - [Header Files](#header-files) 
-    - [3.1.2 Abstraction](#312-abstraction)
+    - [Abstraction](#abstraction)
       - [Memory Management](#memory-management) 
       - [Registers](#registers) 
-    - [3.1.3 Instruction Interpreter](#313-instruction-interpreter) 
+    - [Instruction Interpreter](#instruction-interpreter) 
       - [Parsing](#parsing) 
       - [Execution](#execution) 
-    - [3.1.4 Input/Output Management](#314-inputoutput-management) 
+    - [Input/Output Management](#inputoutput-management) 
       - [I/O Simulation](#io-simulation)
-    - [3.1.5 Testing and Validation](#315-testing-and-validation) 
+    - [Testing and Validation](#testing-and-validation) 
       - [Unit Testing](#unit-testing) 
-    - [3.1.6 Continuous Integration](#316-continuous-integration) 
-    - [3.1.7 Documentation and Coding Standards](#317-documentation-and-coding-standards) 
+    - [Documentation and Coding Standards](#documentation-and-coding-standards) 
       - [Comments and Documentation](#comments-and-documentation) 
       - [Adherence to Standards](#adherence-to-standards) 
-    - [3.1.8 User Interface](#318-user-interface)
+    - [User Interface](#user-interface)
       - [CLI or GUI](#cli-or-gui) 
-    - [3.1.9 Scalability and Maintenance](#319-scalability-and-maintenance) 
+    - [Scalability and Maintenance](#scalability-and-maintenance) 
       - [Scalable Design](#scalable-design) 
-    - [3.1.10 Directory Structure](#3110-directory-structure) 
-  - [3.2 Understand the Basics of Processor](#32-understand-the-basics-of-processor) 
-  - [3.3 Define the Instruction Set](#33-define-the-instruction-set) 
-  - [3.4 Design the Architecture](#34-design-the-architecture) 
-  - [3.5 Programming the Virtual Processor](#35-programming-the-virtual-processor) 
-    - [3.5.1 Choice of Programming Language](#351-choice-of-programming-language) 
-    - [3.5.2 Implement Components](#352-implement-components) 
-    - [3.5.3 Instruction Interpretation](#353-instruction-interpretation) 
-  - [3.6 Simulate Memory and Input/Output](#36-simulate-memory-and-inputoutput) 
-    - [3.6.1 Memory](#361-memory) 
-    - [3.6.2 Input/Output](#362-inputoutput) 
-  - [3.7 Testing and Debugging](#37-testing-and-debugging)
-  - [3.8 User Interface](#38-user-interface) 
-  - [3.9 Documentation and Maintenance](#39-documentation-and-maintenance) 
-- [4. Conclusion](#4-conclusion) 
-  - [4.1 Thanks](#41-thanks) 
+    - [Directory Structure](#directory-structure) 
+  - [Understand the Basics of Processor](#understand-the-basics-of-processor) 
+  - [Define the Instruction Set](#define-the-instruction-set) 
+  - [Design the Architecture](#design-the-architecture) 
+  - [Programming the Virtual Processor](#programming-the-virtual-processor) 
+    - [Choice of Programming Language](#choice-of-programming-language) 
+    - [Implement Components](#implement-components) 
+    - [Instruction Interpretation](#instruction-interpretation) 
+  - [Simulate Memory and Input/Output](#simulate-memory-and-inputoutput) 
+    - [Memory](#memory) 
+    - [Input/Output](#inputoutput) 
+  - [Testing and Debugging](#testing-and-debugging)
+  - [User Interface](#user-interface) 
+  - [Documentation and Maintenance](#documentation-and-maintenance) 
+- [Glossary](#glossary) 
+    - [ASSEMBLY](#assembly) 
+    - [INTERPRETER](#interpreter) 
+    - [PROCESSOR](#processor) 
+    - [VIRTUAL PROCESSOR](#virtual-processor) 
+    - [COMPILER](#compiler) 
+    - [DEBUGGER](#debugger) 
+    - [Logical Operation (OR, XOR, AND, NOT)](#logical-operation-or-xor-and-not) 
+    - [IDE](#ide) 
+    - [C Language](#c-language) 
+- [Conclusion](#conclusion) 
 
 
 </details>
 
-# 1. Introduction
-## 1.1 Customer Request
+# Introduction
+## Customer Request
 We are asked in the call of tender to create a virtual processor and an interpreter to run assembly code on this processor. This project must be carried out in the basic C code language, that is to say without the use of any external library apart from the standard C libraries. This project's recommendations are to use gcc as compiler and Visual Studio Code as IDE.
 
 First, we need to invent a minimal assembly language for our processor. Our set of instructions must contain at least the following instructions:
@@ -128,7 +140,7 @@ display text in a virtual terminal, accessible from assembly code. we also need 
 the contents of the registers and have a built-in debugger.
 And finally we need to be able to write small assembly programs conceptually similar to unit tests to prove that everything works as expected.
 
-## 1.2 Document Purpose & Definition
+## Document Purpose & Definition
 
 The goal of the Technical Specifications is to take the Functional Requirements which defines the features, scope and goals of the project, to dissect each requirement and turn it into instructions, as clear as possible, to guide the development team as well as the quality assurance team in the successful completion of their mission.
 
@@ -141,65 +153,16 @@ With that being said, we will try to cover as many functional and non-functional
 
 The document should also benefit other stakeholders and project owners by giving insight into our methodology and may serve as a future reference for maintenance or simple documentation purposes.
 
-## 1.3 Glossary
+## Project Overview
 
-#### ASSEMBLY:
-An assembler is a low-level programming language designed specifically for specific computer architectures, usually tied to a particular processor. It lies between machine language (direct binary representation of processor instructions) and more programmer-friendly high-level languages(a high-level programming language is designed to be more easily understood by humans, providing greater abstraction and usability compared to low-level languages ​​such as assembly or machine language.).
-
-#### INTERPRETER:
-An interpreter is software responsible for directly executing programs written in a high-level programming language, without requiring a prior compilation step. Unlike compilers, interpreters translate source code into executable instructions on the fly, making development and debugging easier by allowing more flexible interaction with the code.
-
-#### PROCESSOR:
-A processor, also called a central processing unit (CPU), is a computer component that executes machine instructions, handles logical and arithmetic operations, and manages the flow of data within a computer system. It interprets and executes instructions from programs stored in memory, thereby coordinating the fundamental operations necessary for a computer to function.
-
-#### VIRTUAL PROCESSOR:
-A virtual machine, in virtual processor terms, is a software emulation of a physical processor, allowing programs to run as if they were running on dedicated physical hardware. It creates an isolated environment, called a virtual machine, in which an operating system or application can operate independently of the underlying hardware. Virtual processors are often used to run multiple operating systems or applications on a single physical machine, providing flexibility and more efficient resource management.
-
-#### COMPILER:
-A compiler is software that translates source code written in a high-level programming language into executable binary code specific to a hardware architecture. It performs this conversion in several stages, including lexical analysis, parsing, intermediate code generation, code optimization, and finally, machine code or bytecode generation. The final result of the compiler is an executable program independent of the source code, allowing its execution on the target platform without requiring the presence of the compiler.
-
-#### DEBUGGER:
-A debugger is a software tool used by programmers to detect, analyze, and correct errors in a program's source code. It allows you to follow program execution step by step, inspect variable values, identify logic errors, and pause execution to examine the execution context at specific points. Debuggers provide features such as breakpoints, watches to monitor variables, execution tracers, and the ability to run the program step by step to facilitate the debugging process and improve the reliability of the code.
-
-#### Logical Operation (OR, XOR, AND, NOT):
-Logical operations (OR, XOR, AND, NOT) are fundamental operations in the field of binary logic used in computer science. Here are brief definitions for each of these operations:
-
-OR (OR): The OR logical operation returns true (1) if at least one of the operands is true (1). Otherwise, it returns false (0).
-
-XOR (exclusive OR): The XOR logical operation returns true (1) if exactly one of the operands is true (1), but not both. If neither or both are true, it returns false (0).
-
-AND: The logical AND operation returns true (1) only if both operands are true (1). Otherwise, it returns false (0).
-
-NOT: The NOT logic operation inverts the logic value of its operand. If the operand is true (1), NOT will return false (0), and vice versa.
-
-These operations are commonly used in binary data manipulation at the hardware level and in logical expressions in programming. They are essential for logical calculations and flow control in computer systems.
-
-#### IDE:
-An integrated development environment (IDE) is software that brings together several tools intended to facilitate software development. It typically offers a text editor for writing source code, a compiler or interpreter for turning the code into an executable, a debugger for detecting and correcting errors, and other features such as versioning, tools user interface design, performance analyzers, etc. IDEs are designed to improve the efficiency of programmers by providing an integrated environment that simplifies tasks related to software development. Examples of popular IDEs include Eclipse, Visual Studio, IntelliJ IDEA, and PyCharm.
-
-#### C Language:
-The C programming language is a high-level, procedural, imperative language originally developed by Dennis Ritchie in the early 1970s at Bell Labs. It played a fundamental role in the development of many operating systems and inspired many other programming languages.
-
-The C language offers direct control over memory and system resources, making it a preferred choice for system and low-level development. It uses a simple and compact syntax, with a modular programming approach, encouraging code reuse. C is also used for developing desktop applications, embedded systems, and is the basis of languages ​​such as C++ and Objective-C.
-
-Key features of the C language:
-
-Syntax: Its syntax is relatively simple, with low-level constructs allowing fine control over the hardware.
-Portability: C programs can be compiled on different platforms, promoting source code portability.
-Efficiency: The C language allows direct access to memory, providing significant performance efficiency.
-Modularity: Modular programming is encouraged through functions and libraries, making code reuse easy.
-The C language is still widely used in software development, and many critical systems and applications depend on it. 
-
-## 1.4 Project Overview
-
-### 1.4.1 Project Brief
+### Project Brief
 As stated in the Functional Requirements,this project involves the creation of a virtual processor designed to execute assembly code.
 
 we have been given 7 week to complete this project
 Looking deeper into the project we decided to have a meeting together to find out what to start, to agree on the direction to take and also to know what we wanted as a result at the end of the project.
 After this meeting we decided to adopt a step-by-step strategy with daily tasks. We find that this method is simpler to follow and is the simplest to be effective.
 
-### 1.4.2 Requirements
+### Requirements
 Even if this document is intended to be as exhaustive and demonstrative as possible, it is expected that its reader has some basic knowledge in virtual machines, more precisely in this case in virtual processors, and also certain knowledge in programming.
 
 As indicated in the call for tender, at the end of the project we must be able to code in an assembler created by us with an interpreter also created by us, execute it on a virtual processor also created by us, be able to prove that it executes well by making a virtual terminal and finally we can also display
@@ -338,25 +301,86 @@ A built-in debugger for the virtual processor, integrated into the development e
 Implementation of a virtual system call mechanism to facilitate interaction between assembly code and the virtual processor, particularly for displaying text output.
 These software tools and components will form the foundation for setting up the virtual processor development environment and ensuring a smooth development process.
 
-### 1.4.3 Assumptions & Constraints
+### Assumptions & Constraints
+
+| Assumptions                                       | Constraints                                             |
+|---------------------------------------------------|---------------------------------------------------------|
+| The 7-week development period is sufficient to accomplish the development tasks. | The project must be implemented in the C language without external libraries, limiting the use of advanced features. |
+| Visual Studio Code and GCC are suitable tools for the project's development environment. |
+
+  
+# Technical Specifications
+
+## Folder Structure
+
+here is the folder structure that we decided to put in place for software engineers:
+```
+|-- src/
+|   |-- main.c              // Main entry point
+|   |-- interpreter.c       // Interpreter implementation
+|   |-- processor.c         // Virtual processor implementation
+|   |-- instructions.c      // Instruction set and execution functions
+|   |-- utils.c             // Utility functions
+|
+|-- include/
+|   |-- interpreter.h       // Header file for the interpreter
+|   |-- processor.h         // Header file for the virtual processor
+|   |-- instructions.h      // Header file for instructions
+|   |-- utils.h             // Header file for utility functions
+|
+|-- Makefile               // Makefile for building the project
+|-- README.md              // Project documentation
+|-- programs/              // Example programs for testing
+|   |-- add_program.c      // Example program with ADD instruction
+|   |-- halt_program.c     // Example program with HALT instruction
+|
+|-- build/                 // Directory to store compiled binaries
+|-- bin/                   // Directory to store the final executable
+```
+## Data Structures
+### Register Structure
+
+- **Description:** The register structure is used to represent the registers of the virtual processor. Each register can store a value and is identified by a unique name.
+- **Members:**
+  - `name`: Name of the register.
+  - `value`: Current value stored in the register.
+
+### Memory Structure
+
+- **Description:** The memory structure is used to model the memory of the virtual processor. It can store data and program instructions.
+
+- **Members:**
+  - `address`: Memory address.
+  - `data`: Data stored at the specified address.
+
+### Instruction Structure
+
+- **Description:** The instruction structure represents an instruction from the assembly language used by the virtual processor.
+
+- **Members:**
+  - `opcode`: Operation code indicating the type of instruction.
+  - `operands`: Operands of the instruction (registers, immediate values, etc.).
+
+### Virtual Terminal Structure
+
+- **Description:** This structure is used to simulate a virtual terminal for displaying text output generated by assembly programs.
+
+- **Members:**
+  - `content`: Content displayed in the virtual terminal.
+
+These data structures are crucial for the implementation and proper functioning of the virtual processor, allowing for efficient storage and manipulation of information needed for the execution of assembly code.
+
+## Security
+
 ...
 
-# 2. Technical Specifications
+# How to Make It
 
-## 2.1 Folder Structure
-...
+## Architecture
 
-## 2.2 Data Structures
-...
+### Syntaxe of our Code
 
-## 2.3 Security
-...
-
-# 3. How to Make It
-
-## 3.1 Architecture
-
-### 3.1.1 Modularity
+### Modularity
 
 #### Module Breakdown
 ...
@@ -364,7 +388,7 @@ These software tools and components will form the foundation for setting up the 
 #### Header Files
 ...
 
-### 3.1.2 Abstraction
+### Abstraction
 
 #### Memory Management
 ...
@@ -372,7 +396,7 @@ These software tools and components will form the foundation for setting up the 
 #### Registers
 ...
 
-### 3.1.3 Instruction Interpreter
+### Instruction Interpreter
 
 #### Parsing
 ...
@@ -380,20 +404,20 @@ These software tools and components will form the foundation for setting up the 
 #### Execution
 ...
 
-### 3.1.4 Input/Output Management
+### Input/Output Management
 
 #### I/O Simulation
 ...
 
-### 3.1.5 Testing and Validation
+### Testing and Validation
 
 #### Unit Testing
 ...
 
-### 3.1.6 Continuous Integration
+### Continuous Integration
 ...
 
-### 3.1.7 Documentation and Coding Standards
+### Documentation and Coding Standards
 
 #### Comments and Documentation
 ...
@@ -401,57 +425,104 @@ These software tools and components will form the foundation for setting up the 
 #### Adherence to Standards
 ...
 
-### 3.1.8 User Interface
+### User Interface
 
 #### CLI or GUI
 ...
 
-### 3.1.9 Scalability and Maintenance
+### Scalability and Maintenance
 
 #### Scalable Design
 ...
 
-### 3.1.10 Directory Structure
+### Directory Structure
 ...
 
-## 3.2 Understand the Basics of Processor
+## Understand the Basics of Processor
 ...
 
-## 3.3 Define the Instruction Set
+## Define the Instruction Set
 ...
 
-## 3.4 Design the Architecture
+## Design the Architecture
 ...
 
-## 3.5 Programming the Virtual Processor
+## Programming the Virtual Processor
 
-### 3.5.1 Choice of Programming Language
+### Choice of Programming Language
 ...
 
-### 3.5.2 Implement Components
+### Implement Components
 ...
 
-### 3.5.3 Instruction Interpretation
+### Instruction Interpretation
 ...
 
-## 3.6 Simulate Memory and Input/Output
+## Simulate Memory and Input/Output
 
-### 3.6.1 Memory
+### Memory
 ...
 
-### 3.6.2 Input/Output
+### Input/Output
 ...
 
-## 3.7 Testing and Debugging
+## Testing and Debugging
 ...
 
-## 3.8 User Interface
+## User Interface
 ...
 
-## 3.9 Documentation and Maintenance
+## Documentation and Maintenance
 ...
 
-# 4. Conclusion
+# Glossary
 
-## 4.1 Thanks
-...
+#### ASSEMBLY:
+An assembler is a low-level programming language designed specifically for specific computer architectures, usually tied to a particular processor. It lies between machine language (direct binary representation of processor instructions) and more programmer-friendly high-level languages(a high-level programming language is designed to be more easily understood by humans, providing greater abstraction and usability compared to low-level languages ​​such as assembly or machine language.).
+
+#### INTERPRETER:
+An interpreter is software responsible for directly executing programs written in a high-level programming language, without requiring a prior compilation step. Unlike compilers, interpreters translate source code into executable instructions on the fly, making development and debugging easier by allowing more flexible interaction with the code.
+
+#### PROCESSOR:
+A processor, also called a central processing unit (CPU), is a computer component that executes machine instructions, handles logical and arithmetic operations, and manages the flow of data within a computer system. It interprets and executes instructions from programs stored in memory, thereby coordinating the fundamental operations necessary for a computer to function.
+
+#### VIRTUAL PROCESSOR:
+A virtual machine, in virtual processor terms, is a software emulation of a physical processor, allowing programs to run as if they were running on dedicated physical hardware. It creates an isolated environment, called a virtual machine, in which an operating system or application can operate independently of the underlying hardware. Virtual processors are often used to run multiple operating systems or applications on a single physical machine, providing flexibility and more efficient resource management.
+
+#### COMPILER:
+A compiler is software that translates source code written in a high-level programming language into executable binary code specific to a hardware architecture. It performs this conversion in several stages, including lexical analysis, parsing, intermediate code generation, code optimization, and finally, machine code or bytecode generation. The final result of the compiler is an executable program independent of the source code, allowing its execution on the target platform without requiring the presence of the compiler.
+
+#### DEBUGGER:
+A debugger is a software tool used by programmers to detect, analyze, and correct errors in a program's source code. It allows you to follow program execution step by step, inspect variable values, identify logic errors, and pause execution to examine the execution context at specific points. Debuggers provide features such as breakpoints, watches to monitor variables, execution tracers, and the ability to run the program step by step to facilitate the debugging process and improve the reliability of the code.
+
+#### Logical Operation (OR, XOR, AND, NOT):
+Logical operations (OR, XOR, AND, NOT) are fundamental operations in the field of binary logic used in computer science. Here are brief definitions for each of these operations:
+
+OR (OR): The OR logical operation returns true (1) if at least one of the operands is true (1). Otherwise, it returns false (0).
+
+XOR (exclusive OR): The XOR logical operation returns true (1) if exactly one of the operands is true (1), but not both. If neither or both are true, it returns false (0).
+
+AND: The logical AND operation returns true (1) only if both operands are true (1). Otherwise, it returns false (0).
+
+NOT: The NOT logic operation inverts the logic value of its operand. If the operand is true (1), NOT will return false (0), and vice versa.
+
+These operations are commonly used in binary data manipulation at the hardware level and in logical expressions in programming. They are essential for logical calculations and flow control in computer systems.
+
+#### IDE:
+An integrated development environment (IDE) is software that brings together several tools intended to facilitate software development. It typically offers a text editor for writing source code, a compiler or interpreter for turning the code into an executable, a debugger for detecting and correcting errors, and other features such as versioning, tools user interface design, performance analyzers, etc. IDEs are designed to improve the efficiency of programmers by providing an integrated environment that simplifies tasks related to software development. Examples of popular IDEs include Eclipse, Visual Studio, IntelliJ IDEA, and PyCharm.
+
+#### C Language:
+The C programming language is a high-level, procedural, imperative language originally developed by Dennis Ritchie in the early 1970s at Bell Labs. It played a fundamental role in the development of many operating systems and inspired many other programming languages.
+
+The C language offers direct control over memory and system resources, making it a preferred choice for system and low-level development. It uses a simple and compact syntax, with a modular programming approach, encouraging code reuse. C is also used for developing desktop applications, embedded systems, and is the basis of languages ​​such as C++ and Objective-C.
+
+Key features of the C language:
+
+Syntax: Its syntax is relatively simple, with low-level constructs allowing fine control over the hardware.
+Portability: C programs can be compiled on different platforms, promoting source code portability.
+Efficiency: The C language allows direct access to memory, providing significant performance efficiency.
+Modularity: Modular programming is encouraged through functions and libraries, making code reuse easy.
+The C language is still widely used in software development, and many critical systems and applications depend on it. 
+
+# Conclusion
+
