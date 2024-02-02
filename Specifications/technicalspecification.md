@@ -101,15 +101,6 @@
   - [User Interface](#user-interface) 
   - [Documentation and Maintenance](#documentation-and-maintenance) 
 - [Glossary](#glossary) 
-    - [ASSEMBLY](#assembly) 
-    - [INTERPRETER](#interpreter) 
-    - [PROCESSOR](#processor) 
-    - [VIRTUAL PROCESSOR](#virtual-processor) 
-    - [COMPILER](#compiler) 
-    - [DEBUGGER](#debugger) 
-    - [Logical Operation (OR, XOR, AND, NOT)](#logical-operation-or-xor-and-not) 
-    - [IDE](#ide) 
-    - [C Language](#c-language) 
 - [Conclusion](#conclusion) 
 
 
@@ -477,52 +468,16 @@ These data structures are crucial for the implementation and proper functioning 
 
 # Glossary
 
-#### ASSEMBLY:
-An assembler is a low-level programming language designed specifically for specific computer architectures, usually tied to a particular processor. It lies between machine language (direct binary representation of processor instructions) and more programmer-friendly high-level languages(a high-level programming language is designed to be more easily understood by humans, providing greater abstraction and usability compared to low-level languages ​​such as assembly or machine language.).
-
-#### INTERPRETER:
-An interpreter is software responsible for directly executing programs written in a high-level programming language, without requiring a prior compilation step. Unlike compilers, interpreters translate source code into executable instructions on the fly, making development and debugging easier by allowing more flexible interaction with the code.
-
-#### PROCESSOR:
-A processor, also called a central processing unit (CPU), is a computer component that executes machine instructions, handles logical and arithmetic operations, and manages the flow of data within a computer system. It interprets and executes instructions from programs stored in memory, thereby coordinating the fundamental operations necessary for a computer to function.
-
-#### VIRTUAL PROCESSOR:
-A virtual machine, in virtual processor terms, is a software emulation of a physical processor, allowing programs to run as if they were running on dedicated physical hardware. It creates an isolated environment, called a virtual machine, in which an operating system or application can operate independently of the underlying hardware. Virtual processors are often used to run multiple operating systems or applications on a single physical machine, providing flexibility and more efficient resource management.
-
-#### COMPILER:
-A compiler is software that translates source code written in a high-level programming language into executable binary code specific to a hardware architecture. It performs this conversion in several stages, including lexical analysis, parsing, intermediate code generation, code optimization, and finally, machine code or bytecode generation. The final result of the compiler is an executable program independent of the source code, allowing its execution on the target platform without requiring the presence of the compiler.
-
-#### DEBUGGER:
-A debugger is a software tool used by programmers to detect, analyze, and correct errors in a program's source code. It allows you to follow program execution step by step, inspect variable values, identify logic errors, and pause execution to examine the execution context at specific points. Debuggers provide features such as breakpoints, watches to monitor variables, execution tracers, and the ability to run the program step by step to facilitate the debugging process and improve the reliability of the code.
-
-#### Logical Operation (OR, XOR, AND, NOT):
-Logical operations (OR, XOR, AND, NOT) are fundamental operations in the field of binary logic used in computer science. Here are brief definitions for each of these operations:
-
-OR (OR): The OR logical operation returns true (1) if at least one of the operands is true (1). Otherwise, it returns false (0).
-
-XOR (exclusive OR): The XOR logical operation returns true (1) if exactly one of the operands is true (1), but not both. If neither or both are true, it returns false (0).
-
-AND: The logical AND operation returns true (1) only if both operands are true (1). Otherwise, it returns false (0).
-
-NOT: The NOT logic operation inverts the logic value of its operand. If the operand is true (1), NOT will return false (0), and vice versa.
-
-These operations are commonly used in binary data manipulation at the hardware level and in logical expressions in programming. They are essential for logical calculations and flow control in computer systems.
-
-#### IDE:
-An integrated development environment (IDE) is software that brings together several tools intended to facilitate software development. It typically offers a text editor for writing source code, a compiler or interpreter for turning the code into an executable, a debugger for detecting and correcting errors, and other features such as versioning, tools user interface design, performance analyzers, etc. IDEs are designed to improve the efficiency of programmers by providing an integrated environment that simplifies tasks related to software development. Examples of popular IDEs include Eclipse, Visual Studio, IntelliJ IDEA, and PyCharm.
-
-#### C Language:
-The C programming language is a high-level, procedural, imperative language originally developed by Dennis Ritchie in the early 1970s at Bell Labs. It played a fundamental role in the development of many operating systems and inspired many other programming languages.
-
-The C language offers direct control over memory and system resources, making it a preferred choice for system and low-level development. It uses a simple and compact syntax, with a modular programming approach, encouraging code reuse. C is also used for developing desktop applications, embedded systems, and is the basis of languages ​​such as C++ and Objective-C.
-
-Key features of the C language:
-
-Syntax: Its syntax is relatively simple, with low-level constructs allowing fine control over the hardware.
-Portability: C programs can be compiled on different platforms, promoting source code portability.
-Efficiency: The C language allows direct access to memory, providing significant performance efficiency.
-Modularity: Modular programming is encouraged through functions and libraries, making code reuse easy.
-The C language is still widely used in software development, and many critical systems and applications depend on it. 
-
+| **Concept**           | **Definition**                                                                                                                                                                                                                                                                                                                                      | **GitHub Links**                                |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
+| **Assembler**         | A low-level programming language designed for specific computer architectures, lying between machine language and high-level languages.                                                                                                                                                                                                            | [Assembler GitHub](https://github.com/assembler) |
+| **Interpreter**       | Software executing high-level programming language programs without prior compilation. It translates source code into executable instructions on the fly, aiding flexible interaction with the code.                                                                                                                                               | [Interpreter GitHub](https://github.com/interpreter) |
+| **Processor (CPU)**   | Central Processing Unit - Executes machine instructions, handles operations, and manages data flow in a computer system. Interprets and executes instructions from programs stored in memory.                                                                                                                                                          | [Processor GitHub](https://github.com/processor)   |
+| **Virtual Processor** | Software emulation of a physical processor, creating an isolated environment for operating systems or applications. Allows running multiple systems on a single machine.                                                                                                                                                                               | [Virtual Processor GitHub](https://github.com/virtualprocessor) |
+| **Compiler**          | Software translating high-level programming language source code into executable binary code specific to a hardware architecture. Performs lexical analysis, parsing, intermediate code generation, optimization, and code generation.                                                        | [Compiler GitHub](https://github.com/compiler)     |
+| **Debugger**          | A tool for detecting, analyzing, and correcting errors in a program's source code. Allows step-by-step program execution, variable inspection, and debugging features like breakpoints and watches.                                                                                                                                                  | [Debugger GitHub](https://github.com/debugger)     |
+| **Logical Operations**| Fundamental binary logic operations (OR, XOR, AND, NOT) used in computer science. OR returns true if at least one operand is true. XOR returns true if exactly one operand is true. AND returns true only if both operands are true. NOT inverts the logic value of its operand.                                                            | [Logical Operations GitHub](https://github.com/logicaloperations) |
+| **IDE**               | Integrated Development Environment - Software combining tools for software development, including a text editor, compiler/interpreter, debugger, and other features. Enhances programmer efficiency and simplifies development tasks.                                                                                                          | [IDE GitHub](https://github.com/ide)             |
+| **C Language**        | High-level, procedural, and imperative programming language developed by Dennis Ritchie. Offers direct control over memory and system resources, with a simple syntax and modular programming approach. Widely used in system, low-level, desktop, and embedded development.                                                                 | [C Language GitHub](https://github.com/clanguage) |
 # Conclusion
 
