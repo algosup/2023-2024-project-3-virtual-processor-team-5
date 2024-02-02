@@ -116,7 +116,7 @@ void read_file(char *filename, char *file_directory) {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 				}
 			} else if (sscanf(line, "%3s", operation) == 1) { // if the line has 1 argument, and the operation has 3 characters
-				if (strcmp(operation, "HLT") == 0) { // the operation HLT is halt, to break the code
+				if (strcmp(operation, "QT") == 0) { // the operation QT is quit, to break the code
 					break;
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
