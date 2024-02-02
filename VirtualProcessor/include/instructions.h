@@ -42,7 +42,6 @@ int ExecuteDIV(uint16_t operand1, uint16_t operand2) {
 bool ExecuteCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
         if (state->R[registerIndex1].value == state->R[registerIndex2].value) {
-
             printf("Values in register R%d and R%d are equal.\n", registerIndex1, registerIndex2);
             return true;
         } else if (state->R[registerIndex1].value > state->R[registerIndex2].value) {

@@ -1,5 +1,3 @@
-ADD 1,1
-ST 2,result
-SUB 5,4
-ST 0,result
+1 + 1
+2 <<< result
 HLT
