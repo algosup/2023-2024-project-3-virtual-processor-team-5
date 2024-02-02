@@ -41,14 +41,17 @@
   - Start of sprint 16 : https://trello.com/c/xbUMwyqo/34-sprint-16-implement-jmp-label
 
 #### 01/30/2024:
+- Start of sprint 17 : https://trello.com/c/y66tWgRg/36-sprint-17-execute-return-and-execute-call
+- Start of sprint 18 : https://trello.com/c/C2VQFupo/37-sprint-18-implement-in-assembly
 
-#### 01/31/2024:
-
-  -
 
 #### 01/01/2024:
+- Continue to work on sprint 17 : Sprint 17 : execute return and execute call de Virtual Processor Team 5 | Trello
+- Continue to work on sprint 18 : Sprint 18 : implement in assembly de Virtual Processor Team 5 | Trello
+- Review all the instruction set of our assembly
 
 #### 01/02/2024:
+
 
 ## II. Key Metrics and Performance Indicators
 
