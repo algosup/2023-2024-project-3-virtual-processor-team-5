@@ -13,7 +13,7 @@ void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2);
 void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2);
 void ExecuteNOT(ProcessorState *state, int registerIndex);
 void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2);
-void ExecuteREM( ProcessorState *state, int registerIndex);
+void ExecuteRMV( ProcessorState *state, int registerIndex);
 uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);
 void read_file(char *filename, char *file_directory);
@@ -27,6 +27,8 @@ int main() {
     printf("Simple Terminal\n");
 
     read_file("code.txt", "code.txt");
+    printf("\n\n");
+    //read_file("codeJMP.txt", "codeJMP.txt");
 
     while (1) {
         printf("\n> ");
@@ -160,12 +162,12 @@ int main() {
             while (getchar() != '\n');
             ExecuteCMP(&cpu, operand1, operand2);
 
-        } else if (strcmp(input, "REM") == 0) {
+        } else if (strcmp(input, "RMV") == 0) {
             uint16_t operand1;
             printf("Enter operand 1: ");
             scanf("%hu", &operand1);
             while (getchar() != '\n');
-            ExecuteREM(&cpu, operand1);
+            ExecuteRMV(&cpu, operand1);
         } else {
             printf("\x1b[33mUnknown instruction. Try ADD, SUB, MUL, DIV, AND, OR, XOR, NOT, ST, LD, COPY, CMP, REM or exit.\x1b[0m\n");
         }

@@ -139,8 +139,8 @@ void ExecuteCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIn
     }
 }
 
-// REM instruction execution function (remove the value from the register)
-void ExecuteREM( ProcessorState *state, int registerIndex) {
+// RMV instruction execution function (remove the value from the register)
+void ExecuteRMV( ProcessorState *state, int registerIndex) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
         state->R[registerIndex].value = 0;
         update_flags(state);

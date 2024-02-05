@@ -35,7 +35,7 @@ void read_file(char *filename, char *file_directory) {
 		while (fgets(line, sizeof(line), file)) {
 			currentLine++;
 	    	int operand1, operand2;
-	    	char operation[5];
+	    	char operation[4];
 			// if the line has a comma, replace it by space
 			if (strchr(line, ',') != NULL) {
 				char *p = strchr(line, ',');
@@ -93,7 +93,7 @@ void read_file(char *filename, char *file_directory) {
                 }
 			} else if (sscanf(line, "%3s %d", operation, &operand1) == 2) { // if the line has 2 arguments, and the operation has 2 characters
 				if (strcmp(operation, ">>>") == 0) { // the operation >>> is remove
-					ExecuteREM(&cpu, operand1);
+					ExecuteRMV(&cpu, operand1);
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 				}
@@ -116,7 +116,8 @@ void read_file(char *filename, char *file_directory) {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 				}
 			} else if (sscanf(line, "%3s", operation) == 1) { // if the line has 1 argument, and the operation has 3 characters
-				if (strcmp(operation, "QT") == 0) { // the operation QT is quit, to break the code
+				if (strcmp(operation, "HLT") == 0) { // the operation HLT is quit, to break the code
+					printf("Program execution halted.\n");
 					break;
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
