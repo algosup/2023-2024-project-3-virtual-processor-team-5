@@ -2,6 +2,8 @@
 
 *This document provides a comprehensive guide to the assembly language for the virtual processor. It covers the language's syntax, instruction set, and operational characteristics, along with practical programming examples and best practices.*
 
+`This document is not complete and is a work in progress.`
+
 <details>
 <summary>Table of Contents</summary>
 
