@@ -50,7 +50,6 @@
         - [Coding Methodology](#coding-methodology-1) 
             - [Testing Framework:](#testing-framework) 
             - [Debugger:](#debugger) 
-            - [Continuous Integration:](#continuous-integration) 
             - [Virtual Terminal Implementation:](#virtual-terminal-implementation) 
             - [Built-in Debugger Implementation:](#built-in-debugger-implementation) 
             - [System Call Implementation:](#system-call-implementation) 
@@ -62,7 +61,6 @@
     - [Memory Structure](#memory-structure)
     - [instruction-structure](#instruction-structure)
     - [virtual terminal structure](#virtual-terminal-structure)
-  - [Security](#security) 
 - [How to Make It](#how-to-make-it) 
   - [Architecture](#architecture) 
     - [Syntaxe of our Code](#syntaxe-of-our-code)
@@ -86,7 +84,6 @@
       - [CLI or GUI](#cli-or-gui) 
     - [Scalability and Maintenance](#scalability-and-maintenance) 
       - [Scalable Design](#scalable-design) 
-    - [Directory Structure](#directory-structure) 
   - [Understand the Basics of Processor](#understand-the-basics-of-processor) 
   - [Define the Instruction Set](#define-the-instruction-set) 
   - [Design the Architecture](#design-the-architecture) 
@@ -328,6 +325,20 @@ Here is the folder structure that we decided to put in place for software engine
 |-- build/                 // Directory to store compiled binaries
 |-- bin/                   // Directory to store the final executable
 ```
+
+Explanation:
+
+`src/`: Contains the source code files for the main program, interpreter, virtual processor, instructions, utility functions, and virtual terminal.
+
+`include/`: Includes header files for each module, ensuring clean separation between declarations and implementations.
+
+`programs/`: Provides example programs for testing the functionality of the virtual processor.
+
+`build/`: Stores generated object files during compilation.
+
+`bin/`: Contains the final executable of the virtual processor.
+
+`Makefile`: The Makefile automates the compilation process and  
 ## Data Structures
 ### Register Structure
 
@@ -360,11 +371,6 @@ Here is the folder structure that we decided to put in place for software engine
   - `content`: Content displayed in the virtual terminal.
 
 These data structures are crucial for the implementation and proper functioning of the virtual processor, allowing for efficient storage and manipulation of information needed for the execution of assembly code.
-
-## Security
-
-...
-
 # How to Make It
 
 ## Architecture
@@ -428,49 +434,6 @@ Here are the different syntaxes and in what cases they are used:
     LDI R4, #15    ; Load immediate value 15 into R4
   ```
   
-<br>
-
-<br>
-
-  ```asm
-    ; Example: Adding two register values
-    MOV R1, #10       ; Load immediate value 10 into R1
-    MOV R2, #20       ; Load immediate value 20 into R2
-    ADD R3, R1, R2    ; R3 = R1 + R2 (30)
-  ```
-  
-<br>
-
-<br>
-
-  ```asm
-    ; Example: Subtracting one register from another
-    MOV R1, #30       ; Load immediate value 30 into R1
-    MOV R2, #20       ; Load immediate value 20 into R2
-    SUB R3, R1, R2    ; R3 = R1 - R2 (10)
-  ```
-<br >
-
-<br>
-
-
-    ```asm
-    ; Example: Multiplying two register values
-    MOV R1, #4        ; Load immediate value 4 into R1
-    MOV R2, #5        ; Load immediate value 5 into R2
-    MULT R3, R1, R2   ; R3 = R1 * R2 (20)
-    ```
-<br>
-
-<br>
-
-  ```asm
-    ; Example: Dividing one register by another
-    MOV R1, #20       ; Load immediate value 20 into R1
-    MOV R2, #5        ; Load immediate v.alue 5 into R2
-    DIV R3, R1, R2    ; R3 = R1 / R2 (4)
-  ```
-
 <br>
 
 Here is some syntax that we are going to find in our project note that here all the instructions are not mentioned because here we show the different type of syntax that we are going to do as mentioned above for more information on the different instructions we advise you to read the functional specifications of the project.
@@ -690,89 +653,311 @@ These header files define the interfaces for each module, promoting a modular an
 ### Abstraction
 
 #### Memory Management
-...
+Memory Structure (memory.h)
+Description:
 
+The Memory Structure represents the memory of the virtual processor. It encapsulates the management of memory addresses and data storage.
+Members:
+
+address: Memory address.
+data: Data stored at the specified address.
+```c
+// memory.h
+
+#ifndef MEMORY_H
+#define MEMORY_H
+
+typedef struct {
+    unsigned int address;
+    unsigned int data;
+} Memory;
+
+#endif // MEMORY_H
+```
 #### Registers
-...
+
+Register Structure (register.h)
+Description:
+
+The Register Structure is responsible for representing the registers of the virtual processor. It provides an abstraction for managing register names and their associated values.
+Members:
+
+name: Name of the register.
+value: Current value stored in the register.
+
+```c
+// register.h
+
+#ifndef REGISTER_H
+#define REGISTER_H
+
+typedef struct {
+    char name[3]; // Assuming register names are 2 characters (e.g., R1, R2)
+    int value;
+} Register;
+
+#endif // REGISTER_H
+```
 
 ### Instruction Interpreter
 
+Instruction Structure (instruction.h)
+Description:
+
+The Instruction Structure represents an instruction from the assembly language used by the virtual processor. It encapsulates the operation code (opcode) and operands.
+Members:
+
+opcode: Operation code indicating the type of instruction.
+operands: Operands of the instruction (registers, immediate values, etc.).
+
+```
+// instruction.h
+
+#ifndef INSTRUCTION_H
+#define INSTRUCTION_H
+
+typedef struct {
+    char opcode[5]; // Assuming opcodes are 4 characters (e.g., MOV, ADD)
+    char operands[3][3]; // Assuming each instruction has at most 2 operands
+} Instruction;
+
+#endif // INSTRUCTION_H
+```
+
+
 #### Parsing
-...
+
+##### Description:
+
+Parsing involves breaking down an assembly program into individual instructions. The interpreter reads the program line by line and converts each line into an Instruction structure.
+
+##### Implementation:
+
+The interpreter reads the assembly program line by line.
+For each line, it parses the opcode and operands and creates an Instruction structure.
+The parsed instructions are then passed to the execution phase.
 
 #### Execution
-...
+
+##### Description:
+
+The execution phase includes the interpretation and execution of each instruction. The interpreter reads the instruction structures generated during syntax analysis and performs the corresponding actions.
+
+##### Implementation
+
+We use a switch instruction or lookup table to match opcodes with the corresponding execution functions.
+The execution functions manipulate registers, memory and perform other actions depending on the type of instruction.##### Description:
+
+The execution phase includes the interpretation and execution of each instruction. The interpreter reads the instruction structures generated during syntax analysis and performs the corresponding actions.
+
+##### Implementation
+
+We use a switch instruction or lookup table to match opcodes with the corresponding execution functions.
+The execution functions manipulate registers, memory and perform other actions depending on the type of instruction.
 
 ### Input/Output Management
 
 #### I/O Simulation 
-...
+
+##### Description:
+
+The virtual terminal structure is responsible for simulating the input and output operations of the virtual processor. It provides an abstraction for displaying text output and interacting with the virtual operating system.
 
 ### Testing and Validation
 
 #### Unit Testing
-...
 
-### Continuous Integration
-...
+##### Description:
+
+Unit testing involves testing individual components and functions to ensure that they are correct. For the virtual processor project, unit tests can be written for each module, focusing on specific functionality.
+
+##### Implementation:
+
+We develop test cases for each function and module.
+We ensure that potential boundary cases and error scenarios are covered by the tests.
 
 ### Documentation and Coding Standards
 
 #### Comments and Documentation
-...
+
+##### Description:
+
+Comments and documentation are essential for maintaining the readability and understanding of code. They make it possible to understand the purpose of functions, modules and individual blocks of code.
+
+##### Implementation:
+
+We use comments to explain complex sections of code, particularly where the logic is not immediately obvious.
+And we document function headers, specifying parameters, return values and any side effects.
+We maintain a detailed README file explaining the project structure, dependencies and instructions for building and executing the code.
 
 #### Adherence to Standards
-...
+
+#### Description:
+
+Compliance with coding standards guarantees the consistency of the code base. Consistent naming conventions, formatting and structure contribute to ease of maintenance.
+
+#### Implementation:
+
+To enforce coding conventions through code reviews.
+We use linters and static code analysis tools to identify and address deviations from coding standards.
+We regularly update and refine coding standards in line with evolving best practice.
 
 ### User Interface
 
 #### CLI or GUI
-...
+
+##### Description:
+
+Decide whether the virtual processor will have a Command Line Interface (CLI) or a Graphical User Interface (GUI) for user interaction.
+
+##### Implementation:
+
+If CLI, provide clear and concise command-line options for running assembly programs and interacting with the virtual processor.
+If GUI, design an intuitive interface for loading assembly programs, displaying output, and interacting with the virtual processor.
 
 ### Scalability and Maintenance
 
 #### Scalable Design
-...
 
-### Directory Structure
-...
+##### Description :
+
+An evolutionary design allows new functionalities or modifications to be added without major restructuring. The project must be designed in such a way as to allow for possible future improvements.
+
+##### Implementation:
+
+We modularise the code base, ensuring that each module has a well-defined responsibility.
+We use interfaces and abstractions to decouple components, making them easy to extend or replace.
+We anticipate future needs by adopting flexible design models.
 
 ## Understand the Basics of Processor
-...
 
+A processor, also known as a Central Processing Unit (CPU), is a key component of a computer system responsible for executing instructions of a computer program. The fundamental operations of a processor include:
+
+`Fetch`: The processor retrieves instructions from memory. The program counter (PC) keeps track of the memory address of the next instruction to be fetched.
+
+`Decode`: The fetched instruction is decoded to determine the operation to be performed and the operands involved.
+
+Execute: The processor performs the actual operation specified by the decoded instruction. This may involve arithmetic or logical operations, data movement, or control flow changes.
+
+`Write`: The result of the execution is written back to registers or memory.
+
+Key Concepts:
+### 1. Registers:
+Definition: Small, fast storage locations within the CPU used for temporary data storage and quick access.
+Purpose: Hold operands for instructions, store intermediate results, and manage control flow.
+### 2. Memory:
+Definition: Storage used for storing data and program instructions.
+Access: Memory is accessed by specifying a memory address.
+### 3. Instruction Set Architecture (ISA):
+Definition: The set of instructions that a processor can execute.
+Examples: Arithmetic operations (addition, subtraction), data movement (load, store), control flow (jump, branch).
+### 4. Control Unit:
+Definition: The control unit manages the execution of instructions, directing the flow of data between the CPU and other parts of the computer system.
+### 5. ALU (Arithmetic Logic Unit):
+Definition: The ALU performs arithmetic and logical operations on data.
+Operations: Addition, subtraction, AND, OR, XOR, etc.
+### 6. Program Counter (PC):
+Definition: A register that holds the memory address of the next instruction to be fetched.
+### 7. Stack:
+Definition: 
+A region of memory used for managing function calls, storing local variables, and handling return addresses.
+
+Implementing a Virtual Processor
+Registers in the Virtual Processor:
+
+Define a set of registers with names (e.g., R1, R2) to store data.
+Memory Management:
+
+Simulate memory to store both data and program instructions.
+Instruction Set:
+
+Define a minimal instruction set that includes arithmetic, logical, and control flow operations.
+Control Flow:
+
+Implement mechanisms for handling program counter updates, unconditional jumps, and conditional jumps.
+ALU Operations:
+
+Develop functions for performing arithmetic and logical operations.
+Fetch-Decode-Execute Cycle:
+
+Implement the main loop where instructions are fetched, decoded, and executed.
+Stack Management:
+
+If required, simulate a stack for managing subroutine calls and local variables.
+I/O Simulation:
+
+Implement functions or structures for simulating input/output operations.
+
+Understanding the basics of a processor provides a foundation for designing and implementing a virtual processor. It involves creating abstractions for key components, defining an instruction set, and implementing the fetch-decode-execute cycle. The goal is to simulate the behavior of a real processor within the constraints of the project requirements.
 ## Define the Instruction Set
-...
+
+### Instruction Set for the Virtual Processor
+
+#### Arithmetic Operations:
+1. **ADD** - Add two register values
+   - Syntax: `ADD destination, source1, source2`
+   - Example: `ADD R1, R2, R3` (R1 = R2 + R3)
+
+2. **SUB** - Subtract one register from another
+   - Syntax: `SUB destination, source1, source2`
+   - Example: `SUB R4, R5, R6` (R4 = R5 - R6)
+
+3. **MULT** - Multiply two register values
+   - Syntax: `MULT destination, source1, source2`
+   - Example: `MULT R7, R8, R9` (R7 = R8 * R9)
+
+4. **DIV** - Divide one register by another
+   - Syntax: `DIV destination, source1, source2`
+   - Example: `DIV R10, R11, R12` (R10 = R11 / R12)
+
+#### Logical Operations:
+5. **AND** - Perform logical AND between two register values
+   - Syntax: `AND destination, source1, source2`
+   - Example: `AND R13, R14, R15` (R13 = R14 & R15)
+
+6. **OR** - Perform logical OR between two register values
+   - Syntax: `OR destination, source1, source2`
+   - Example: `OR R16, R17, R18` (R16 = R17 | R18)
+
+7. **XOR** - Perform logical XOR between two register values
+   - Syntax: `XOR destination, source1, source2`
+   - Example: `XOR R19, R20, R21` (R19 = R20 ^ R21)
 
 ## Design the Architecture
-...
 
-## Programming the Virtual Processor
+Syntax of Assembly Code
+The assembly code for the virtual processor follows a clear and consistent syntax to enhance readability and maintainability. The code adheres to the specified conventions, including camelCase notation for variables and functions, consistent indentation, and meaningful comments.
 
-### Choice of Programming Language
-...
+```asm
+  ; Example: Moving data from R1 to R2
+MOV R1, #10   ; Load immediate value 10 into R1
+MOV R2, R1    ; Move data from R1 to R2
 
-### Implement Components
-...
+; Example: Loading data from memory into R3
+LDR R3, [0x1000]   ; Load data from memory address 0x1000 into R3
 
-### Instruction Interpretation
-...
+; Example: Storing data from R4 into memory
+STR R4, [0x2000]   ; Store the content of R4 into memory address 0x2000
 
-## Simulate Memory and Input/Output
+; Example: Unconditionally jump to a label
+JUMP startLabel    ; Jump to the label 'startLabel'
 
-### Memory
-...
+; Example: Conditionally jump to a label based on the content of R5
+JUMPIF R5, endLabel   ; Jump to 'endLabel' if the content of R5 is true
 
-### Input/Output
-...
+; Example: Call a subroutine at the label 'subroutine'
+CALL subroutine    ; Call the subroutine at 'subroutine'
 
-## Testing and Debugging
-...
+; Example: Return from a subroutine
+RET    ; Return from the current subroutine
 
-## User Interface
-...
+; Example: Compare the contents of R6 and R7
+CMP R6, R7    ; Compare R6 and R7
 
-## Documentation and Maintenance
-...
+; Example: Halt the execution of the virtual processor
+HLT    ; Halt execution
+
+```
 
 # Glossary
 
