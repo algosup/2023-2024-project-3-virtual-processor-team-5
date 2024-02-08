@@ -157,7 +157,7 @@ The first step is to set up the development environment, which we can define as 
 ##### Software Requirements
 - [VSCode](https://code.visualstudio.com/) as an IDE to run our code simply and efficiently
 - the programming language is [C](https://en.wikipedia.org/wiki/C_(programming_language)#:~:text=C%20is%20an%20imperative%20procedural,all%20with%20minimal%20runtime) to program our entire project
-- pour compiler notre en c nous utilisons le compiler [GCC](https://gcc.gnu.org)
+- [GCC (GNU Compiler Collection)](https://gcc.gnu.org): We will use GCC as the C compiler for our project.
 - we use Github or other source control management to  communicate the progress of our project, [Github](https://github.com/) is recommended for this task.
 - we also use [trello](https://trello.com/) for our step-by-step strategy by putting the different tasks to do during the day for better optimization of time.
 
