@@ -65,10 +65,10 @@
   - [Security](#security) 
 - [How to Make It](#how-to-make-it) 
   - [Architecture](#architecture) 
-    - [Syntaxe of our Code](#Syntaxe-of-our-Code)
+    - [Syntaxe of our Code](#syntaxe-of-our-code)
     - [Modularity](#modularity)
       - [Module Breakdown](#module-breakdown) 
-      - [Header Files](#header-files) 
+    - [Header Files](#header-files) 
     - [Abstraction](#abstraction)
       - [Memory Management](#memory-management) 
       - [Registers](#registers) 
@@ -304,7 +304,7 @@ These software tools and components will form the foundation for setting up the 
 
 ## Folder Structure
 
-here is the folder structure that we decided to put in place for software engineers:
+Here is the folder structure that we decided to put in place for software engineers:
 ```
 |-- src/
 |   |-- main.c              // Main entry point
@@ -373,9 +373,9 @@ These data structures are crucial for the implementation and proper functioning 
 
 Our code will follow a clear and consistent syntax to enhance readability and maintainability. We'll adhere to the coding conventions mentioned earlier, using camelCase for variables and functions, and keeping the indentation uniform at 4 spaces. Comments will be utilized to explain complex sections and ensure code understanding.
 
-note that all c instructions and their descriptions are in the functional specification so we invite you to read the latter as mentioned more for more information on the different instructions
+Note that all the c instructions and their descriptions can be found in the functional specification, so we invite you to read the functional specification as indicated above for more information on the different instructions.
 
-here are the different syntaxes and in what cases they are used:
+Here are the different syntaxes and in what cases they are used:
 
 <br>
   
@@ -473,7 +473,7 @@ here are the different syntaxes and in what cases they are used:
 
 <br>
 
-here is some syntax that we are going to find in our project note that here all the instructions are not mentioned because here we show the different type of syntax that we are going to do as mentioned above for more information on the different instructions we advise you to read the functional specifications of the project.
+Here is some syntax that we are going to find in our project note that here all the instructions are not mentioned because here we show the different type of syntax that we are going to do as mentioned above for more information on the different instructions we advise you to read the functional specifications of the project.
 
 ### Modularity
 
@@ -557,14 +557,7 @@ here is some syntax that we are going to find in our project note that here all 
 - Store generated object files during compilation and the final executable, respectively.
 
 
-#### Header Files
-
-
-Certainly! Here is the completed section for Header Files:
-
-markdown
-Copy code
-### Header Files (`include/`):
+### Header Files
 
 The `include/` directory contains header files for each module, facilitating a clean separation between declarations and implementations. These headers provide a clear interface for each module and promote modularity within the codebase.
 
