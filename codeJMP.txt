@@ -1,10 +1,10 @@
-1 + 1
-0 <<< result
+ADD 1,1
+STR 0,result
 loop:
-6 - 4
-1 <<< result
-0 = 1
-=> loop
-0 & 1
->>> 1
-LD 2,1
+SUB 6,4
+STR 1,result
+CMP 0,1
+JMP loop
+AND 0,1
+RMV 1
+LDR 2,1

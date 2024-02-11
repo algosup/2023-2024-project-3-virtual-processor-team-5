@@ -99,7 +99,7 @@ void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
 
 //****************************** DATA MOVEMENT ******************************//
 
-void ExecuteST(ProcessorState *state, int registerIndex, int result) {
+void ExecuteSTR(ProcessorState *state, int registerIndex, int result) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
         if (state->R[registerIndex].value != 0) {
             state->R[registerIndex].value = state->R[registerIndex].value + result; // add result to lastResult
@@ -115,7 +115,7 @@ void ExecuteST(ProcessorState *state, int registerIndex, int result) {
     }
 }
 // LD instruction execution function (loading)
-void ExecuteLD(ProcessorState *state, Register *destination, int registerIndex) {
+void ExecuteLDR(ProcessorState *state, Register *destination, int registerIndex) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
         destination->value = state->R[registerIndex].value;
         update_flags(state);

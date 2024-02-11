@@ -6,8 +6,8 @@ int ExecuteSUB(uint16_t operand1, uint16_t operand2);
 int ExecuteMUL(uint16_t operand1, uint16_t operand2);
 int ExecuteDIV(uint16_t operand1, uint16_t operand2);
 bool ExecuteCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
-void ExecuteST(ProcessorState *state, int registerIndex, int result);
-void ExecuteLD(ProcessorState *state, Register *destination, int registerIndex);
+void ExecuteSTR(ProcessorState *state, int registerIndex, int result);
+void ExecuteLDR(ProcessorState *state, Register *destination, int registerIndex);
 void ExecuteCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex);
 void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2);
 void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2);
@@ -114,23 +114,23 @@ int main() {
             while (getchar() != '\n');
             ExecuteNOT(&cpu, operand1);
 
-        } else if (strcmp(input, "ST") == 0) {
+        } else if (strcmp(input, "STR") == 0) {
             int registerIndex;
             printf("Enter register index (0-8) to store the result: ");
             if (scanf("%d", &registerIndex) == 1) {
                 while (getchar() != '\n');
-                ExecuteST(&cpu, registerIndex, result);
+                ExecuteSTR(&cpu, registerIndex, result);
             } else {
                 fprintf(stderr, "\x1b[31mError: Invalid input\x1b[0m\n");
                 while (getchar() != '\n');
             }
-        } else if (strcmp(input, "LD") == 0) {
+        } else if (strcmp(input, "LDR") == 0) {
             int registerIndex;
             printf("Enter register index (0-8): ");
             if (scanf("%d", &registerIndex) == 1) {
                 // verify if the conversion succeeded
                 while (getchar() != '\n');  // Consumes newline character remaining in buffer
-                ExecuteLD(&cpu, &cpu.R1, registerIndex);
+                ExecuteLDR(&cpu, &cpu.R1, registerIndex);
             } else {
                 fprintf(stderr, "\x1b[31mError: Invalid input\x1b[0m\n");
                 // Cleans buffer in case of incorrect input
@@ -169,7 +169,7 @@ int main() {
             while (getchar() != '\n');
             ExecuteRMV(&cpu, operand1);
         } else {
-            printf("\x1b[33mUnknown instruction. Try ADD, SUB, MUL, DIV, AND, OR, XOR, NOT, ST, LD, COPY, CMP, REM or exit.\x1b[0m\n");
+            printf("\x1b[33mUnknown instruction. Try ADD, SUB, MUL, DIV, AND, OR, XOR, NOT, STR, LDR, COPY, CMP, RMV or exit.\x1b[0m\n");
         }
     }
     return 0;

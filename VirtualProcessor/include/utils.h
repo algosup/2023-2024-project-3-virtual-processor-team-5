@@ -51,72 +51,68 @@ void read_file(char *filename, char *file_directory) {
 				numLabel++;
 				continue;
 			}
-			if (sscanf(line, "%2s %d %d", operation, &operand1, &operand2) == 3){ // if the line has 3 arguments, and the operation has 2 characters
-				if (strcmp(operation, "LD") == 0) { // the operation LD is load
-					ExecuteLD(&cpu, &cpu.R[operand1], operand2);
-				} else if (strcmp(operation, "CP") == 0) { // the operation CP is copy
-					ExecuteCOPY(&cpu, operand1, operand2);
+			if (sscanf(line, "%s %d %d", operation, &operand1, &operand2) == 3) { // if the line has 3 arguments, and the operation has 1 character
+	        	if (strcmp(operation, "ADD") == 0) {
+					result = ExecuteADD(operand1, operand2);
+	        	} else if (strcmp(operation, "SUB") == 0) {
+	            	result = ExecuteSUB(operand1, operand2);
+				} else if (strcmp(operation, "MUL") == 0) {
+					result = ExecuteMUL(operand1, operand2);
+				} else if (strcmp(operation, "DIV") == 0) {
+					result = ExecuteDIV(operand1, operand2);
+	        	} else if (strcmp(operation, "CMP") == 0) { // the operation CMP is compare
+	            	resultCMP = ExecuteCMP(&cpu, operand1, operand2);
+	        	} else if (strcmp(operation, "AND") == 0) {
+					ExecuteAND(&cpu, operand1, operand2);
+				} else if (strcmp(operation, "XOR") == 0) {
+					ExecuteXOR(&cpu, operand1, operand2);
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
-	    	} else if (sscanf(line, "%i %3s %hi", &registerIndex, operation, &result) == 2) { // if the line has 2 arguments, and the operation has 3 characters
-				if (strcmp(operation, "<<<") == 0) { // the operation <<< is store
-					ExecuteST(&cpu, registerIndex, result);
-				} else {
-					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
-				}
-			} else if (sscanf(line, "%d %s %d", &operand1, operation, &operand2) == 3) { // if the line has 3 arguments, and the operation has 1 character
-	        	if (strcmp(operation, "+") == 0) { // the operation + is add
-					result = ExecuteADD(operand1, operand2);
-	        	} else if (strcmp(operation, "-") == 0) { // the operation - is subtract
-	            	result = ExecuteSUB(operand1, operand2);
-				} else if (strcmp(operation, "*") == 0) { // the operation * is multiply
-					result = ExecuteMUL(operand1, operand2);
-				} else if (strcmp(operation, "/") == 0) { // the operation / is divide
-					result = ExecuteDIV(operand1, operand2);
-	        	} else if (strcmp(operation, "=") == 0) { // the operation = is compare
-	            	resultCMP = ExecuteCMP(&cpu, operand1, operand2);
-	        	} else if (strcmp(operation, "&") == 0) { // the operation & is and
-					ExecuteAND(&cpu, operand1, operand2);
-				} else if (strcmp(operation, "X") == 0) { // the operation X is xor
-					ExecuteXOR(&cpu, operand1, operand2);
-				} else if (strcmp(operation, "|") == 0) { // the operation | is or
+			} else if (sscanf(line, "%2s %d %d", operation, &operand1, &operand2) == 3){ // if the line has 3 arguments, and the operation has 2 characters
+				if (strcmp(operation, "CP") == 0) { // the operation CP is copy
+					ExecuteCOPY(&cpu, operand1, operand2);
+				} else if (strcmp(operation, "OR") == 0) {
 					ExecuteOR(&cpu, operand1, operand2);
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
-			} else if (sscanf(line, "%2s %d", operation, &operand1) == 2) { // if the line has 2 arguments, and the operation has 2 characters
-                if (strcmp(operation, "!!") == 0) { // the operation !! is not
+			} else if (sscanf(line, "%3s %d %d", operation, &operand1, &operand2) == 3){ // if the line has 3 arguments, and the operation has 2 characters
+				if (strcmp(operation, "LDR") == 0) { // the operation LDR is load
+					ExecuteLDR(&cpu, &cpu.R[operand1], operand2);
+				} else {
+	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
+	        	}
+			} else if (sscanf(line, "%3s %d", operation, &operand1) == 2) { // if the line has 2 arguments, and the operation has 2 characters
+                if (strcmp(operation, "NOT") == 0) {
                     ExecuteNOT(&cpu, operand1);
+				} else if (strcmp(operation, "STR") == 0) { // the operation STR is store
+					ExecuteSTR(&cpu, operand1, result);
+				} else if (strcmp(operation, "RMV") == 0) { // the operation RMV is remove
+					ExecuteRMV(&cpu, operand1);
                 } else {
                     printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
                 }
-			} else if (sscanf(line, "%3s %d", operation, &operand1) == 2) { // if the line has 2 arguments, and the operation has 2 characters
-				if (strcmp(operation, ">>>") == 0) { // the operation >>> is remove
-					ExecuteRMV(&cpu, operand1);
-				} else {
-					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
-				}
-			} else if (sscanf(line, "%2s %9s", operation, labelName) == 2) { // if the line has 2 arguments, and the operation has 2 characters
-				if (strcmp(operation, "=>") == 0) { // the operation => is jump if, need to use with compare
-					if (resultCMP) {
+			} else if (sscanf(line, "%3s %9s", operation, labelName) == 2) { // if the line has 2 arguments, and the operation has 2 characters
+				if (strcmp(operation, "JMP") == 0) { // the operation JMP is jump
+					if (resultCMP) { // conditional jump with the CMP operation
+						for (int i = 0; i < numLabel; i++) {
+							if (strcmp(labels[i].name, labelName) == 0) {
+								fseek(file, labels[i].filePosition, SEEK_SET);
+							}
+						}
+					} else { // unconditional jump
 						for (int i = 0; i < numLabel; i++) {
 							if (strcmp(labels[i].name, labelName) == 0) {
 								fseek(file, labels[i].filePosition, SEEK_SET);
 							}
 						}
 					}
-				} else if (strcmp(operation, "->") == 0) { // the operation -> is jump
-					for (int i = 0; i < numLabel; i++) {
-						if (strcmp(labels[i].name, labelName) == 0) {
-							fseek(file, labels[i].filePosition, SEEK_SET);
-						}
-					}
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 				}
 			} else if (sscanf(line, "%3s", operation) == 1) { // if the line has 1 argument, and the operation has 3 characters
-				if (strcmp(operation, "HLT") == 0) { // the operation HLT is quit, to break the code
+				if (strcmp(operation, "HLT") == 0) { // the operation HLT is halt, to break the code
 					printf("Program execution halted.\n");
 					break;
 				} else {
