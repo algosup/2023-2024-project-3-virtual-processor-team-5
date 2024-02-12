@@ -160,12 +160,6 @@ typedef struct {
     long filePosition; // Remember the file position of each label
 } Label;
 
-// CALL instruction execution function (call the subroutine after in the file with the name labelName and save the return address in the return stack)
-//!TODO
-
-// RET instruction execution function (return to the position where the last CALL was made with thename labelName with the return stack)
-//!TODO
-
 //************************** SPECIAL INSTRUCTIONS **************************//
 
 

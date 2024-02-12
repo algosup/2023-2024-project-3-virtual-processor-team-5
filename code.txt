@@ -1,3 +1,5 @@
-ADD 1,1
-STR 2,result
-HLT
+ADD 1, 1
+
+
+MOV R1, #10
+MOV R1, R2
