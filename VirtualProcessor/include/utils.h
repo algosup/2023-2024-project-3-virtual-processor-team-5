@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <ctype.h>
 
 #include "processor.h"
 #include "instructions.h"
@@ -35,7 +36,8 @@ void read_file(char *filename, char *file_directory) {
 		while (fgets(line, sizeof(line), file)) {
 			currentLine++;
 	    	int operand1, operand2;
-			char register1, register2;
+			char register1[50];
+			char register2[50];
 	    	char operation[4];
 			// if the line has a comma, replace it by space
 			if (strchr(line, ',') != NULL) {
@@ -78,12 +80,30 @@ void read_file(char *filename, char *file_directory) {
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
-			} else if (sscanf(line, "%3s %2s %2s", operation, register1, register2) == 3){
-				if (register2 == '#'){
-					ExecuteMOV((int)&register1, (int)&register2, OperandType 0);
+			} else if (sscanf(line, "%3s %s %s", operation, register1, register2) == 3){ // if the line has 3 arguments, and the operation has 3 characters
+				if (strcmp(operation, "MOV") == 0){
+					ProcessorState *registers = 0;
+					int index;
+					if (isdigit(register1[1])) {
+    					index = register1[1] - '0';
+					} else {
+						printf("Error: Invalid register index\n");
+					}
+					if (register2[0] == '#'){
+						int i;
+						for (i = 0; i < sizeof(register2); i++){
+							register2[i] = register2[i+1];
+						}
+						printf("register : %d\n", cpu.R[index].value);
+						printf("the register use is : %d\n", index);
+						printf("immediate value : %s\n", register2);
+						ExecuteMOV((intptr_t)&cpu.R[index], (intptr_t)register2, 0);
+					} else {
+						ExecuteMOV((intptr_t)&cpu.R[index], (intptr_t)&cpu.R[atoi((const char*)&register2)], 1);
+					}
 				} else {
-					ExecuteMOV((int)&register1, (int)&register2,OperandType 1);
-				}
+	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
+	        	}
 			} else if (sscanf(line, "%3s %d %d", operation, &operand1, &operand2) == 3){ // if the line has 3 arguments, and the operation has 2 characters
 				if (strcmp(operation, "LDR") == 0) { // the operation LDR is load
 					ExecuteLDR(&cpu, &cpu.R[operand1], operand2);

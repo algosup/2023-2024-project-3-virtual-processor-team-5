@@ -1,5 +1,2 @@
-ADD 1, 1
-
-
-MOV R1, #10
-MOV R1, R2
+MOV R1,#10
+MOV R1,R2

@@ -112,7 +112,7 @@ void ExecuteMOV(int operand1, int operand2, OperandType operand2Type) {
     if (operand2Type == IMMEDIATE) {
         // Load the immediate value into the register
         registers[operand1] = operand2;
-        printf("The immediate value %d add in the R%d\n", &operand2, operand1);
+        printf("The immediate value %i add in the R%d\n", operand2, operand1);
     } else if (operand2Type == REGISTER) {
         // Move the value from the second register to the first register
         registers[operand1] = registers[operand2];
