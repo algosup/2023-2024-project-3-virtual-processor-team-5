@@ -99,6 +99,27 @@ void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
 
 //****************************** DATA MOVEMENT ******************************//
 
+// Define the registers
+int registers[NUM_REGISTERS];
+
+// Define the operand types
+typedef enum {
+    IMMEDIATE,
+    REGISTER
+} OperandType;
+
+void ExecuteMOV(int operand1, int operand2, OperandType operand2Type) {
+    if (operand2Type == IMMEDIATE) {
+        // Load the immediate value into the register
+        registers[operand1] = operand2;
+        printf("The immediate value %d add in the R%d\n", &operand2, operand1);
+    } else if (operand2Type == REGISTER) {
+        // Move the value from the second register to the first register
+        registers[operand1] = registers[operand2];
+        printf("The register %d was moved in the register %d", operand1, operand2);
+    }
+}
+
 void ExecuteSTR(ProcessorState *state, int registerIndex, int result) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
         if (state->R[registerIndex].value != 0) {

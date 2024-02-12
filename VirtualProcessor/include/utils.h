@@ -35,6 +35,7 @@ void read_file(char *filename, char *file_directory) {
 		while (fgets(line, sizeof(line), file)) {
 			currentLine++;
 	    	int operand1, operand2;
+			char register1, register2;
 	    	char operation[4];
 			// if the line has a comma, replace it by space
 			if (strchr(line, ',') != NULL) {
@@ -77,6 +78,12 @@ void read_file(char *filename, char *file_directory) {
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
+			} else if (sscanf(line, "%3s %2s %2s", operation, register1, register2) == 3){
+				if (register2 == '#'){
+					ExecuteMOV((int)&register1, (int)&register2, OperandType 0);
+				} else {
+					ExecuteMOV((int)&register1, (int)&register2,OperandType 1);
+				}
 			} else if (sscanf(line, "%3s %d %d", operation, &operand1, &operand2) == 3){ // if the line has 3 arguments, and the operation has 2 characters
 				if (strcmp(operation, "LDR") == 0) { // the operation LDR is load
 					ExecuteLDR(&cpu, &cpu.R[operand1], operand2);
