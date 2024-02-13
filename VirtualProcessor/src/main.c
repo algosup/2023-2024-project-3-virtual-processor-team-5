@@ -13,7 +13,7 @@ void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2);
 void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2);
 void ExecuteNOT(ProcessorState *state, int registerIndex);
 void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2);
-void ExecuteMOV(int operand1, int operand2, OperandType operand2Type);
+void ExecuteMOV(int* operand1, int* operand2, OperandType operand2type);
 void ExecuteRMV( ProcessorState *state, int registerIndex);
 uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);

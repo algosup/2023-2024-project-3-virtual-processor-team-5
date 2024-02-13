@@ -105,21 +105,25 @@ int registers[NUM_REGISTERS];
 // Define the operand types
 typedef enum {
     IMMEDIATE,
-    REGISTER
+    REGISTER,
+    MEMORY
 } OperandType;
 
-void ExecuteMOV(int operand1, int operand2, OperandType operand2Type) {
-    if (operand2Type == IMMEDIATE) {
-        // Load the immediate value into the register
-        registers[operand1] = operand2;
-        printf("The immediate value %i add in the R%d\n", operand2, operand1);
-    } else if (operand2Type == REGISTER) {
-        // Move the value from the second register to the first register
-        registers[operand1] = registers[operand2];
-        printf("The register %d was moved in the register %d", operand1, operand2);
+void ExecuteMOV(int* operand1, int* operand2, OperandType operand2type) {
+    switch(operand2type) {
+        case IMMEDIATE:
+            *operand1 = *operand2; // Copie directe pour une valeur immédiate
+        // Supposons que pour REGISTER et MEMORY, operand2 est une adresse
+        case REGISTER:
+            *operand1 = *(int*)operand2; // Déreference pour copier la valeur
+        case MEMORY:
+            *operand1 = *(int*)operand2; // Déreference pour copier la valeur
+        default:
+            printf("Unknown operand.\n");
     }
 }
 
+// STR instruction execution function (storing)
 void ExecuteSTR(ProcessorState *state, int registerIndex, int result) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
         if (state->R[registerIndex].value != 0) {
@@ -135,7 +139,8 @@ void ExecuteSTR(ProcessorState *state, int registerIndex, int result) {
         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
     }
 }
-// LD instruction execution function (loading)
+
+// LDR instruction execution function (loading)
 void ExecuteLDR(ProcessorState *state, Register *destination, int registerIndex) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
         destination->value = state->R[registerIndex].value;
