@@ -97,9 +97,9 @@ void read_file(char *filename, char *file_directory) {
 						printf("register : %d\n", cpu.R[index].value);
 						printf("the register use is : %d\n", index);
 						printf("immediate value : %s\n", register2);
-						ExecuteMOV(&cpu.R[index].value, &index, 0);
+						void ExecuteMOV(ProcessorState* cpu, int destination, int source, bool isImmediate);
 					} else {
-						ExecuteMOV(&cpu.R[index].value, &cpu.R[index].value, 1);
+						void ExecuteMOV(ProcessorState* cpu, int destination, int source, bool isImmediate);
 					}
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);

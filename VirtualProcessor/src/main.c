@@ -13,7 +13,7 @@ void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2);
 void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2);
 void ExecuteNOT(ProcessorState *state, int registerIndex);
 void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2);
-void ExecuteMOV(int* operand1, int* operand2, OperandType operand2type);
+void ExecuteMOV(ProcessorState* cpu, int destination, int source, bool isImmediate);
 void ExecuteRMV( ProcessorState *state, int registerIndex);
 uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);
@@ -27,7 +27,7 @@ int main() {
     char input[100];
     printf("Simple Terminal\n");
 
-    read_file("code.txt", "code.txt");
+    read_file("code.txt", "C:\\Users\\LucasMEGNAN\\Desktop\\2023-2024-project-3-virtual-processor-team-5\\code.txt");
     printf("\n\n");
     //read_file("codeJMP.txt", "codeJMP.txt");
 

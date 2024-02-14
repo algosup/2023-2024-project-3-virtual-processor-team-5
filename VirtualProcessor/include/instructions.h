@@ -109,17 +109,13 @@ typedef enum {
     MEMORY
 } OperandType;
 
-void ExecuteMOV(int* operand1, int* operand2, OperandType operand2type) {
-    switch(operand2type) {
-        case IMMEDIATE:
-            *operand1 = *operand2; // Copie directe pour une valeur immédiate
-        // Supposons que pour REGISTER et MEMORY, operand2 est une adresse
-        case REGISTER:
-            *operand1 = *(int*)operand2; // Déreference pour copier la valeur
-        case MEMORY:
-            *operand1 = *(int*)operand2; // Déreference pour copier la valeur
-        default:
-            printf("Unknown operand.\n");
+void ExecuteMOV(ProcessorState* cpu, int destination, int source, bool isImmediate) {
+    if (isImmediate) {
+        cpu->R[destination].value = source;
+        printf("Moved immediate value %d to register R%d\n", source, destination);
+    } else {
+        cpu->R[destination] = cpu->R[source];
+        printf("Moved value from register R%d to R%d\n", source, destination);
     }
 }
 
