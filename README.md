@@ -1,6 +1,6 @@
 # Team 5's Virtual Processor
 
-# Team Members
+## Team Members
 
 | Picture | Name | Role | Network |
 | :---: | :---: | :---: | :---: |
@@ -11,7 +11,7 @@
 | <img src="https://avatars.githubusercontent.com/u/145991204?v=4" width="100" > | [**@Lucas MEGNAN**](https://github.com/LucasMegnan) | Software Engineer | [LinkedIn]() |
 | <img src="https://avatars.githubusercontent.com/u/114397869?v=4" width="100" > | [**@Grégory PAGNOUX**](https://github.com/Gregory-Pagnoux) | Software Engineer | [LinkedIn]() |
 
-# Project Description
+## Project Description
 
 This repository contains the source code for Team 5's Virtual Processor Project. The project's main goal is to create a virtual processor capable of executing assembly code. Developed in C, the processor adheres to principles of portability and efficiency.
 
