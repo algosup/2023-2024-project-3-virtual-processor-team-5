@@ -1,7 +1,7 @@
 #include "../header/utils.h"
 
 // Déclaration de fonctions pour éviter les avertissements de compilation
-int ExecuteADD(uint16_t operand1, uint16_t operand2);
+void ExecuteADD(ProcessorState* cpu, int destination, int operand1, int operand2);
 int ExecuteSUB(uint16_t operand1, uint16_t operand2);
 int ExecuteMUL(uint16_t operand1, uint16_t operand2);
 int ExecuteDIV(uint16_t operand1, uint16_t operand2);
@@ -52,7 +52,7 @@ int main() {
             printf("Enter operand 2: ");
             scanf("%hu", &operand2);
             while (getchar() != '\n');
-            ExecuteADD(operand1, operand2);
+            ExecuteADD(&cpu, destination, operand1, operand2);
             
         } else if (strcmp(input, "SUB") == 0) {
             uint16_t operand1, operand2;

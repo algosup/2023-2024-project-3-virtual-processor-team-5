@@ -19,6 +19,8 @@ uint16_t result;
 #define COPY_OPCODE 0x0C
 #define RMV_OPCODE 0x0D
 #define MOV_OPCODE 0x0E
+#define HALT_OPCODE 0x0F
+#define JMP_OPCODE 0x10
 
 // Define register indices
 #define REG_A 0
@@ -139,10 +141,6 @@ void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
         case RMV_OPCODE:
             cpu->R[REG_A].value = 0;
             break;
-        default:
-            // Handle unknown opcode error
-            printf("Error: Unknown opcode\n");
-            break;
         case MOV_OPCODE:
             if (cpu->R[REG_B].value < MEMORY_SIZE) {
                 cpu->R[REG_A].value = cpu->memory->memory[cpu->R[REG_B].value];
@@ -150,6 +148,14 @@ void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
             }
+            break;
+        case HALT_OPCODE:
+            // Halt the processor
+            printf("Halting processor\n");
+            break;
+        case JMP_OPCODE:
+            // Jump to the specified address
+            cpu->PC = cpu->R[REG_A].value;
             break;
     }
 }

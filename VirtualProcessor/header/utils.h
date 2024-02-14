@@ -18,6 +18,8 @@ char labelName[10]; // The name of a label
 int numLine;
 int currentLine = 0;
 
+int destination, operand1, operand2;
+
 int registerIndex;
 uint16_t result;
 bool resultCMP = true;
@@ -57,8 +59,16 @@ void read_file(char *filename, char *file_directory) {
 			}
 			if (sscanf(line, "%s %d %d", operation, &operand1, &operand2) == 3) { // if the line has 3 arguments, and the operation has 1 character
 	        	if (strcmp(operation, "ADD") == 0) {
-					result = ExecuteADD(operand1, operand2);
-	        	} else if (strcmp(operation, "SUB") == 0) {
+					char destination[3], operand1[3], operand2[3];
+					if (sscanf(line, "%*s %s %s %s", destination, operand1, operand2) == 3) {
+						int destIndex = destination[1] - '0';
+						int op1Index = operand1[1] - '0';
+						int op2Index = operand2[1] - '0';
+						ExecuteADD(&cpu, destIndex, op1Index, op2Index);
+					} else {
+						printf("\x1b[31mError: Invalid arguments for 'ADD' operation.\x1b[0m\n");
+					}
+				} else if (strcmp(operation, "SUB") == 0) {
 	            	result = ExecuteSUB(operand1, operand2);
 				} else if (strcmp(operation, "MUL") == 0) {
 					result = ExecuteMUL(operand1, operand2);
@@ -145,7 +155,7 @@ void read_file(char *filename, char *file_directory) {
 				}
 			} else if (sscanf(line, "%3s", operation) == 1) { // if the line has 1 argument, and the operation has 3 characters
 				if (strcmp(operation, "HLT") == 0) { // the operation HLT is halt, to break the code
-					printf("Program execution halted.\n");
+					// printf("Program execution halted.\n");
 					break;
 				} else {
 					printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);

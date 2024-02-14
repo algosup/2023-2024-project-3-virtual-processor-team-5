@@ -4,10 +4,14 @@ uint16_t lastResult = 0;
 //*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
 
 // ADD instruction execution function
-int ExecuteADD(uint16_t operand1, uint16_t operand2) {
-    lastResult = operand1 + operand2;
-    printf("Result of ADD: %hu\n", lastResult);
-    return lastResult;
+// int ExecuteADD(uint16_t operand1, uint16_t operand2) {
+//     lastResult = operand1 + operand2;
+//     printf("Result of ADD: %hu\n", lastResult);
+//     return lastResult;
+// }
+
+void ExecuteADD(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[destination].value = cpu->R[operand1].value + cpu->R[operand2].value;
 }
 
 // SUB instruction execution function
