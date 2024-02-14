@@ -4,12 +4,12 @@
 
 | Picture | Name | Role | Network |
 | :---: | :---: | :---: | :---: |
-| <img src="https://avatars.githubusercontent.com/u/145995592?v=4" width="100" > | [**@Wilfried PORTET**](https://github.com/PortetWilfried) | Project Manager | [LinkedIn]() |
-| <img src="https://avatars.githubusercontent.com/u/100137905?v=4" width="100" > | [**@Rémy CHARLES**](https://www.github.com/remyCHARLES) | Program Manager | [LinkedIn]() |
-| <img src="https://avatars.githubusercontent.com/u/145991354?v=4" width="100" > | [**@Mathis LEBEL**](https://github.com/mathislebel) | Tech Leader | [LinkedIn]() |
+| <img src="https://avatars.githubusercontent.com/u/145995592?v=4" width="100" > | [**@Wilfried PORTET**](https://github.com/PortetWilfried) | Project Manager | [LinkedIn](https://www.linkedin.com/in/wilfried-portet-a882b9293/) |
+| <img src="https://avatars.githubusercontent.com/u/100137905?v=4" width="100" > | [**@Rémy CHARLES**](https://www.github.com/remyCHARLES) | Program Manager | [LinkedIn](https://www.linkedin.com/in/r%C3%A9my-charles-2a8960232/) |
+| <img src="https://avatars.githubusercontent.com/u/145991354?v=4" width="100" > | [**@Mathis LEBEL**](https://github.com/mathislebel) | Tech Leader | [LinkedIn](https://www.linkedin.com/in/mathis-lebel-429114293/) |
 | <img src="" width="100" > | [**@Mouatassime SEIV**]() | Q&A | [LinkedIn]() |
-| <img src="https://avatars.githubusercontent.com/u/145991204?v=4" width="100" > | [**@Lucas MEGNAN**](https://github.com/LucasMegnan) | Software Engineer | [LinkedIn]() |
-| <img src="https://avatars.githubusercontent.com/u/114397869?v=4" width="100" > | [**@Grégory PAGNOUX**](https://github.com/Gregory-Pagnoux) | Software Engineer | [LinkedIn]() |
+| <img src="https://avatars.githubusercontent.com/u/145991204?v=4" width="100" > | [**@Lucas MEGNAN**](https://github.com/LucasMegnan) | Software Engineer | [LinkedIn](https://www.linkedin.com/in/lucas-megnan/) |
+| <img src="https://avatars.githubusercontent.com/u/114397869?v=4" width="100" > | [**@Grégory PAGNOUX**](https://github.com/Gregory-Pagnoux) | Software Engineer | [LinkedIn](https://www.linkedin.com/in/gregory-pagnoux-313b3a251/) |
 
 ## Project Description
 
