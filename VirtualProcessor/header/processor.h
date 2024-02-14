@@ -18,6 +18,7 @@ uint16_t result;
 #define LDR_OPCODE 0x0B
 #define COPY_OPCODE 0x0C
 #define RMV_OPCODE 0x0D
+#define MOV_OPCODE 0x0E
 
 // Define register indices
 #define REG_A 0
@@ -38,6 +39,10 @@ typedef struct {
     uint8_t sign;
     uint8_t zero;
 } Flags;
+
+typedef struct {
+    uint16_t memory[MEMORY_SIZE];
+} Memory;
 
 // Processor status structure
 typedef struct {
@@ -60,12 +65,12 @@ typedef struct {
     Memory *memory;  // Pointer to Memory structure
 } ProcessorState;
 
-typedef struct {
-    uint16_t memory[MEMORY_SIZE];
-} Memory;
-
 uint16_t mem_read(Register *register_value) {
     return register_value->value;
+}
+
+void MemoryAllocation(ProcessorState *state) {
+    state->memory = (Memory *)malloc(sizeof(Memory));
 }
 
 void update_flags(ProcessorState *state) {
@@ -114,7 +119,7 @@ void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
             break;
         case STR_OPCODE:
             if (cpu->R[REG_A].value < MEMORY_SIZE) {
-                cpu->memory[cpu->R[REG_A].value] = cpu->R[REG_B].value;
+                cpu->memory->memory[cpu->R[REG_A].value] = cpu->R[REG_B].value;
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
@@ -122,7 +127,7 @@ void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
             break;
         case LDR_OPCODE:
             if (cpu->R[REG_B].value < MEMORY_SIZE) {
-                cpu->R[REG_A].value = cpu->memory[cpu->R[REG_B].value];
+                cpu->R[REG_A].value = cpu->memory->memory[cpu->R[REG_B].value];
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
@@ -137,6 +142,14 @@ void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
         default:
             // Handle unknown opcode error
             printf("Error: Unknown opcode\n");
+            break;
+        case MOV_OPCODE:
+            if (cpu->R[REG_B].value < MEMORY_SIZE) {
+                cpu->R[REG_A].value = cpu->memory->memory[cpu->R[REG_B].value];
+            } else {
+                // Handle out of bounds memory access error
+                printf("Error: Memory address out of bounds\n");
+            }
             break;
     }
 }

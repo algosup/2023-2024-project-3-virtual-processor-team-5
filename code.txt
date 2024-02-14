@@ -1,0 +1,4 @@
+MOV R1,#10
+MOV R2,#3
+MOV R3,#5
+MOV R1,R2
