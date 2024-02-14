@@ -109,13 +109,22 @@ typedef enum {
     MEMORY
 } OperandType;
 
-void ExecuteMOV(ProcessorState* cpu, int destination, int source, bool isImmediate) {
-    if (isImmediate) {
-        cpu->R[destination].value = source;
-        printf("Moved immediate value %d to register R%d\n", source, destination);
-    } else {
-        cpu->R[destination] = cpu->R[source];
-        printf("Moved value from register R%d to R%d\n", source, destination);
+void ExecuteMOV(int* operand1, int* operand2, OperandType operand2type) {
+    switch(operand2type) {
+        case IMMEDIATE:
+            *operand1 = *operand2; // Copie directe pour une valeur immédiate
+            printf("%d\n",*operand1);
+            break;
+        case REGISTER:
+            *operand1 = *(int*)operand2; // Déreference pour copier la valeur
+            printf("%d\n",*operand1);
+            break;
+        case MEMORY:
+            *operand1 = *(int*)operand2; // Déreference pour copier la valeur
+            printf("%d\n",*operand1);
+            break;
+        default:
+            printf("Unknown operand.\n");
     }
 }
 
@@ -162,7 +171,7 @@ void ExecuteCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIn
 }
 
 // RMV instruction execution function (remove the value from the register)
-void ExecuteRMV( ProcessorState *state, int registerIndex) {
+void ExecuteRMV(ProcessorState *state, int registerIndex) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
         state->R[registerIndex].value = 0;
         update_flags(state);

@@ -83,7 +83,7 @@ int recognize_and_print_type(char* word) {
     }
 }
 
-int main() {
+int parser() {
     FILE *file;
 
     // Open the file in read mode

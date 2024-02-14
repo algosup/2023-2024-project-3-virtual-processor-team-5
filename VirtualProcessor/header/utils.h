@@ -7,6 +7,7 @@
 
 #include "processor.h"
 #include "instructions.h"
+#include "parser.h"
 
 #define MAX_LABELS 100
 
@@ -83,24 +84,28 @@ void read_file(char *filename, char *file_directory) {
 			} else if (sscanf(line, "%3s %s %s", operation, register1, register2) == 3){ // if the line has 3 arguments, and the operation has 3 characters
 				if (strcmp(operation, "MOV") == 0){
 					ProcessorState *registers = 0;
-					int index;
+					int index1;
+					int index2;
 					if (isdigit(register1[1])) {
-    					index = register1[1] - '0';
-					} else {
-						printf("Error: Invalid register index\n");
-					}
-					if (register2[0] == '#'){
-						int i;
-						for (i = 0; i < sizeof(register2); i++){
-							register2[i] = register2[i+1];
-						}
-						printf("register : %d\n", cpu.R[index].value);
-						printf("the register use is : %d\n", index);
-						printf("immediate value : %s\n", register2);
-						void ExecuteMOV(ProcessorState* cpu, int destination, int source, bool isImmediate);
-					} else {
-						void ExecuteMOV(ProcessorState* cpu, int destination, int source, bool isImmediate);
-					}
+        				index1 = register1[1] - '0';
+    				} else {
+        				printf("Error: Invalid register index\n");
+    				}
+    				if (isdigit(register2[1])) {
+        				index2 = register2[1] - '0';
+    				} else {
+        				printf("Error: Invalid register index\n");
+    				}
+    				if (register2[0] == '#'){
+        				int immediateValue;
+        				if (sscanf(register2, "#%d", &immediateValue) == 1) {
+            				ExecuteMOV(&cpu.R[index1].value, &immediateValue, IMMEDIATE);
+        				} else {
+            				printf("Error: Invalid immediate value\n");
+        				}
+    				} else {
+        				ExecuteMOV(&cpu.R[index1].value, &cpu.R[index2].value, REGISTER);
+    				}
 				} else {
 	            	printf("\x1b[31mError: Unknown operation '%s'.\x1b[0m\n", operation);
 	        	}
