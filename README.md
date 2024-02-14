@@ -3,13 +3,13 @@
 # Team Members
 
 | Picture | Name | Role | Network |
-| --- | --- | --- | --- |
-| ![Image](https://avatars.githubusercontent.com/u/145995592?v=4) | [**@Wilfried PORTET**](https://github.com/PortetWilfried) | Project Manager | [LinkedIn]() |
-| ![Image](https://avatars.githubusercontent.com/u/100137905?v=4) | [**@Rémy CHARLES**](https://www.github.com/remyCHARLES) | Program Manager | [LinkedIn]() |
-| ![Image](https://avatars.githubusercontent.com/u/145991354?v=4) | [**@Mathis LEBEL**](https://github.com/mathislebel) | Tech Leader | [LinkedIn]() |
-| ![Image]() | [**@Mouautassime SEIV**]() | Q&A | [LinkedIn]() |
-| ![Image](https://avatars.githubusercontent.com/u/145991204?v=4) | [**@Lucas MEGNAN**](https://github.com/LucasMegnan) | Software Engineer | [LinkedIn]() |
-| ![Image](https://avatars.githubusercontent.com/u/114397869?v=4) | [**@Grégory PAGNOUX**](https://github.com/Gregory-Pagnoux) | Software Engineer | [LinkedIn]() |
+| :---: | :---: | :---: | :---: |
+| <img src="https://avatars.githubusercontent.com/u/145995592?v=4" width="100" > | [**@Wilfried PORTET**](https://github.com/PortetWilfried) | Project Manager | [LinkedIn]() |
+| <img src="https://avatars.githubusercontent.com/u/100137905?v=4" width="100" > | [**@Rémy CHARLES**](https://www.github.com/remyCHARLES) | Program Manager | [LinkedIn]() |
+| <img src="https://avatars.githubusercontent.com/u/145991354?v=4" width="100" > | [**@Mathis LEBEL**](https://github.com/mathislebel) | Tech Leader | [LinkedIn]() |
+| <img src="" width="100" > | [**@Mouautassime SEIV**]() | Q&A | [LinkedIn]() |
+| <img src="https://avatars.githubusercontent.com/u/145991204?v=4" width="100" > | [**@Lucas MEGNAN**](https://github.com/LucasMegnan) | Software Engineer | [LinkedIn]() |
+| <img src="https://avatars.githubusercontent.com/u/114397869?v=4" width="100" > | [**@Grégory PAGNOUX**](https://github.com/Gregory-Pagnoux) | Software Engineer | [LinkedIn]() |
 
 # Project Description
 
