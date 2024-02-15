@@ -18,6 +18,7 @@ void ExecuteRMV( ProcessorState *state, int registerIndex);
 uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);
 void read_file(char *filename, char *file_directory);
+void execute_instruction(uint8_t opcode, ProcessorState *cpu);
 
 int main() {
     Memory memory = {{0}};  // Initializes memory with zeros
@@ -27,9 +28,8 @@ int main() {
     char input[100];
     printf("Simple Terminal\n");
 
-    read_file("code.txt", "C:\\Users\\LucasMEGNAN\\Desktop\\2023-2024-project-3-virtual-processor-team-5\\code.txt");
+    read_file("code.txt", "code.txt");
     printf("\n\n");
-    //read_file("codeJMP.txt", "codeJMP.txt");
 
     while (1) {
         printf("\n> ");

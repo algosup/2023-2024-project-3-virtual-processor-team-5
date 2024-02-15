@@ -42,6 +42,7 @@ typedef struct {
 
 typedef struct {
     uint16_t memory[MEMORY_SIZE];
+    int value;
 } Memory;
 
 // Processor status structure
