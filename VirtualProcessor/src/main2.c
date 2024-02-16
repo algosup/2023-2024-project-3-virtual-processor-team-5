@@ -15,7 +15,7 @@ void executeLDR(ProcessorState *cpu, uint8_t regA, uint8_t regB);
 void executeCOPY(ProcessorState *cpu, uint8_t regA, uint8_t regB);
 
 // Function for parsing instructions
-int parser(char *line, FILE *file);
+int parser(FILE *file);
 
 // Function to read a file
 uint16_t mem_read(Register *register_value);

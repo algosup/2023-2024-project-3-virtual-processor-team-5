@@ -1,5 +1,6 @@
 // create parser for parsing the input file .txt
 #define MAX_WORD_LENGTH 100
+#define MAX_LINE_LENGTH 1024
 
 char word[MAX_WORD_LENGTH];
 
@@ -73,17 +74,12 @@ int recognize_and_print_type(char* word) {
 }
 
 // parse the input file into words and print the type of each word separately
-int parser(char *line, FILE *file) {
-    printf("line : %s\n", line);
+int parser(FILE *file) {
+    char line[MAX_LINE_LENGTH];
     // Read and parse each word until end of file
-    while (fgets(line, sizeof(line), file)) {
-        // realloc new size for line
-        printf("the size of line is : %lu\n", sizeof(line));
-        printf("the line is : %s\n", line);
-        char* word = strtok(line, " ");
-        char* word2 = strtok(line, ",");
+    while (fgets(line, sizeof(line), file) != NULL) {
+        char* word = strtok(line, " ,\n");
         while (word != NULL) {
-            printf("the word is : %s\n", word);
             if (recognize_and_print_type(word) == 1) {
                 if (strcmp(word, "ADD") == 0) {
                     printf("ADD\n");
@@ -180,8 +176,7 @@ int parser(char *line, FILE *file) {
             } else {
                 printf("Unknown type\n");
             }
-            word = strtok(NULL, " ");
-            //word2 = strtok(NULL, ",");
+            word = strtok(NULL, " ,\n");
         }
     }
     return 0;

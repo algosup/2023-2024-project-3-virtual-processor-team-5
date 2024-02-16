@@ -15,6 +15,7 @@ void read_file(char *filename, char *file_directory) {
     size_t len = 0;
     ssize_t read;
 
+    // create the file path
     char *file_path = malloc(strlen(file_directory) + strlen(filename) + 1);
     strcpy(file_path, file_directory);
     strcat(file_path, filename);
@@ -28,11 +29,11 @@ void read_file(char *filename, char *file_directory) {
     }
 
     // parse the file
-    while ((read = getline(&line, &len, file)) != -1) {
-        parser(line, file);
-    }
+    parser(file);
 
     fclose(file);
+
+    // free the memory
     if (line) {
         free(line);
     }
