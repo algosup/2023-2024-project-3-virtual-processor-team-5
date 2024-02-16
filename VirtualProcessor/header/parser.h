@@ -1,9 +1,4 @@
 // create parser for parsing the input file .txt
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-
 #define MAX_WORD_LENGTH 100
 
 char word[MAX_WORD_LENGTH];
@@ -77,67 +72,117 @@ int recognize_and_print_type(char* word) {
     }
 }
 
+// parse the input file into words and print the type of each word separately
 int parser(char *line, FILE *file) {
-        // Read and parse each word until end of file
-        while (fgets(line, sizeof(line), file)) {
-            char* word = strtok(line, " ,");
-            while (word != NULL) {
-                if (recognize_and_print_type(word) == 1) {
-                    if (strcmp(word, "ADD") == 0) {
-                        printf("ADD\n");
-                    } else if (strcmp(word, "SUB") == 0) {
-                        printf("SUB\n");
-                    } else if (strcmp(word, "MUL") == 0) {
-                        printf("MUL\n");
-                    } else if (strcmp(word, "DIV") == 0) {
-                        printf("DIV\n");
-                    } else if (strcmp(word, "CMP") == 0) {
-                        printf("CMP\n");
-                    } else if (strcmp(word, "AND") == 0) {
-                        printf("AND\n");
-                    } else if (strcmp(word, "XOR") == 0) {
-                        printf("XOR\n");
-                    } else if (strcmp(word, "CP") == 0) {
-                        printf("CP\n");
-                    } else if (strcmp(word, "OR") == 0) {
-                        printf("OR\n");
-                    } else if (strcmp(word, "MOV") == 0) {
-                        printf("MOV\n");
-                    } else {
-                        printf("Unknown operation\n");
-                    }
-                } else if (recognize_and_print_type(word) == 2) {
-                    if (strcmp(word, "R0")) {
-                        printf("R0\n");
-                    } else if (strcmp(word, "R1")) {
-                        printf("R1\n");
-                    } else if (strcmp(word, "R2")) {
-                        printf("R2\n");
-                    } else if (strcmp(word, "R3")) {
-                        printf("R3\n");
-                    } else if (strcmp(word, "R4")) {
-                        printf("R4\n");
-                    } else if (strcmp(word, "R5")) {
-                        printf("R5\n");
-                    } else if (strcmp(word, "R6")) {
-                        printf("R6\n");
-                    } else if (strcmp(word, "R7")) {
-                        printf("R7\n");
-                    } else {
-                        printf("Unknown register\n");
-                    }
-                } else if (recognize_and_print_type(word) == 3) {
-                    // print the number without the first character
-                    printf("%s\n", word + 1);
-                } else if (recognize_and_print_type(word) == 4) {
-                    printf("%s\n", word);
+    printf("line : %s\n", line);
+    // Read and parse each word until end of file
+    while (fgets(line, sizeof(line), file)) {
+        // realloc new size for line
+        printf("the size of line is : %lu\n", sizeof(line));
+        printf("the line is : %s\n", line);
+        char* word = strtok(line, " ");
+        char* word2 = strtok(line, ",");
+        while (word != NULL) {
+            printf("the word is : %s\n", word);
+            if (recognize_and_print_type(word) == 1) {
+                if (strcmp(word, "ADD") == 0) {
+                    printf("ADD\n");
+                } else if (strcmp(word, "SUB") == 0) {
+                    printf("SUB\n");
+                } else if (strcmp(word, "MUL") == 0) {
+                    printf("MUL\n");
+                } else if (strcmp(word, "DIV") == 0) {
+                    printf("DIV\n");
+                } else if (strcmp(word, "CMP") == 0) {
+                    printf("CMP\n");
+                } else if (strcmp(word, "AND") == 0) {
+                    printf("AND\n");
+                } else if (strcmp(word, "XOR") == 0) {
+                    printf("XOR\n");
+                } else if (strcmp(word, "NOT") == 0) {
+                    printf("NOT\n");
+                } else if (strcmp(word, "OR") == 0) {
+                    printf("OR\n");
+                } else if (strcmp(word, "MOV") == 0) {
+                    printf("MOV\n");
+                } else if (strcmp(word, "RMV") == 0) {
+                    printf("RMV\n");
+                } else if (strcmp(word, "HLT") == 0) {
+                    printf("HLT\n");
+                } else if (strcmp(word, "SHL") == 0) {
+                    printf("SHL\n");
+                } else if (strcmp(word, "SHR") == 0) {
+                    printf("SHR\n");
+                } else if (strcmp(word, "STR") == 0) {
+                    printf("STR\n");
+                } else if (strcmp(word, "LDR") == 0) {
+                    printf("LDR\n");
+                } else if (strcmp(word, "LEA") == 0) {
+                    printf("LEA\n");
+                } else if (strcmp(word, "LOA") == 0) {
+                    printf("LOA\n");
+                } else if (strcmp(word, "IN") == 0) {
+                    printf("IN\n");
+                } else if (strcmp(word, "OUT") == 0) {
+                    printf("OUT\n");
+                } else if (strcmp(word, "NOP") == 0) {
+                    printf("NOP\n");
+                } else if (strcmp(word, "COPY") == 0) {
+                    printf("COPY\n");
+                } else if (strcmp(word, "PUSH") == 0) {
+                    printf("PUSH\n");
+                } else if (strcmp(word, "POP") == 0) {
+                    printf("POP\n");
+                } else if (strcmp(word, "CALL") == 0) {
+                    printf("CALL\n");
+                } else if (strcmp(word, "RET") == 0) {
+                    printf("RET\n");
+                } else if (strcmp(word, "SYSCALL") == 0) {
+                    printf("SYSCALL\n");
+                } else if (strcmp(word, "JMP") == 0) {
+                    printf("JMP\n");
+                } else if (strcmp(word, "JZ") == 0) {
+                    printf("JZ\n");
+                } else if (strcmp(word, "JNZ") == 0) {
+                    printf("JNZ\n");
+                } else if (strcmp(word, "JE") == 0) {
+                    printf("JE\n");
+                } else if (strcmp(word, "JNE") == 0) {
+                    printf("JNE\n");
                 } else {
-                    printf("Unknown type\n");
+                    printf("Unknown operation\n");
                 }
-                word = strtok(NULL, " ,");
-
+            } else if (recognize_and_print_type(word) == 2) {
+                if (strcmp(word, "R0") == 0) {
+                    printf("R0\n");
+                } else if (strcmp(word, "R1") == 0) {
+                    printf("R1\n");
+                } else if (strcmp(word, "R2") == 0) {
+                    printf("R2\n");
+                } else if (strcmp(word, "R3") == 0) {
+                    printf("R3\n");
+                } else if (strcmp(word, "R4") == 0) {
+                    printf("R4\n");
+                } else if (strcmp(word, "R5") == 0) {
+                    printf("R5\n");
+                } else if (strcmp(word, "R6") == 0) {
+                    printf("R6\n");
+                } else if (strcmp(word, "R7") == 0) {
+                    printf("R7\n");
+                } else {
+                    printf("Unknown register\n");
+                }
+            } else if (recognize_and_print_type(word) == 3) {
+                // print the number without the first character
+                printf("%s\n", word + 1);
+            } else if (recognize_and_print_type(word) == 4) {
+                printf("%s\n", word);
+            } else {
+                printf("Unknown type\n");
             }
+            word = strtok(NULL, " ");
+            //word2 = strtok(NULL, ",");
         }
-
+    }
     return 0;
 }

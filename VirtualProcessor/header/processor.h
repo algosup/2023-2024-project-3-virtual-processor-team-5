@@ -94,6 +94,14 @@ void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
         case MUL_OPCODE:
             cpu->R[REG_A].value *= cpu->R[REG_B].value;
             break;
+        case DIV_OPCODE:
+            if (cpu->R[REG_B].value == 0) {
+                // Handle division by zero error
+                printf("Error: Division by zero\n");
+            } else {
+                cpu->R[REG_A].value /= cpu->R[REG_B].value;
+            }
+            break;
         case AND_OPCODE:
             cpu->R[REG_A].value &= cpu->R[REG_B].value;
             break;
@@ -109,14 +117,6 @@ void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
         case CMP_OPCODE:
             cpu->flags.sign = (cpu->R[REG_A].value < cpu->R[REG_B].value) ? 1 : 0;
             cpu->flags.zero = (cpu->R[REG_A].value == cpu->R[REG_B].value) ? 1 : 0;
-            break;
-        case DIV_OPCODE:
-            if (cpu->R[REG_B].value == 0) {
-                // Handle division by zero error
-                printf("Error: Division by zero\n");
-            } else {
-                cpu->R[REG_A].value /= cpu->R[REG_B].value;
-            }
             break;
         case STR_OPCODE:
             if (cpu->R[REG_A].value < MEMORY_SIZE) {

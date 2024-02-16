@@ -29,7 +29,6 @@ void read_file(char *filename, char *file_directory) {
 
     // parse the file
     while ((read = getline(&line, &len, file)) != -1) {
-        printf("%s", line);
         parser(line, file);
     }
 
