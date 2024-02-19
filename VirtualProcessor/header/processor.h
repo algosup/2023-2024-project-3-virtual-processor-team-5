@@ -23,19 +23,19 @@ uint16_t result;
 #define JMP_OPCODE 0x10
 
 // Define register indices
-#define REG_A 0
-#define REG_B 1
-#define REG_C 2
-#define REG_D 3
-#define REG_E 4
-#define REG_F 5
-#define REG_G 6
-#define REG_H 7
+// #define REG_A 0
+// #define REG_B 1
+// #define REG_C 2
+// #define REG_D 3
+// #define REG_E 4
+// #define REG_F 5
+// #define REG_G 6
+// #define REG_H 7
 
 // Register structure
-typedef struct {
-    int value;
-} Register;
+// typedef struct {
+//     int value;
+// } Register;
 
 typedef struct {
     uint8_t sign;
@@ -49,15 +49,7 @@ typedef struct {
 
 // Processor status structure
 typedef struct {
-    Register R0; // general register
-    Register R1;
-    Register R2;
-    Register R3;
-    Register R4;
-    Register R5;
-    Register R6;
-    Register R7;
-    Register R[NUM_REGISTERS];// general register array
+    int R[NUM_REGISTERS];// general register array
     uint16_t PC;  // Program counter
     Flags flags;  // Flags register
     int LR; // link register
@@ -68,9 +60,9 @@ typedef struct {
     Memory *memory;  // Pointer to Memory structure
 } ProcessorState;
 
-uint16_t mem_read(Register *register_value) {
-    return register_value->value;
-}
+// uint16_t mem_read(Register *register_value) {
+//     return register_value->value;
+// }
 
 void MemoryAllocation(ProcessorState *state) {
     state->memory = (Memory *)malloc(sizeof(Memory));
@@ -78,73 +70,73 @@ void MemoryAllocation(ProcessorState *state) {
 
 void update_flags(ProcessorState *state) {
     // Met à jour le bit de signe
-    state->flags.sign = (state->R0.value & 0x8000) ? 1 : 0;
+    state->flags.sign = (state->R[0] & 0x8000) ? 1 : 0;
 
     // Met à jour le bit de zéro
-    state->flags.zero = (state->R0.value == 0) ? 1 : 0;
+    state->flags.zero = (state->R0 == 0) ? 1 : 0;
 }
 
 // Function to execute instructions
-void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
-    switch(opcode) {
+void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
+    switch(instruction.opcode) {
         case ADD_OPCODE:
-            cpu->R[REG_A].value += cpu->R[REG_B].value;
+            cpu->R[instruction.register] += cpu->R[instruction.register];
             break;
         case SUB_OPCODE:
-            cpu->R[REG_A].value -= cpu->R[REG_B].value;
+            cpu->R[instruction.register] -= cpu->R[instruction.register];
             break;
         case MUL_OPCODE:
-            cpu->R[REG_A].value *= cpu->R[REG_B].value;
+            cpu->R[instruction.register] *= cpu->R[instruction.register];
             break;
         case DIV_OPCODE:
-            if (cpu->R[REG_B].value == 0) {
+            if (cpu->R[instruction.register] == 0) {
                 // Handle division by zero error
                 printf("Error: Division by zero\n");
             } else {
-                cpu->R[REG_A].value /= cpu->R[REG_B].value;
+                cpu->R[instruction.register] /= cpu->R[instruction.register];
             }
             break;
         case AND_OPCODE:
-            cpu->R[REG_A].value &= cpu->R[REG_B].value;
+            cpu->R[instruction.register] &= cpu->R[instruction.register];
             break;
         case XOR_OPCODE:
-            cpu->R[REG_A].value ^= cpu->R[REG_B].value;
+            cpu->R[instruction.register] ^= cpu->R[instruction.register];
             break;
         case OR_OPCODE:
-            cpu->R[REG_A].value |= cpu->R[REG_B].value;
+            cpu->R[instruction.register] |= cpu->R[instruction.register];
             break;
         case NOT_OPCODE:
-            cpu->R[REG_A].value = ~cpu->R[REG_A].value;
+            cpu->R[instruction.register] = ~cpu->R[instruction.register];
             break;
         case CMP_OPCODE:
-            cpu->flags.sign = (cpu->R[REG_A].value < cpu->R[REG_B].value) ? 1 : 0;
-            cpu->flags.zero = (cpu->R[REG_A].value == cpu->R[REG_B].value) ? 1 : 0;
+            cpu->flags.sign = (cpu->R[instruction.register] < cpu->R[instruction.register]) ? 1 : 0;
+            cpu->flags.zero = (cpu->R[instruction.register] == cpu->R[instruction.register]) ? 1 : 0;
             break;
         case STR_OPCODE:
-            if (cpu->R[REG_A].value < MEMORY_SIZE) {
-                cpu->memory->memory[cpu->R[REG_A].value] = cpu->R[REG_B].value;
+            if (cpu->R[instruction.register] < MEMORY_SIZE) {
+                cpu->memory->memory[cpu->R[instruction.register]] = cpu->R[instruction.register];
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
             }
             break;
         case LDR_OPCODE:
-            if (cpu->R[REG_B].value < MEMORY_SIZE) {
-                cpu->R[REG_A].value = cpu->memory->memory[cpu->R[REG_B].value];
+            if (cpu->R[instruction.regiser] < MEMORY_SIZE) {
+                cpu->R[instruction.register] = cpu->memory->memory[cpu->R[instruction.register]];
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
             }
             break;
         case COPY_OPCODE:
-            cpu->R[REG_A].value = cpu->R[REG_B].value;
+            cpu->R[instruction.register] = cpu->R[instruction.register];
             break;
         case RMV_OPCODE:
-            cpu->R[REG_A].value = 0;
+            cpu->R[instruction.register] = 0;
             break;
         case MOV_OPCODE:
-            if (cpu->R[REG_B].value < MEMORY_SIZE) {
-                cpu->R[REG_A].value = cpu->memory->memory[cpu->R[REG_B].value];
+            if (cpu->R[instruction.register] < MEMORY_SIZE) {
+                cpu->R[instruction.register] = cpu->memory->memory[cpu->R[instruction.register]];
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
@@ -156,7 +148,7 @@ void execute_instruction(uint8_t opcode, ProcessorState *cpu) {
             break;
         case JMP_OPCODE:
             // Jump to the specified address
-            cpu->PC = cpu->R[REG_A].value;
+            cpu->PC = cpu->R[instruction.register];
             break;
     }
 }
