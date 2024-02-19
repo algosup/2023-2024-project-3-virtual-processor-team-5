@@ -39,16 +39,19 @@
 
 
 #### 02/13/2024:
+- Start the parser
+- Continue to work on the MOV instruction
 
 
 #### 02/14/2024:
-
+-  Continue to work on the parser
+-  Fix problem on the MOV instruction
 
 #### 02/15/2024:
 
 
 #### 02/16/2024:
-
+- Gregory has finished working on the parser
 
 ## II. Key Metrics and Performance Indicators
 
