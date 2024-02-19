@@ -64,6 +64,7 @@ typedef struct {
     int HALT;
     int R[NUM_REGISTERS];
     uint16_t IMMEDIATE;
+    int destination, operand1, operand2;
 } instruction_t;
   
 // Processor status structure
