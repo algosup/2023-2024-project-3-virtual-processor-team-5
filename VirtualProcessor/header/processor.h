@@ -47,6 +47,25 @@ typedef struct {
     int value;
 } Memory;
 
+typedef struct {
+    int ADD; 
+    int SUB;
+    int MUL;
+    int DIV;
+    int CMP;
+    int STR;
+    int LDR;
+    int COPY;
+    int AND;
+    int XOR;
+    int OR;
+    int NOT;
+    int RMV;
+    int HALT;
+    int R[NUM_REGISTERS];
+    uint16_t IMMEDIATE;
+} instruction_t;
+  
 // Processor status structure
 typedef struct {
     int R[NUM_REGISTERS];// general register array
