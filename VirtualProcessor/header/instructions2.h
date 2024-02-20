@@ -48,9 +48,24 @@ void ExecuteCMP(ProcessorState* cpu, int destination, int register1, int registe
 
 //****************************** DATA MOVEMENT ******************************//
 
-void executeSTR(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    if (cpu->R[regA].value < MEMORY_SIZE) {
-        cpu->memory->memory[cpu->R[regA].value] = cpu->R[regB].value;
+void ExecuteMOV(ProcessorState* cpu, int destination, char* source) {
+    if (source[0] == '#') {
+        // If the source starts with '#', it's an immediate value
+        int immediateValue;
+        sscanf(source, "#%d", &immediateValue);  // Parse the immediate value
+        cpu->R[destination] = immediateValue;  // Store the immediate value in the destination register
+    } else {
+        // Otherwise, the source is a register
+        int srcIndex = source[1] - '0';  // Parse the register index
+        cpu->R[destination] = cpu->R[srcIndex];  // Copy the value from the source register to the destination register
+    }
+}
+
+void executeSTR(ProcessorState *cpu, uint8_t reg, char* destination) {
+    int address;
+    sscanf(destination, "[%x]", &address);  // Parse the memory address as a hexadecimal number
+    if (address < MEMORY_SIZE) {
+        cpu->memory->memory[address] = cpu->R[reg];  // Store the data from the register into the memory address
     } else {
         // Handle out of bounds memory access error
         printf("Error: Memory address out of bounds\n");
@@ -61,7 +76,7 @@ void ExecuteLDR(ProcessorState* cpu, int destination, char* source) {
         int address;
         sscanf(source, "[%x]", &address);
         if (address < MEMORY_SIZE) {  // Parse the memory address as a hexadecimal number
-        cpu->R[destination] = cpu->memory[address];  // Load the data from the memory address into the register
+        cpu->R[destination] = cpu->memory->memory[address];  // Load the data from the memory address into the register
     } else {
         // Handle out of bounds memory access error
         printf("Error: Memory address out of bounds\n");
@@ -78,31 +93,56 @@ void executeRMV(ProcessorState *cpu, int destination) {
 
 //****************************** CONTROL FLOW *******************************//
 
-void executeJMP(ProcessorState *cpu, uint8_t regA) {
-    cpu->PC = cpu->R[regA].value;
+void executeJMP(ProcessorState *cpu, int address) {
+    if (address < MEMORY_SIZE) {
+        cpu->PC = address;
+    } else {
+        // Handle out of bounds memory access error
+        printf("Error: Jump address out of bounds\n");
+    }
 }
 
-void executeJZ(ProcessorState *cpu, uint8_t regA) {
+void executeJZ(ProcessorState *cpu, int address) {
     if (cpu->flags.zero) {
-        cpu->PC = cpu->R[regA].value;
+        if (address < MEMORY_SIZE) {
+            cpu->PC = address;
+        } else {
+            // Handle out of bounds memory access error
+            printf("Error: Jump address out of bounds\n");
+        }
     }
 }
 
-void executeJNZ(ProcessorState *cpu, uint8_t regA) {
+void executeJNZ(ProcessorState *cpu, int address) {
     if (!cpu->flags.zero) {
-        cpu->PC = cpu->R[regA].value;
+        if (address < MEMORY_SIZE) {
+            cpu->PC = address;
+        } else {
+            // Handle out of bounds memory access error
+            printf("Error: Jump address out of bounds\n");
+        }
     }
 }
 
-void executeJE(ProcessorState *cpu, uint8_t regA) {
-    if (cpu->flags.sign) {
-        cpu->PC = cpu->R[regA].value;
+void executeJE(ProcessorState *cpu, int address) {
+    if (cpu->flags.equal) {
+        if (address < MEMORY_SIZE) {
+            cpu->PC = address;
+        } else {
+            // Handle out of bounds memory access error
+            printf("Error: Jump address out of bounds\n");
+        }
     }
 }
 
-void executeJNE(ProcessorState *cpu, uint8_t regA) {
-    if (!cpu->flags.sign) {
-        cpu->PC = cpu->R[regA].value;
+void executeJNE(ProcessorState *cpu, int address) {
+    if (!cpu->flags.equal) {
+        if (address < MEMORY_SIZE) {
+            cpu->PC = address;
+        } else {
+            // Handle out of bounds memory access error
+            printf("Error: Jump address out of bounds\n");
+        }
     }
 }
 

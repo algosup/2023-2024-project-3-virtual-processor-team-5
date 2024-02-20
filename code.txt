@@ -1,2 +1,3 @@
 MOV R1,#10
 MOV R2,#10
+MUL R3,R1,R2

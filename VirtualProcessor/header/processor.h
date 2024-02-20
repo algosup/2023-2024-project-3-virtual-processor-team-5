@@ -47,6 +47,7 @@ uint16_t result;
 typedef struct {
     uint8_t sign;
     uint8_t zero;
+    uint8_t equal;
 } Flags;
 
 typedef struct {
@@ -56,9 +57,9 @@ typedef struct {
 
 typedef struct {
     int opcode;
-    ;
     uint16_t IMMEDIATE;
     int destination, register1, register2;
+    int address;
 } instruction_t;
   
 // Processor status structure
@@ -127,16 +128,16 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
             cpu->flags.zero = (cpu->R[instruction.register1] == cpu->R[instruction.register2]) ? 1 : 0;
             break;
         case STR_OPCODE:
-            if (cpu->R[instruction.register] < MEMORY_SIZE) {
-                cpu->memory->memory[cpu->R[instruction.register]] = cpu->R[instruction.register];
+            if (instruction.address < MEMORY_SIZE) {
+                cpu->memory->memory[cpu->R[instruction.address]] = cpu->R[instruction.register1];
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
             }
             break;
         case LDR_OPCODE:
-            if (cpu->R[instruction.regiser] < MEMORY_SIZE) {
-                cpu->R[instruction.register] = cpu->memory->memory[cpu->R[instruction.register]];
+            if (instruction.address < MEMORY_SIZE) {
+                cpu->R[instruction.destination] = cpu->memory->memory[cpu->R[instruction.address]];
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
@@ -149,8 +150,8 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
             cpu->R[instruction.destination] = 0;
             break;
         case MOV_OPCODE:
-            if (cpu->R[instruction.register] < MEMORY_SIZE) {
-                cpu->R[instruction.destination] = cpu->memory->memory[cpu->R[instruction.register]];
+            if (cpu->R[instruction.destination] < MEMORY_SIZE) {
+                cpu->R[instruction.destination] = instruction.IMMEDIATE;
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
@@ -162,7 +163,7 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
             break;
         case JMP_OPCODE:
             // Jump to the specified address
-            cpu->PC = cpu->R[instruction.register];
+            cpu->PC = instruction.address;
             break;
     }
 }
