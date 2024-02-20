@@ -1,19 +1,19 @@
 #include "../header/utils2.h"
 
 // Déclaration de fonctions pour éviter les avertissements de compilation
-void ExecuteADD(ProcessorState* cpu, int destination, int operand1, int operand2);
-int ExecuteSUB(ProcessorState* cpu, int destination, int operand1, int operand2);
-int ExecuteMUL(uint16_t operand1, uint16_t operand2);
-int ExecuteDIV(uint16_t operand1, uint16_t operand2);
-bool ExecuteCMP(ProcessorState *state, int registerIndex1, int registerIndex2);
+void ExecuteADD(ProcessorState* cpu, int destination, int register1, int register2);
+void ExecuteSUB(ProcessorState* cpu, int destination, int register1, int register2);
+void ExecuteMUL(ProcessorState* cpu, int destination, int register1, int register2);
+void ExecuteDIV(ProcessorState* cpu, int destination, int register1, int register2);
+void ExecuteCMP(ProcessorState* cpu, int destination, int register1, int register2);
 void ExecuteSTR(ProcessorState* cpu, int source, char* destination);
 void ExecuteLDR(ProcessorState* cpu, int destination, char* source);
 void ExecuteCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex);
-void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2);
-void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2);
-void ExecuteNOT(ProcessorState *state, int registerIndex);
-void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2);
-void ExecuteMOV(int* operand1, int* operand2, OperandType operand2type);
+void ExecuteAND(ProcessorState* cpu, int destination, int register1, int register2);
+void ExecuteXOR(ProcessorState* cpu, int destination, int register1, int register2);
+void ExecuteOR(ProcessorState* cpu, int destination, int register1, int register2);
+void ExecuteNOT(ProcessorState* cpu, int destination, int register1, int register2);
+void ExecuteMOV(int* register1, int* register2, OperandType operand2type);
 void ExecuteRMV( ProcessorState *state, int registerIndex);
 // uint16_t mem_read(Register *register_value);
 void update_flags(ProcessorState *state);
@@ -46,74 +46,74 @@ int main() {
             printf("\x1b[36mExiting...\x1b[0m\n");
             break;
         } else if (strcmp(input, "ADD") == 0) {
-            uint16_t operand1, operand2;
+            uint16_t register1, register2;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
+            scanf("%hu", &register2);
             while (getchar() != '\n');
-            ExecuteADD(&cpu, destination, operand1, operand2);
+            ExecuteADD(&cpu, destination, register1, register2);
             
         } else if (strcmp(input, "SUB") == 0) {
-            uint16_t operand1, operand2;
+            uint16_t register1, register2;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
+            scanf("%hu", &register2);
             while (getchar() != '\n');
-            ExecuteSUB(&cpu, destination, operand1, operand2);
+            ExecuteSUB(&cpu, destination, register1, register2);
 
         } else if (strcmp(input, "MUL") == 0) {
-            uint16_t operand1, operand2;
+            uint16_t register1, register2;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
+            scanf("%hu", &register2);
             while (getchar() != '\n');
-            ExecuteMUL(operand1, result);
+            ExecuteMUL(register1, result);
 
         } else if (strcmp(input, "DIV") == 0) {
-            uint16_t operand1, operand2;
+            uint16_t register1, register2;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
+            scanf("%hu", &register2);
             while (getchar() != '\n');
-            ExecuteDIV(operand1, operand2);
+            ExecuteDIV(register1, register2);
 
         } else if (strcmp(input, "AND") == 0) {
-            uint16_t operand1, operand2;
+            uint16_t register1, register2;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
+            scanf("%hu", &register2);
             while (getchar() != '\n');
-            ExecuteAND(&cpu, operand1, operand2);
+            ExecuteAND(&cpu, register1, register2);
 
         } else if (strcmp(input, "OR") == 0) {
-            uint16_t operand1, operand2;
+            uint16_t register1, register2;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
+            scanf("%hu", &register2);
             while (getchar() != '\n');
-            ExecuteOR(&cpu, operand1, operand2);
+            ExecuteOR(&cpu, register1, register2);
 
         } else if (strcmp(input, "XOR") == 0) {
-            uint16_t operand1, operand2;
+            uint16_t register1, register2;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
+            scanf("%hu", &register2);
             while (getchar() != '\n');
-            ExecuteXOR(&cpu, operand1, operand2);
+            ExecuteXOR(&cpu, register1, register2);
 
         } else if (strcmp(input, "NOT") == 0) {
-            uint16_t operand1;
+            uint16_t register1;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             while (getchar() != '\n');
-            ExecuteNOT(&cpu, operand1);
+            ExecuteNOT(&cpu, register1);
 
         } else if (strcmp(input, "STR") == 0) {
             int registerIndex;
@@ -155,20 +155,20 @@ int main() {
                 while (getchar() != '\n');
             }
         } else if (strcmp(input, "CMP") == 0) {
-            uint16_t operand1, operand2;
+            uint16_t register1, register2;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             printf("Enter operand 2: ");
-            scanf("%hu", &operand2);
+            scanf("%hu", &register2);
             while (getchar() != '\n');
-            ExecuteCMP(&cpu, operand1, operand2);
+            ExecuteCMP(&cpu, register1, register2);
 
         } else if (strcmp(input, "RMV") == 0) {
-            uint16_t operand1;
+            uint16_t register1;
             printf("Enter operand 1: ");
-            scanf("%hu", &operand1);
+            scanf("%hu", &register1);
             while (getchar() != '\n');
-            ExecuteRMV(&cpu, operand1);
+            ExecuteRMV(&cpu, register1);
         } else {
             printf("\x1b[33mUnknown instruction. Try ADD, SUB, MUL, DIV, AND, OR, XOR, NOT, STR, LDR, COPY, CMP, RMV or exit.\x1b[0m\n");
         }

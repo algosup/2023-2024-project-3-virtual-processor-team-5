@@ -55,23 +55,10 @@ typedef struct {
 } Memory;
 
 typedef struct {
-    int ADD; 
-    int SUB;
-    int MUL;
-    int DIV;
-    int CMP;
-    int STR;
-    int LDR;
-    int COPY;
-    int AND;
-    int XOR;
-    int OR;
-    int NOT;
-    int RMV;
-    int HALT;
-    int R[NUM_REGISTERS];
+    int opcode;
+    ;
     uint16_t IMMEDIATE;
-    int destination, operand1, operand2;
+    int destination, register1, register2;
 } instruction_t;
   
 // Processor status structure
@@ -107,37 +94,37 @@ void update_flags(ProcessorState *state) {
 void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
     switch(instruction.opcode) {
         case ADD_OPCODE:
-            cpu->R[instruction.operand1] += cpu->R[instruction.operand2];
+            cpu->R[instruction.destination] = cpu->R[instruction.register1] + cpu->R[instruction.register2];
             break;
         case SUB_OPCODE:
-            cpu->R[instruction.operand1] -= cpu->R[instruction.operand2];
+            cpu->R[instruction.destination] = cpu->R[instruction.register1] - cpu->R[instruction.register2];
             break;
         case MUL_OPCODE:
-            cpu->R[instruction.operand1] *= cpu->R[instruction.operand2];
+            cpu->R[instruction.destination] = cpu->R[instruction.register1] * cpu->R[instruction.register2];
             break;
         case DIV_OPCODE:
-            if (cpu->R[instruction.operand1] == 0) {
+            if (cpu->R[instruction.register1] == 0) {
                 // Handle division by zero error
                 printf("Error: Division by zero\n");
             } else {
-                cpu->R[instruction.operand1] /= cpu->R[instruction.operand2];
+            cpu->R[instruction.destination] = cpu->R[instruction.register1] / cpu->R[instruction.register2];
             }
             break;
         case AND_OPCODE:
-            cpu->R[instruction.operand1] &= cpu->R[instruction.operand2];
+            cpu->R[instruction.destination] = cpu->R[instruction.register1] & cpu->R[instruction.register2];
             break;
         case XOR_OPCODE:
-            cpu->R[instruction.operand1] ^= cpu->R[instruction.operand2];
+            cpu->R[instruction.destination] = cpu->R[instruction.register1] ^ cpu->R[instruction.register2];
             break;
         case OR_OPCODE:
-            cpu->R[instruction.operand1] |= cpu->R[instruction.operand2];
+            cpu->R[instruction.destination] = cpu->R[instruction.register1] | cpu->R[instruction.register2];
             break;
         case NOT_OPCODE:
-            cpu->R[instruction.operand1] = ~cpu->R[instruction.operand2];
+            cpu->R[instruction.destination] = ~cpu->R[instruction.register2];
             break;
         case CMP_OPCODE:
-            cpu->flags.sign = (cpu->R[instruction.operand1] < cpu->R[instruction.operand2]) ? 1 : 0;
-            cpu->flags.zero = (cpu->R[instruction.operand1] == cpu->R[instruction.operand2]) ? 1 : 0;
+            cpu->flags.sign = (cpu->R[instruction.register1] < cpu->R[instruction.register2]) ? 1 : 0;
+            cpu->flags.zero = (cpu->R[instruction.register1] == cpu->R[instruction.register2]) ? 1 : 0;
             break;
         case STR_OPCODE:
             if (cpu->R[instruction.register] < MEMORY_SIZE) {
@@ -156,7 +143,7 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
             }
             break;
         case COPY_OPCODE:
-            cpu->R[instruction.destination] = cpu->R[instruction.operand1];
+            cpu->R[instruction.destination] = cpu->R[instruction.register1];
             break;
         case RMV_OPCODE:
             cpu->R[instruction.destination] = 0;

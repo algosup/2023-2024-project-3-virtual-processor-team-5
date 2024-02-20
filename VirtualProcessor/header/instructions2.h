@@ -1,49 +1,49 @@
 //****************************** ALGORITHMIC OPERATIONS ******************************//
 //*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
 
-void ExecuteADD(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->R[destination] = cpu->R[operand1] + cpu->R[operand2];
+void ExecuteADD(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[destination] = cpu->R[register1] + cpu->R[register2];
 }
 
-void ExecuteSUB(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->R[destination] = cpu->R[operand1] - cpu->R[operand2];
+void ExecuteSUB(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[destination] = cpu->R[register1] - cpu->R[register2];
 }
 
-void ExecuteMUL(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->R[destination] = cpu->R[operand1] * cpu->R[operand2];
+void ExecuteMUL(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[destination] = cpu->R[register1] * cpu->R[register2];
 }
 
-void ExecuteDIV(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    if (cpu->R[operand2] == 0) {
+void ExecuteDIV(ProcessorState* cpu, int destination, int register1, int register2) {
+    if (cpu->R[register2] == 0) {
         // Handle division by zero error
         printf("Error: Division by zero\n");
     } else {
-        cpu->R[destination] = cpu->R[operand1] / cpu->R[operand2];
+        cpu->R[destination] = cpu->R[register1] / cpu->R[register2];
     }
 }
 
 //*************************** LOGICAL OPERATIONS ****************************//
 //******************** IMPLEMENT AND, OR, XOR, NOT, CMP *********************//
 
-void ExecuteAND(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->R[operand1] &= cpu->R[operand2];
+void ExecuteAND(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[register1] &= cpu->R[register2];
 }
 
-void ExecuteXOR(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->R[operand1] ^= cpu->R[operand2];
+void ExecuteXOR(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[register1] ^= cpu->R[register2];
 }
 
-void ExecuteOR(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->R[operand1] |= cpu->R[operand2];
+void ExecuteOR(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[register1] |= cpu->R[register2];
 }
 
-void ExecuteNOT(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->R[operand1] = ~cpu->R[operand2];
+void ExecuteNOT(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[register1] = ~cpu->R[register2];
 }
 
-void ExecuteCMP(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->flags.sign = (cpu->R[operand1] < cpu->R[operand2]) ? 1 : 0;
-    cpu->flags.zero = (cpu->R[operand1] == cpu->R[operand2]) ? 1 : 0;
+void ExecuteCMP(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->flags.sign = (cpu->R[register1] < cpu->R[register2]) ? 1 : 0;
+    cpu->flags.zero = (cpu->R[register1] == cpu->R[register2]) ? 1 : 0;
 }
 
 //****************************** DATA MOVEMENT ******************************//
