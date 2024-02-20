@@ -1,4 +1,4 @@
-#include "../header/utils.h"
+#include "../header/utils2.h"
 
 // Déclaration de fonctions pour éviter les avertissements de compilation
 void ExecuteADD(ProcessorState* cpu, int destination, int operand1, int operand2);

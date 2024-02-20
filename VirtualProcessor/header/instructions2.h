@@ -1,49 +1,49 @@
 //****************************** ALGORITHMIC OPERATIONS ******************************//
 //*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
 
-void executeADD(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    cpu->R[regA].value += cpu->R[regB].value;
+void ExecuteADD(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[destination] = cpu->R[operand1] + cpu->R[operand2];
 }
 
-void executeSUB(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    cpu->R[regA].value -= cpu->R[regB].value;
+void ExecuteSUB(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[destination] = cpu->R[operand1] - cpu->R[operand2];
 }
 
-void executeMUL(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    cpu->R[regA].value *= cpu->R[regB].value;
+void ExecuteMUL(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[destination] = cpu->R[operand1] * cpu->R[operand2];
 }
 
-void executeDIV(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    if (cpu->R[regB].value == 0) {
+void ExecuteDIV(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    if (cpu->R[operand2] == 0) {
         // Handle division by zero error
         printf("Error: Division by zero\n");
     } else {
-        cpu->R[regA].value /= cpu->R[regB].value;
+        cpu->R[destination] = cpu->R[operand1] / cpu->R[operand2];
     }
 }
 
 //*************************** LOGICAL OPERATIONS ****************************//
 //******************** IMPLEMENT AND, OR, XOR, NOT, CMP *********************//
 
-void executeAND(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    cpu->R[regA].value &= cpu->R[regB].value;
+void ExecuteAND(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[operand1] &= cpu->R[operand2];
 }
 
-void executeXOR(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    cpu->R[regA].value ^= cpu->R[regB].value;
+void ExecuteXOR(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[operand1] ^= cpu->R[operand2];
 }
 
-void executeOR(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    cpu->R[regA].value |= cpu->R[regB].value;
+void ExecuteOR(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[operand1] |= cpu->R[operand2];
 }
 
-void executeNOT(ProcessorState *cpu, uint8_t regA) {
-    cpu->R[regA].value = ~cpu->R[regA].value;
+void ExecuteNOT(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[operand1] = ~cpu->R[operand2];
 }
 
-void executeCMP(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    cpu->flags.sign = (cpu->R[regA].value < cpu->R[regB].value) ? 1 : 0;
-    cpu->flags.zero = (cpu->R[regA].value == cpu->R[regB].value) ? 1 : 0;
+void ExecuteCMP(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->flags.sign = (cpu->R[operand1] < cpu->R[operand2]) ? 1 : 0;
+    cpu->flags.zero = (cpu->R[operand1] == cpu->R[operand2]) ? 1 : 0;
 }
 
 //****************************** DATA MOVEMENT ******************************//
@@ -57,21 +57,23 @@ void executeSTR(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
     }
 }
 
-void executeLDR(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    if (cpu->R[regB].value < MEMORY_SIZE) {
-        cpu->R[regA].value = cpu->memory->memory[cpu->R[regB].value];
+void ExecuteLDR(ProcessorState* cpu, int destination, char* source) {
+        int address;
+        sscanf(source, "[%x]", &address);
+        if (address < MEMORY_SIZE) {  // Parse the memory address as a hexadecimal number
+        cpu->R[destination] = cpu->memory[address];  // Load the data from the memory address into the register
     } else {
         // Handle out of bounds memory access error
         printf("Error: Memory address out of bounds\n");
     }
 }
 
-void executeCOPY(ProcessorState *cpu, uint8_t regA, uint8_t regB) {
-    cpu->R[regA].value = cpu->R[regB].value;
+void ExecuteCOPY(ProcessorState* cpu, int destination, int source) {
+    cpu->R[destination] = cpu->R[source];
 }
 
-void executeRMV(ProcessorState *cpu, uint8_t regA) {
-    cpu->R[regA].value = 0;
+void executeRMV(ProcessorState *cpu, int destination) {
+    cpu->R[destination] = 0;
 }
 
 //****************************** CONTROL FLOW *******************************//

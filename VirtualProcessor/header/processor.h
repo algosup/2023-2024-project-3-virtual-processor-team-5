@@ -1,3 +1,10 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <ctype.h>
+
 #define MEMORY_SIZE 10000
 #define NUM_REGISTERS 8
 
