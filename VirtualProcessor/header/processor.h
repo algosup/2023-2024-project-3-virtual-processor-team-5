@@ -93,44 +93,44 @@ void update_flags(ProcessorState *state) {
     state->flags.sign = (state->R[0] & 0x8000) ? 1 : 0;
 
     // Met à jour le bit de zéro
-    state->flags.zero = (state->R0 == 0) ? 1 : 0;
+    state->flags.zero = (state->R[0] == 0) ? 1 : 0;
 }
 
 // Function to execute instructions
 void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
     switch(instruction.opcode) {
         case ADD_OPCODE:
-            cpu->R[instruction.register] += cpu->R[instruction.register];
+            cpu->R[instruction.operand1] += cpu->R[instruction.operand2];
             break;
         case SUB_OPCODE:
-            cpu->R[instruction.register] -= cpu->R[instruction.register];
+            cpu->R[instruction.operand1] -= cpu->R[instruction.operand2];
             break;
         case MUL_OPCODE:
-            cpu->R[instruction.register] *= cpu->R[instruction.register];
+            cpu->R[instruction.operand1] *= cpu->R[instruction.operand2];
             break;
         case DIV_OPCODE:
-            if (cpu->R[instruction.register] == 0) {
+            if (cpu->R[instruction.operand1] == 0) {
                 // Handle division by zero error
                 printf("Error: Division by zero\n");
             } else {
-                cpu->R[instruction.register] /= cpu->R[instruction.register];
+                cpu->R[instruction.operand1] /= cpu->R[instruction.operand2];
             }
             break;
         case AND_OPCODE:
-            cpu->R[instruction.register] &= cpu->R[instruction.register];
+            cpu->R[instruction.operand1] &= cpu->R[instruction.operand2];
             break;
         case XOR_OPCODE:
-            cpu->R[instruction.register] ^= cpu->R[instruction.register];
+            cpu->R[instruction.operand1] ^= cpu->R[instruction.operand2];
             break;
         case OR_OPCODE:
-            cpu->R[instruction.register] |= cpu->R[instruction.register];
+            cpu->R[instruction.operand1] |= cpu->R[instruction.operand2];
             break;
         case NOT_OPCODE:
-            cpu->R[instruction.register] = ~cpu->R[instruction.register];
+            cpu->R[instruction.operand1] = ~cpu->R[instruction.operand2];
             break;
         case CMP_OPCODE:
-            cpu->flags.sign = (cpu->R[instruction.register] < cpu->R[instruction.register]) ? 1 : 0;
-            cpu->flags.zero = (cpu->R[instruction.register] == cpu->R[instruction.register]) ? 1 : 0;
+            cpu->flags.sign = (cpu->R[instruction.operand1] < cpu->R[instruction.operand2]) ? 1 : 0;
+            cpu->flags.zero = (cpu->R[instruction.operand1] == cpu->R[instruction.operand2]) ? 1 : 0;
             break;
         case STR_OPCODE:
             if (cpu->R[instruction.register] < MEMORY_SIZE) {
@@ -149,14 +149,14 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
             }
             break;
         case COPY_OPCODE:
-            cpu->R[instruction.register] = cpu->R[instruction.register];
+            cpu->R[instruction.destination] = cpu->R[instruction.operand1];
             break;
         case RMV_OPCODE:
-            cpu->R[instruction.register] = 0;
+            cpu->R[instruction.destination] = 0;
             break;
         case MOV_OPCODE:
             if (cpu->R[instruction.register] < MEMORY_SIZE) {
-                cpu->R[instruction.register] = cpu->memory->memory[cpu->R[instruction.register]];
+                cpu->R[instruction.destination] = cpu->memory->memory[cpu->R[instruction.register]];
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");

@@ -11,12 +11,12 @@ uint16_t lastResult = 0;
 // }
 
 void ExecuteADD(ProcessorState* cpu, int destination, int operand1, int operand2) {
-    cpu->R[destination].value = cpu->R[operand1].value + cpu->R[operand2].value;
+    cpu->R[destination] = cpu->R[operand1] + cpu->R[operand2];
 }
 
 // SUB instruction execution function
-int ExecuteSUB(uint16_t operand1, uint16_t operand2) {
-    lastResult = operand1 - operand2;
+int ExecuteSUB(ProcessorState* cpu, int destination, int operand1, int operand2) {
+    cpu->R[destination] = cpu->R[operand1] - cpu->R[operand2];
     printf("Result of SUB: %hu\n", lastResult);
     return lastResult;
 }
@@ -45,10 +45,10 @@ int ExecuteDIV(uint16_t operand1, uint16_t operand2) {
 
 bool ExecuteCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
-        if (state->R[registerIndex1].value == state->R[registerIndex2].value) {
+        if (state->R[registerIndex1] == state->R[registerIndex2]) {
             printf("Values in register R%d and R%d are equal.\n", registerIndex1, registerIndex2);
             return true;
-        } else if (state->R[registerIndex1].value > state->R[registerIndex2].value) {
+        } else if (state->R[registerIndex1] > state->R[registerIndex2]) {
             printf("Value in register R%d is greater than value in register R%d.\n", registerIndex1, registerIndex2);
             return false;
         } else {
@@ -64,8 +64,8 @@ bool ExecuteCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
 // AND instruction execution function
 void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2) {
     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
-        state->R[registerIndex1].value = state->R[registerIndex1].value & state->R[registerIndex2].value;
-        printf("Result of AND: %hu\n", state->R[registerIndex1].value);
+        state->R[registerIndex1] = state->R[registerIndex1] & state->R[registerIndex2];
+        printf("Result of AND: %hu\n", state->R[registerIndex1]);
     } else {
         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
     }
@@ -74,8 +74,8 @@ void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2) {
 // XOR instruction execution function
 void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
-        state->R[registerIndex1].value = state->R[registerIndex1].value ^ state->R[registerIndex2].value;
-        printf("Result of XOR: %hu\n", state->R[registerIndex1].value);
+        state->R[registerIndex1] = state->R[registerIndex1] ^ state->R[registerIndex2];
+        printf("Result of XOR: %hu\n", state->R[registerIndex1]);
     } else {
         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
     }
@@ -84,8 +84,8 @@ void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
 // NOT instruction execution function
 void ExecuteNOT(ProcessorState *state, int registerIndex) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
-        state->R[registerIndex].value = ~(state->R[registerIndex].value);
-        printf("Result of NOT: %hu\n", state->R[registerIndex].value);
+        state->R[registerIndex] = ~(state->R[registerIndex]);
+        printf("Result of NOT: %hu\n", state->R[registerIndex]);
     } else {
         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
     }
@@ -94,8 +94,8 @@ void ExecuteNOT(ProcessorState *state, int registerIndex) {
 // OR instruction execution function (use binary operators)
 void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
-        state->R[registerIndex1].value = state->R[registerIndex1].value | state->R[registerIndex2].value;
-        printf("Result of OR: %hu\n", state->R[registerIndex1].value);
+        state->R[registerIndex1] = state->R[registerIndex1] | state->R[registerIndex2];
+        printf("Result of OR: %hu\n", state->R[registerIndex1]);
     } else {
         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
     }
@@ -133,37 +133,23 @@ void ExecuteMOV(int* operand1, int* operand2, OperandType operand2type) {
 }
 
 // STR instruction execution function (storing)
-void ExecuteSTR(ProcessorState *state, int registerIndex, int result) {
-    if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
-        if (state->R[registerIndex].value != 0) {
-            state->R[registerIndex].value = state->R[registerIndex].value + result; // add result to lastResult
-            update_flags(state);
-            printf("Stored result %d in register R%d\n", result, registerIndex);
-        } else {
-            state->R[registerIndex].value = result; // Use result instead of lastResult
-            update_flags(state);
-            printf("Stored result %d in register R%d\n", result, registerIndex);
-        }
-    } else {
-        fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
-    }
+void ExecuteSTR(ProcessorState* cpu, int source, char* destination) {
+    int address;
+    sscanf(destination, "[%x]", &address);  // Parse the memory address as a hexadecimal number
+    cpu->memory[address] = cpu->R[source];  // Store the data from the register into the memory address
 }
 
 // LDR instruction execution function (loading)
-void ExecuteLDR(ProcessorState *state, Register *destination, int registerIndex) {
-    if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
-        destination->value = state->R[registerIndex].value;
-        update_flags(state);
-        printf("Loaded value %hu from register R%d to R%ld\n", destination->value, registerIndex, destination - state->R);
-    } else {
-        fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
-    }
+void ExecuteLDR(ProcessorState* cpu, int destination, char* source) {
+    int address;
+    sscanf(source, "[%x]", &address);  // Parse the memory address as a hexadecimal number
+    cpu->R[destination] = cpu->memory[address];  // Load the data from the memory address into the register
 }
 
 void ExecuteCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex) {
     if (srcRegisterIndex >= 0 && srcRegisterIndex < NUM_REGISTERS) {
         if (destRegisterIndex >= 0 && destRegisterIndex < NUM_REGISTERS) {
-            state->R[destRegisterIndex].value = state->R[srcRegisterIndex].value;
+            state->R[destRegisterIndex] = state->R[srcRegisterIndex];
             update_flags(state);
             printf("Copied from register R%d to R%d\n", srcRegisterIndex, destRegisterIndex);
         } else {
@@ -177,7 +163,7 @@ void ExecuteCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIn
 // RMV instruction execution function (remove the value from the register)
 void ExecuteRMV(ProcessorState *state, int registerIndex) {
     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
-        state->R[registerIndex].value = 0;
+        state->R[registerIndex] = 0;
         update_flags(state);
         printf("Removed value from register R%d\n", registerIndex);
     } else {
