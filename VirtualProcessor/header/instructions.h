@@ -1,186 +1,193 @@
-// uint16_t lastResult = 0; 
+//****************************** ALGORITHMIC OPERATIONS ******************************//
+//*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
 
-// //****************************** ALGORITHMIC OPERATIONS ******************************//
-// //*************************** IMPLEMENT ADD, MUL, DIV, SUB ***************************//
+void ExecuteADD(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[destination] = cpu->R[register1] + cpu->R[register2];
+}
 
-// // ADD instruction execution function
-// // int ExecuteADD(uint16_t operand1, uint16_t operand2) {
-// //     lastResult = operand1 + operand2;
-// //     printf("Result of ADD: %hu\n", lastResult);
-// //     return lastResult;
-// // }
+void ExecuteSUB(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[destination] = cpu->R[register1] - cpu->R[register2];
+}
 
-// void ExecuteADD(ProcessorState* cpu, int destination, int operand1, int operand2) {
-//     cpu->R[destination] = cpu->R[operand1] + cpu->R[operand2];
-// }
+void ExecuteMUL(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[destination] = cpu->R[register1] * cpu->R[register2];
+}
 
-// // SUB instruction execution function
-// int ExecuteSUB(ProcessorState* cpu, int destination, int operand1, int operand2) {
-//     cpu->R[destination] = cpu->R[operand1] - cpu->R[operand2];
-//     printf("Result of SUB: %hu\n", lastResult);
-//     return lastResult;
-// }
+void ExecuteDIV(ProcessorState* cpu, int destination, int register1, int register2) {
+    if (cpu->R[register2] == 0) {
+        // Handle division by zero error
+        printf("Error: Division by zero\n");
+    } else {
+        cpu->R[destination] = cpu->R[register1] / cpu->R[register2];
+    }
+}
 
-// // MUL instruction execution function
-// int ExecuteMUL(uint16_t operand1, uint16_t operand2) {
-//     lastResult = operand1 * operand2;
-//     printf("Result of MUL: %hu\n", lastResult);
-//     return lastResult;
-// }
+//*************************** LOGICAL OPERATIONS ****************************//
+//******************** IMPLEMENT AND, OR, XOR, NOT, CMP *********************//
 
-// // DIV instruction execution function
-// int ExecuteDIV(uint16_t operand1, uint16_t operand2) {
-//     if (operand2 != 0) {
-//         lastResult = operand1 / operand2;
-//         printf("Result of DIV: %hu\n", lastResult);
-//         return lastResult;
-//     } else {
-//         fprintf(stderr, "Error: Division by zero\n");
-//         return 0;
-//     }
-// }
+void ExecuteAND(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[register1] &= cpu->R[register2];
+}
 
-// //****************************** LOGICAL OPERATIONS ******************************//
-// //*********************** IMPLEMENT AND, OR, XOR, NOT, CMP ***********************//
+void ExecuteXOR(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[register1] ^= cpu->R[register2];
+}
 
-// bool ExecuteCMP(ProcessorState *state, int registerIndex1, int registerIndex2) {
-//     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
-//         if (state->R[registerIndex1] == state->R[registerIndex2]) {
-//             printf("Values in register R%d and R%d are equal.\n", registerIndex1, registerIndex2);
-//             return true;
-//         } else if (state->R[registerIndex1] > state->R[registerIndex2]) {
-//             printf("Value in register R%d is greater than value in register R%d.\n", registerIndex1, registerIndex2);
-//             return false;
-//         } else {
-//             printf("Value in register R%d is less than value in register R%d.\n", registerIndex1, registerIndex2);
-//             return false;
-//         }
-//     } else {
-//         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
-//         return false;
-//     }
-// }
+void ExecuteOR(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[register1] |= cpu->R[register2];
+}
 
-// // AND instruction execution function
-// void ExecuteAND(ProcessorState *state, int registerIndex1, int registerIndex2) {
-//     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
-//         state->R[registerIndex1] = state->R[registerIndex1] & state->R[registerIndex2];
-//         printf("Result of AND: %hu\n", state->R[registerIndex1]);
-//     } else {
-//         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
-//     }
-// }
+void ExecuteNOT(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->R[register1] = ~cpu->R[register2];
+}
 
-// // XOR instruction execution function
-// void ExecuteXOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
-//     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
-//         state->R[registerIndex1] = state->R[registerIndex1] ^ state->R[registerIndex2];
-//         printf("Result of XOR: %hu\n", state->R[registerIndex1]);
-//     } else {
-//         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
-//     }
-// }
+void ExecuteCMP(ProcessorState* cpu, int destination, int register1, int register2) {
+    cpu->flags.sign = (cpu->R[register1] < cpu->R[register2]) ? 1 : 0;
+    cpu->flags.zero = (cpu->R[register1] == cpu->R[register2]) ? 1 : 0;
+}
 
-// // NOT instruction execution function
-// void ExecuteNOT(ProcessorState *state, int registerIndex) {
-//     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
-//         state->R[registerIndex] = ~(state->R[registerIndex]);
-//         printf("Result of NOT: %hu\n", state->R[registerIndex]);
-//     } else {
-//         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
-//     }
-// }
+//****************************** DATA MOVEMENT ******************************//
 
-// // OR instruction execution function (use binary operators)
-// void ExecuteOR(ProcessorState *state, int registerIndex1, int registerIndex2) {
-//     if (registerIndex1 >= 0 && registerIndex1 < NUM_REGISTERS && registerIndex2 >= 0 && registerIndex2 < NUM_REGISTERS) {
-//         state->R[registerIndex1] = state->R[registerIndex1] | state->R[registerIndex2];
-//         printf("Result of OR: %hu\n", state->R[registerIndex1]);
-//     } else {
-//         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
-//     }
-// }
+void ExecuteMOV(ProcessorState* cpu, int destination, char* source) {
+    if (source[0] == '#') {
+        // If the source starts with '#', it's an immediate value
+        int immediateValue;
+        sscanf(source, "#%d", &immediateValue);  // Parse the immediate value
+        cpu->R[destination] = immediateValue;  // Store the immediate value in the destination register
+    } else {
+        // Otherwise, the source is a register
+        int srcIndex = source[1] - '0';  // Parse the register index
+        cpu->R[destination] = cpu->R[srcIndex];  // Copy the value from the source register to the destination register
+    }
+}
 
-// //****************************** DATA MOVEMENT ******************************//
+void executeSTR(ProcessorState *cpu, uint8_t reg, char* destination) {
+    int address;
+    sscanf(destination, "[%x]", &address);  // Parse the memory address as a hexadecimal number
+    if (address < MEMORY_SIZE) {
+        cpu->memory->memory[address] = cpu->R[reg];  // Store the data from the register into the memory address
+    } else {
+        // Handle out of bounds memory access error
+        printf("Error: Memory address out of bounds\n");
+    }
+}
 
-// // Define the registers
-// int registers[NUM_REGISTERS];
+void ExecuteLDR(ProcessorState* cpu, int destination, char* source) {
+        int address;
+        sscanf(source, "[%x]", &address);
+        if (address < MEMORY_SIZE) {  // Parse the memory address as a hexadecimal number
+        cpu->R[destination] = cpu->memory->memory[address];  // Load the data from the memory address into the register
+    } else {
+        // Handle out of bounds memory access error
+        printf("Error: Memory address out of bounds\n");
+    }
+}
 
-// // Define the operand types
-// typedef enum {
-//     IMMEDIATE,
-//     REGISTER,
-//     MEMORY
-// } OperandType;
+void ExecuteCOPY(ProcessorState* cpu, int destination, int source) {
+    cpu->R[destination] = cpu->R[source];
+}
 
-// void ExecuteMOV(int* operand1, int* operand2, OperandType operand2type) {
-//     switch(operand2type) {
-//         case IMMEDIATE:
-//             *operand1 = *operand2; // Copie directe pour une valeur immédiate
-//             printf("%d\n",*operand1);
-//             break;
-//         case REGISTER:
-//             *operand1 = *(int*)operand2; // Déreference pour copier la valeur
-//             printf("%d\n",*operand1);
-//             break;
-//         case MEMORY:
-//             *operand1 = *(int*)operand2; // Déreference pour copier la valeur
-//             printf("%d\n",*operand1);
-//             break;
-//         default:
-//             printf("Unknown operand.\n");
-//     }
-// }
+void executeRMV(ProcessorState *cpu, int destination) {
+    cpu->R[destination] = 0;
+}
 
-// // STR instruction execution function (storing)
-// void ExecuteSTR(ProcessorState* cpu, int source, char* destination) {
-//     int address;
-//     sscanf(destination, "[%x]", &address);  // Parse the memory address as a hexadecimal number
-//     cpu->memory[address] = cpu->R[source];  // Store the data from the register into the memory address
-// }
+//****************************** CONTROL FLOW *******************************//
 
-// // LDR instruction execution function (loading)
-// void ExecuteLDR(ProcessorState* cpu, int destination, char* source) {
-//     int address;
-//     sscanf(source, "[%x]", &address);  // Parse the memory address as a hexadecimal number
-//     cpu->R[destination] = cpu->memory[address];  // Load the data from the memory address into the register
-// }
+void executeJMP(ProcessorState *cpu, int address) {
+    if (address < MEMORY_SIZE) {
+        cpu->PC = address;
+    } else {
+        // Handle out of bounds memory access error
+        printf("Error: Jump address out of bounds\n");
+    }
+}
 
-// void ExecuteCOPY(ProcessorState *state, int srcRegisterIndex, int destRegisterIndex) {
-//     if (srcRegisterIndex >= 0 && srcRegisterIndex < NUM_REGISTERS) {
-//         if (destRegisterIndex >= 0 && destRegisterIndex < NUM_REGISTERS) {
-//             state->R[destRegisterIndex] = state->R[srcRegisterIndex];
-//             update_flags(state);
-//             printf("Copied from register R%d to R%d\n", srcRegisterIndex, destRegisterIndex);
-//         } else {
-//             fprintf(stderr, "\x1b[31mError: Invalid destination register index\x1b[0m\n");
-//         }
-//     } else {
-//         fprintf(stderr, "\x1b[31mError: Invalid source register index\x1b[0m\n");
-//     }
-// }
+void executeJZ(ProcessorState *cpu, int address) {
+    if (cpu->flags.zero) {
+        if (address < MEMORY_SIZE) {
+            cpu->PC = address;
+        } else {
+            // Handle out of bounds memory access error
+            printf("Error: Jump address out of bounds\n");
+        }
+    }
+}
 
-// // RMV instruction execution function (remove the value from the register)
-// void ExecuteRMV(ProcessorState *state, int registerIndex) {
-//     if (registerIndex >= 0 && registerIndex < NUM_REGISTERS) {
-//         state->R[registerIndex] = 0;
-//         update_flags(state);
-//         printf("Removed value from register R%d\n", registerIndex);
-//     } else {
-//         fprintf(stderr, "\x1b[31mError: Invalid register index\x1b[0m\n");
-//     }
-// }
+void executeJNZ(ProcessorState *cpu, int address) {
+    if (!cpu->flags.zero) {
+        if (address < MEMORY_SIZE) {
+            cpu->PC = address;
+        } else {
+            // Handle out of bounds memory access error
+            printf("Error: Jump address out of bounds\n");
+        }
+    }
+}
 
-// //****************************** CONTROL FLOW ******************************//
+void executeJE(ProcessorState *cpu, int address) {
+    if (cpu->flags.equal) {
+        if (address < MEMORY_SIZE) {
+            cpu->PC = address;
+        } else {
+            // Handle out of bounds memory access error
+            printf("Error: Jump address out of bounds\n");
+        }
+    }
+}
 
-// typedef struct {
-//     char name[10];
-//     int instructionIndex;
-//     uint16_t address;
-//     int lineNumber;
-//     long filePosition; // Remember the file position of each label
-// } Label;
+void executeJNE(ProcessorState *cpu, int address) {
+    if (!cpu->flags.equal) {
+        if (address < MEMORY_SIZE) {
+            cpu->PC = address;
+        } else {
+            // Handle out of bounds memory access error
+            printf("Error: Jump address out of bounds\n");
+        }
+    }
+}
 
-// //************************** SPECIAL INSTRUCTIONS **************************//
+//************************** SPECIAL INSTRUCTIONS ***************************//
+
+void executeNOP(ProcessorState *cpu) {
+    // Do nothing
+}
+
+/*
+void executePUSH(ProcessorState *cpu, uint8_t regA) {
+    if (cpu->SP > 0) {
+        cpu->memory->memory[--cpu->SP] = cpu->R[regA].value;
+    } else {
+        // Handle stack overflow error
+        printf("Error: Stack overflow\n");
+    }
+}
 
 
+void executePOP(ProcessorState *cpu, uint8_t regA) {
+    if (cpu->SP < MEMORY_SIZE) {
+        cpu->R[regA].value = cpu->memory->memory[cpu->SP++];
+    } else {
+        // Handle stack underflow error
+        printf("Error: Stack underflow\n");
+    }
+}
+
+void executeCALL(ProcessorState *cpu, uint8_t regA) {
+    if (cpu->SP > 0) {
+        cpu->memory->memory[--cpu->SP] = cpu->PC;
+        cpu->PC = cpu->R[regA].value;
+    } else {
+        // Handle stack overflow error
+        printf("Error: Stack overflow\n");
+    }
+}
+
+void executeRET(ProcessorState *cpu) {
+    if (cpu->SP < MEMORY_SIZE) {
+        cpu->PC = cpu->memory->memory[cpu->SP++];
+    } else {
+        // Handle stack underflow error
+        printf("Error: Stack underflow\n");
+    }
+}
+*/

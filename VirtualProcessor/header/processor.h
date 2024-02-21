@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <ctype.h>
-
 #define MEMORY_SIZE 10000
 #define NUM_REGISTERS 8
 
@@ -61,7 +54,7 @@ typedef struct {
     int destination, register1, register2;
     int address;
 } instruction_t;
-  
+
 // Processor status structure
 typedef struct {
     int R[NUM_REGISTERS];// general register array

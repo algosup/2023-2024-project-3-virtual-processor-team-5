@@ -2,7 +2,13 @@
 #define MAX_WORD_LENGTH 100
 #define MAX_LINE_LENGTH 1024
 
+
 char word[MAX_WORD_LENGTH];
+
+typedef struct {
+    char* word;
+    int type;
+} Word;
 
 int is_instruction(char* word) {
     for (int i = 0; word[i]; i++) {
@@ -78,10 +84,13 @@ int parser(FILE *file) {
     char line[MAX_LINE_LENGTH];
     // Read and parse each word until end of file
     while (fgets(line, sizeof(line), file) != NULL) {
+        instruction_t instruction;
         char* word = strtok(line, " ,\n");
         while (word != NULL) {
             if (recognize_and_print_type(word) == 1) {
                 if (strcmp(word, "ADD") == 0) {
+                    Word word = {"ADD", 1};
+                    instruction.opcode = ADD_OPCODE;
                     printf("ADD\n");
                 } else if (strcmp(word, "SUB") == 0) {
                     printf("SUB\n");
@@ -100,6 +109,8 @@ int parser(FILE *file) {
                 } else if (strcmp(word, "OR") == 0) {
                     printf("OR\n");
                 } else if (strcmp(word, "MOV") == 0) {
+                    Word word = {"MOV", 1};
+                    instruction.opcode = MOV_OPCODE;
                     printf("MOV\n");
                 } else if (strcmp(word, "RMV") == 0) {
                     printf("RMV\n");
@@ -150,20 +161,37 @@ int parser(FILE *file) {
                 }
             } else if (recognize_and_print_type(word) == 2) {
                 if (strcmp(word, "R0") == 0) {
+                    instruction.opcode = R[(int)word + 1];
+                    Word word = {"R0", 2};
+                    instruction.opcode = R[(int)word + 1];
                     printf("R0\n");
                 } else if (strcmp(word, "R1") == 0) {
+                    Word word = {"R1", 2};
+                    instruction.opcode = R[(int)word + 1];
                     printf("R1\n");
                 } else if (strcmp(word, "R2") == 0) {
+                    Word word = {"R2", 2};
+                    instruction.opcode = R[(int)word + 1];
                     printf("R2\n");
                 } else if (strcmp(word, "R3") == 0) {
+                    Word word = {"R3", 2};
+                    instruction.opcode = R[(int)word + 1];
                     printf("R3\n");
                 } else if (strcmp(word, "R4") == 0) {
+                    Word word = {"R4", 2};
+                    instruction.opcode = R[(int)word + 1];
                     printf("R4\n");
                 } else if (strcmp(word, "R5") == 0) {
+                    Word word = {"R5", 2};
+                    instruction.opcode = R[(int)word + 1];
                     printf("R5\n");
                 } else if (strcmp(word, "R6") == 0) {
+                    Word word = {"R6", 2};
+                    instruction.opcode = R[(int)word + 1];
                     printf("R6\n");
                 } else if (strcmp(word, "R7") == 0) {
+                    Word word = {"R7", 2};
+                    instruction.opcode = R[(int)word + 1];
                     printf("R7\n");
                 } else {
                     printf("Unknown register\n");
