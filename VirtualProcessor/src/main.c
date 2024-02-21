@@ -40,7 +40,6 @@ int main() {
 
     ProcessorState cpu = {0};  // Initializes processor with default values
 
-    char input[100];
     printf("Simple Terminal\n");
 
     read_file("code.txt", "code.txt");

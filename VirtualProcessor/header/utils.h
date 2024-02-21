@@ -25,7 +25,7 @@ void read_file(char *filename, char *file_directory) {
         printf("\x1b[31mCould not open file.\x1b[0m\n");
         exit(1);
     } else {
-		printf("\x1b[32mFile opened successfully.\x1b[0m\n");
+		printf("\x1b[32mFile opened successfully.\x1b[0m\n\n");
     }
 
     // parse the file

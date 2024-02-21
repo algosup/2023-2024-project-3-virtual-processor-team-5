@@ -19,7 +19,7 @@ uint16_t result;
 #define COPY_OPCODE 0x0C
 #define RMV_OPCODE 0x0D
 #define MOV_OPCODE 0x0E
-#define HALT_OPCODE 0x0F
+#define HLT_OPCODE 0x0F
 #define JMP_OPCODE 0x10
 
 // Define register indices
@@ -144,15 +144,15 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
             break;
         case MOV_OPCODE:
             if (cpu->R[instruction.destination] < MEMORY_SIZE) {
-                cpu->R[instruction.destination] = instruction.IMMEDIATE;
-                //print the value in the register
-                printf("Value in the register: %d\n", cpu->R[instruction.destination]);
+                cpu->R[instruction.destination] = 0; //reinitialize the register
+                cpu->R[instruction.destination] = instruction.IMMEDIATE; //store the immediate value in the destination register
+                printf("Value in the register: %d\n", cpu->R[instruction.destination]); //print the value in the register
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
             }
             break;
-        case HALT_OPCODE:
+        case HLT_OPCODE:
             // Halt the processor
             printf("Halting processor\n");
             break;
