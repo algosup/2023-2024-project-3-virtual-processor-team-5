@@ -145,6 +145,8 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
         case MOV_OPCODE:
             if (cpu->R[instruction.destination] < MEMORY_SIZE) {
                 cpu->R[instruction.destination] = instruction.IMMEDIATE;
+                //print the value in the register
+                printf("Value in the register: %d\n", cpu->R[instruction.destination]);
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n");
