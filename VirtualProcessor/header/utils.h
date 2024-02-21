@@ -34,6 +34,7 @@ void read_file(char *filename, char *file_directory) {
     fclose(file);
 
     // free the memory
+    printf("\n\x1b[32mmemory = %d\x1b[0m\n", *file_path);
     free(file_path);
-    printf("\x1b[32mmemory = %d\x1b[0m", *file_path);
+    printf("\x1b[32mmemory = %d\x1b[0m\n", *file_path);
 }
