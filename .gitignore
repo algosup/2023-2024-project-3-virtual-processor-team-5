@@ -1,12 +1,46 @@
-# Ignore generated documentation files
-/doc/
-
-# Ignore compiled documentation files
+# Ignore object files and executables
+*.o
+*.out
+*.exe
+*.json
+# Ignore compiled binaries
+/bin/
 /build/
 
-# Ignore temporary documentation files
-/tmp/
+# Ignore generated files
+TAGS
+.cproject
+.project
 
-# Ignore documentation configuration files
-/.doc/
+# Ignore temporary files
+*~
+*.swp
+
+# Ignore build output
+/build/
+/Debug/
+/Release/
+
+# Ignore system and IDE-specific files
+.DS_Store
+.vscode/
+.idea/
+
+# Ignore generated documentation
+/doc/
+
+# Ignore configuration files
+config.ini
+
+# Ignore compiled libraries
+/lib/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userprefs
+
+# Ignore logs and databases
+*.log
+*.sqlite
 
