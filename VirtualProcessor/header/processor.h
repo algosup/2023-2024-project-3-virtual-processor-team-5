@@ -93,8 +93,11 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
         exit(0);
     } else {
         instruction.destination = wordInLigne[1];
+        printf("\nDestination: %d\n", instruction.destination);
         instruction.register1 = wordInLigne[2];
+        printf("value 1: %d\n", instruction.register1);
         instruction.register2 = wordInLigne[3];
+        printf("value 2: %d\n", instruction.register2);
     }
     switch(instruction.opcode) {
         case ADD_OPCODE:
@@ -156,7 +159,7 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
             if (cpu->R[instruction.destination] < MEMORY_SIZE) {
                 cpu->R[instruction.destination] = 0; //reinitialize the register
                 cpu->R[instruction.destination] = instruction.IMMEDIATE; //store the immediate value in the destination register
-                printf("Value in R%d: %d\n\n",instruction.register1, cpu->R[instruction.destination]); //print the value in the register
+                printf("Value in R%d: %d\n\n",instruction.destination, cpu->R[instruction.register1]); //print the value in the register
             } else {
                 // Handle out of bounds memory access error
                 printf("Error: Memory address out of bounds\n\n");

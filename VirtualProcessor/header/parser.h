@@ -90,7 +90,6 @@ int parser(FILE *file) {
             // when the line if finished to be parsed, you need to take the first instruction on wordInLine and execute the instruction with the cpu and reinitialise the wordInLigne
             if ((recognize_and_print_type(word) == 1 || recognize_and_print_type(word) == 4) && wordSize != 0) {
                 if (*wordInLigne != 0) {
-                    printf("%s\n", wordInLigne);
                     instruction.opcode = wordInLigne[0];
                     execute_instruction(instruction, &cpu);
                     // reinitialise the wordInLigne
@@ -264,42 +263,42 @@ int parser(FILE *file) {
                 }
             } else if (recognize_and_print_type(word) == 2) {
                 if (strcmp(word, "R0") == 0) {
-                    instruction.opcode = R[(int *)(word + 1)];
+                    instruction.opcode = R[word];
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("R0\n");
                 } else if (strcmp(word, "R1") == 0) {
-                    instruction.opcode = R[(int *)(word + 1)];
+                    instruction.opcode = R[word];
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("R1\n");
                 } else if (strcmp(word, "R2") == 0) {
-                    instruction.opcode = R[(int *)(word + 1)];
+                    instruction.opcode = R[word];
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("R2\n");
                 } else if (strcmp(word, "R3") == 0) {
-                    instruction.opcode = R[(int *)(word + 1)];
+                    instruction.opcode = R[word];
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("R3\n");
                 } else if (strcmp(word, "R4") == 0) {
-                    instruction.opcode = R[(int *)(word + 1)];
+                    instruction.opcode = R[word];
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("R4\n");
                 } else if (strcmp(word, "R5") == 0) {
-                    instruction.opcode = R[(int *)(word + 1)];
+                    instruction.opcode = R[word];
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("R5\n");
                 } else if (strcmp(word, "R6") == 0) {
-                    instruction.opcode = R[(int *)(word + 1)];
+                    instruction.opcode = R[word];
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("R6\n");
                 } else if (strcmp(word, "R7") == 0) {
-                    instruction.opcode = R[(int *)(word + 1)];
+                    instruction.opcode = R[word];
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("R7\n");
@@ -307,12 +306,12 @@ int parser(FILE *file) {
                     printf("Unknown register\n");
                 }
             } else if (recognize_and_print_type(word) == 3) {
-                instruction.opcode = word[0] - '0';
+                instruction.opcode = word[0];
                 wordInLigne[wordSize] = instruction.opcode;
                 wordSize++;
                 printf("%s\n", word + 1); // print the number without the first character
             } else if (recognize_and_print_type(word) == 4) {
-                instruction.opcode = word[0] - '0';
+                instruction.opcode = word[0];
                 wordInLigne[wordSize] = instruction.opcode;
                 wordSize++;
                 printf("%s\n", word);
