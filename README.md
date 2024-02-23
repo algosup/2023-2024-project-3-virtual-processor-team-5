@@ -20,3 +20,33 @@ The virtual processor serves as a simplified platform for understanding and exec
 This project emphasizes the importance of efficient programming practices and the intricacies of processor design and operation. The functional specification document serves as a guideline for developers and contributors, ensuring that all aspects of the project align with the outlined objectives and standards.
 
 For more details, please refer to the functionalSpecification.md file [here](/Specifications/functionalSpecification.md).
+
+
+## To Launch
+
+to launch the program you must first have GCC to compile
+
+for the installation for a windows system here is the link [https://sourceforge.net/projects/gcc-win64/]
+
+for the installation for a MacOs system here is the link [https://brew.sh]
+
+after installing GCC copy the repository either by installing it in zip or by copying the link
+
+if you decide to copy the link, go to your desktop, right click, open in the terminal and mark (git clone [then insert the link])
+
+otherwise just uncompress the install folder
+
+after doing all that open the folder in an IDE (Visual Studio Code is recommended here)
+
+arrive at the code you must change some path before launching the program in the files (main.c and utils.h) the locations will be indicated by these messages
+
+ //! change the the left file path to the directory of the file by your own
+
+to change the path you must right click on (code.txt) press (copy path) and then do a control v or right click and press paste
+
+then add a second slash to all the places where there is only one
+
+after doing this you can
+go to the main.c file and then
+press the top right arrow and select gcc gnu
+Once the file is fully compiled, press the arrow at the top right a second time.
