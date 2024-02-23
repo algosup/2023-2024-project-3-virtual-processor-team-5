@@ -22,6 +22,7 @@ void read_file(char *filename, char *file_directory) {
     strcpy(file_path, file_directory);
     strcat(file_path, filename);
 
+    //! change the the left file path to the directory of the file by your own
     file = fopen("code.txt", "r");
     if (file == NULL) {
         printf("\x1b[31mCould not open file.\x1b[0m\n");

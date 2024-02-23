@@ -42,5 +42,6 @@ int main() {
 
     printf("Simple Terminal\n");
 
+    //! change the the left file path to the directory of the file by your own
     read_file("code.txt", "code.txt");
 }
