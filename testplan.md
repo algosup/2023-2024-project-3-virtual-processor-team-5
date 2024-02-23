@@ -51,7 +51,6 @@
 
 10. [Conclusion](#10-conclusion)
 
-11. [Test Plan Approval](#11-test-plan-approval)
 
 #### 1. Introduction
 
