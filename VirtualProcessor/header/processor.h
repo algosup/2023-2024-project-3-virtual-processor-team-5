@@ -3,7 +3,6 @@
 
 uint16_t reg;
 uint16_t result;
-
 // Define opcodes for instructions
 #define ADD_OPCODE 0x01
 #define SUB_OPCODE 0x02
@@ -57,8 +56,8 @@ typedef struct {
 
 // Processor status structure
 typedef struct {
-    int R[NUM_REGISTERS];// general register array
-    uint16_t PC;  // Program counter
+    int R[8];// general register array
+    int PC;  // Program counter
     Flags flags;  // Flags register
     int LR; // link register
     int PSR; // processor status register
