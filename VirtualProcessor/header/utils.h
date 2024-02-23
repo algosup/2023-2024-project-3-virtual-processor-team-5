@@ -1,4 +1,15 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <ctype.h>
 
+#include "processor.h"
+#include "instructions.h"
+#include "parser.h"
+
+char wordInLigne[MAX_LINE_LENGTH];
 
 void read_file(char *filename, char *file_directory) {
     FILE *file;
@@ -11,7 +22,7 @@ void read_file(char *filename, char *file_directory) {
     strcpy(file_path, file_directory);
     strcat(file_path, filename);
 
-    file = fopen("C:\\Users\\LucasMEGNAN\\Desktop\\2023-2024-project-3-virtual-processor-team-5\\code.txt", "r");
+    file = fopen("code.txt", "r");
     if (file == NULL) {
         printf("\x1b[31mCould not open file.\x1b[0m\n");
         exit(1);

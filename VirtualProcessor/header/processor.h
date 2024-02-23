@@ -1,4 +1,5 @@
 #define MEMORY_SIZE 10000
+#define MAX_LINE_LENGTH 1024
 #define NUM_REGISTERS 8
 
 uint16_t reg;
@@ -83,8 +84,18 @@ void update_flags(ProcessorState *state) {
     state->flags.zero = (state->R[0] == 0) ? 1 : 0;
 }
 
+extern char wordInLigne[MAX_LINE_LENGTH];
+
 // Function to execute instructions
 void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
+    if (instruction.opcode == HLT_OPCODE) {
+        printf("Halting processor\n");
+        exit(0);
+    } else {
+        instruction.destination = wordInLigne[1];
+        instruction.register1 = wordInLigne[2];
+        instruction.register2 = wordInLigne[3];
+    }
     switch(instruction.opcode) {
         case ADD_OPCODE:
             cpu->R[instruction.destination] = cpu->R[instruction.register1] + cpu->R[instruction.register2];
@@ -145,15 +156,16 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
             if (cpu->R[instruction.destination] < MEMORY_SIZE) {
                 cpu->R[instruction.destination] = 0; //reinitialize the register
                 cpu->R[instruction.destination] = instruction.IMMEDIATE; //store the immediate value in the destination register
-                printf("Value in R%d: %d\n",instruction.register1, cpu->R[instruction.destination]); //print the value in the register
+                printf("Value in R%d: %d\n\n",instruction.register1, cpu->R[instruction.destination]); //print the value in the register
             } else {
                 // Handle out of bounds memory access error
-                printf("Error: Memory address out of bounds\n");
+                printf("Error: Memory address out of bounds\n\n");
             }
             break;
         case HLT_OPCODE:
             // Halt the processor
             printf("Halting processor\n");
+            exit(0);
             break;
         case JMP_OPCODE:
             // Jump to the specified address

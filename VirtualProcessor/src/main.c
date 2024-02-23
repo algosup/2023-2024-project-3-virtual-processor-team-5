@@ -1,4 +1,4 @@
-#include "../header/virtualTerminal.c"
+#include "../header/utils.h"
 
 // Declaring functions to avoid compiler warnings
 void ExecuteADD(ProcessorState* cpu, int destination, int register1, int register2);
@@ -42,5 +42,5 @@ int main() {
 
     printf("Simple Terminal\n");
 
-    read_file("C:\\Users\\LucasMEGNAN\\Desktop\\2023-2024-project-3-virtual-processor-team-5\\code.txt", "code.txt");
+    read_file("code.txt", "code.txt");
 }

@@ -1,16 +1,11 @@
 // create parser for parsing the input file .txt
 #define MAX_WORD_LENGTH 100
-#define MAX_LINE_LENGTH 1024
+
 #define R 8
 
 ProcessorState cpu = {0};  // Initializes processor with default values
 
 char word[MAX_WORD_LENGTH];
-
-typedef struct {
-    char* word;
-    int type;
-} Word;
 
 int is_instruction(char* word) {
     for (int i = 0; word[i]; i++) {
@@ -81,7 +76,7 @@ int recognize_and_print_type(char* word) {
     }
 }
 
-char wordInLigne[MAX_LINE_LENGTH]; // variable to store the line read from the file
+extern char wordInLigne[MAX_LINE_LENGTH]; // variable to store the line read from the file
 int wordSize = 0; // variable to store the size of the word
 
 // parse the input file into words and print the type of each word separately

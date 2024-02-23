@@ -1,15 +1,4 @@
 #include <windows.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <ctype.h>
-
-#include "processor.h"
-#include "instructions.h"
-#include "parser.h"
-#include "utils.h"
 
 #define ID_EDIT_INPUT 101
 #define ID_EDIT_OUTPUT 102
