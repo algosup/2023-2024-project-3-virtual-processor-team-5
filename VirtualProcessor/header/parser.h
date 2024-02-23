@@ -92,21 +92,18 @@ int parser(FILE *file) {
         instruction_t instruction;
         char* word = strtok(line, " ,\n");
         while (word != NULL) {
-            // when the line if finished, you need to execute the instruction
-            if (strcmp(word, "\n") == 0) {
-                execute_instruction(instruction, &cpu);
-                printf("End of line\n");
-            /*if (strcmp(line, "\n") == 0) {
-                printf("Line too long\n");
+            // when the line if finished to be parsed, you need to take the first instruction on wordInLine and execute the instruction with the cpu and reinitialise the wordInLigne
+            if ((recognize_and_print_type(word) == 1 || recognize_and_print_type(word) == 4) && wordSize != 0) {
                 if (*wordInLigne != 0) {
-                    printf("coucou");
                     printf("%s\n", wordInLigne);
                     instruction.opcode = wordInLigne[0];
                     execute_instruction(instruction, &cpu);
                     // reinitialise the wordInLigne
                     wordInLigne[0] = 0;
-                }*/
-            } else if (recognize_and_print_type(word) == 1) {
+                    wordSize = 0;
+                }
+            }
+            if (recognize_and_print_type(word) == 1) {
                 if (strcmp(word, "ADD") == 0) {
                     instruction.opcode = ADD_OPCODE;
                     wordInLigne[wordSize] = instruction.opcode; // add the opcode in the wordInLigne array
@@ -329,6 +326,6 @@ int parser(FILE *file) {
             }
             word = strtok(NULL, " ,\n");
         }
-    }
+        }
     return 0;
 }
