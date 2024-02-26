@@ -40,8 +40,6 @@ int main() {
 
     ProcessorState cpu = {0};  // Initializes processor with default values
 
-    printf("Simple Terminal\n");
-
     //! change the the left file path to the directory of the file by your own
     read_file("code.txt", "code.txt");
 }

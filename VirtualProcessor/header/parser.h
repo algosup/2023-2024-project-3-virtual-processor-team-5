@@ -158,6 +158,7 @@ int parser(FILE *file) {
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("HLT\n");
+                    exit(0);
                 /*} else if (strcmp(word, "SHL") == 0) {
                     instruction.opcode = SHL_OPCODE;
                     wordInLigne[wordSize] = instruction.opcode;
@@ -232,13 +233,13 @@ int parser(FILE *file) {
                     instruction.opcode = SYSCALL_OPCODE;
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
-                    printf("SYSCALL\n");*/
+                    printf("SYSCALL\n");
                 } else if (strcmp(word, "JMP") == 0) {
                     instruction.opcode = JMP_OPCODE;
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;
                     printf("JMP\n");
-                /*} else if (strcmp(word, "JZ") == 0) {
+                } else if (strcmp(word, "JZ") == 0) {
                     instruction.opcode = JZ_OPCODE;
                     wordInLigne[wordSize] = instruction.opcode;
                     wordSize++;

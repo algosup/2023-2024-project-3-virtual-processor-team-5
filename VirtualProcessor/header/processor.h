@@ -97,7 +97,7 @@ void execute_instruction(instruction_t instruction, ProcessorState *cpu) {
         instruction.register1 = wordInLigne[2];
         printf("value 1: %d\n", instruction.register1);
         instruction.register2 = wordInLigne[3];
-        printf("value 2: %d\n", instruction.register2);
+        printf("value 2: %d\n\n", instruction.register2);
     }
     switch(instruction.opcode) {
         case ADD_OPCODE:
